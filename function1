@@ -14,5 +14,5 @@ def Create_Cube():
   global Cube, CUBE
   global resister, Resister
   
-  CUBE = [[[]]]
+  CUBE = [[]]
 ```

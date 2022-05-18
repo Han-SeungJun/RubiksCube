@@ -37,21 +37,21 @@ class Cube:
                      [None, None, None], [None, None], [None, None, None]]]
         register = [None, None, None]
 
-    def Element_Right(self, floor, piece):
+    def elementRight(self, floor, piece):
         """큐브의 모서리조각을 시계방향으로 돌려준다.  입력방식 : Element_Right(floor, piece)"""
         register[0:3] = myCube[floor][piece][0:3]
         myCube[floor][piece][0] = register[1]
         myCube[floor][piece][1] = register[2]
         myCube[floor][piece][2] = register[0]
 
-    def Element_Left(self, floor, piece):
+    def elementLeft(self, floor, piece):
         """큐브의 모서리조각을 반시계방향으로 돌려준다.  입력방식 : Element_Left(floor, piece)"""
         register[0:3] = myCube[floor][piece][0:3]
         myCube[floor][piece][0] = register[2]
         myCube[floor][piece][1] = register[0]
         myCube[floor][piece][2] = register[1]
 
-    def Element_Mirror(self, floor, piece):
+    def elementMirror(self, floor, piece):
         """큐브의 엣지조각을 반전시킨다.  입력방식 : Element_Mirror(floor, piece)"""
         register[0:2] = myCube[floor][piece][0:2]
         myCube[floor][piece][0] = register[1]
@@ -92,10 +92,10 @@ class Cube:
         myCube[1][6] = Register[1][0]
         myCube[1][7] = Register[1][3]
         myCube[1][8] = Register[1][6]
-        self.Element_Mirror(1, 0)
-        self.Element_Mirror(1, 2)
-        self.Element_Mirror(1, 6)
-        self.Element_Mirror(1, 8)
+        self.elementMirror(1, 0)
+        self.elementMirror(1, 2)
+        self.elementMirror(1, 6)
+        self.elementMirror(1, 8)
 
     def Horizon_Left(self):
         """윗면과 아랫면 사이층을 시계 반대방향으로 회전한다."""
@@ -108,10 +108,10 @@ class Cube:
         myCube[1][6] = Register[1][8]
         myCube[1][7] = Register[1][5]
         myCube[1][8] = Register[1][2]
-        self.Element_Mirror(1, 0)
-        self.Element_Mirror(1, 2)
-        self.Element_Mirror(1, 6)
-        self.Element_Mirror(1, 8)
+        self.elementMirror(1, 0)
+        self.elementMirror(1, 2)
+        self.elementMirror(1, 6)
+        self.elementMirror(1, 8)
 
     def Down_Right(self):
         """아랫면을 시계방향으로 회전한다."""
@@ -150,10 +150,10 @@ class Cube:
         myCube[2][0] = Register[2][2]
         myCube[2][1] = Register[1][2]
         myCube[2][2] = Register[0][2]
-        self.Element_Left(0, 0)
-        self.Element_Right(0, 2)
-        self.Element_Right(2, 0)
-        self.Element_Left(2, 2)
+        self.elementLeft(0, 0)
+        self.elementRight(0, 2)
+        self.elementRight(2, 0)
+        self.elementLeft(2, 2)
 
     def Right_Left(self):
         """오른쪽 면을 시계 반대방향으로 회전한다."""
@@ -168,10 +168,10 @@ class Cube:
         myCube[2][0] = Register[0][0]
         myCube[2][1] = Register[1][0]
         myCube[2][2] = Register[2][0]
-        self.Element_Left(0, 0)
-        self.Element_Right(0, 2)
-        self.Element_Right(2, 0)
-        self.Element_Left(2, 2)
+        self.elementLeft(0, 0)
+        self.elementRight(0, 2)
+        self.elementRight(2, 0)
+        self.elementLeft(2, 2)
 
     def Middle_Right(self):
         """오른쪽 면과 왼쪽 면의 사이층을 오른 축에 대해 시계방향으로 회전한다."""
@@ -186,10 +186,10 @@ class Cube:
         myCube[2][3] = Register[2][5]
         myCube[2][4] = Register[1][5]
         myCube[2][5] = Register[0][5]
-        self.Element_Mirror(0, 3)
-        self.Element_Mirror(0, 5)
-        self.Element_Mirror(2, 3)
-        self.Element_Mirror(2, 5)
+        self.elementMirror(0, 3)
+        self.elementMirror(0, 5)
+        self.elementMirror(2, 3)
+        self.elementMirror(2, 5)
 
     def Middle_Left(self):
         """오른쪽 면과 왼쪽 면의 사이층을 오른 축에 대해 시계 반대방향으로 회전한다."""
@@ -204,10 +204,10 @@ class Cube:
         myCube[2][3] = Register[0][3]
         myCube[2][4] = Register[1][3]
         myCube[2][5] = Register[2][3]
-        self.Element_Mirror(0, 3)
-        self.Element_Mirror(0, 5)
-        self.Element_Mirror(2, 3)
-        self.Element_Mirror(2, 5)
+        self.elementMirror(0, 3)
+        self.elementMirror(0, 5)
+        self.elementMirror(2, 3)
+        self.elementMirror(2, 5)
 
     def Left_Right(self):
         """왼쪽 면을 시계방향으로 회전한다."""
@@ -222,10 +222,10 @@ class Cube:
         myCube[2][6] = Register[0][6]
         myCube[2][7] = Register[1][6]
         myCube[2][8] = Register[2][6]
-        self.Element_Right(0, 6)
-        self.Element_Left(0, 8)
-        self.Element_Left(2, 6)
-        self.Element_Right(2, 8)
+        self.elementRight(0, 6)
+        self.elementLeft(0, 8)
+        self.elementLeft(2, 6)
+        self.elementRight(2, 8)
 
     def Left_Left(self):
         """왼쪽 면을 시계 반대방향으로 회전한다."""
@@ -240,10 +240,10 @@ class Cube:
         myCube[2][6] = Register[2][8]
         myCube[2][7] = Register[1][8]
         myCube[2][8] = Register[0][8]
-        self.Element_Right(0, 6)
-        self.Element_Left(0, 8)
-        self.Element_Left(2, 6)
-        self.Element_Right(2, 8)
+        self.elementRight(0, 6)
+        self.elementLeft(0, 8)
+        self.elementLeft(2, 6)
+        self.elementRight(2, 8)
 
     def Front_Right(self):
         """앞면을 시계방향으로 회전한다."""
@@ -258,14 +258,14 @@ class Cube:
         myCube[2][6] = Register[2][2]
         myCube[2][3] = Register[1][1]
         myCube[2][0] = Register[0][2]
-        self.Element_Left(0, 6)
-        self.Element_Mirror(0, 3)
-        self.Element_Right(0, 0)
-        self.Element_Mirror(1, 6)
-        self.Element_Mirror(1, 0)
-        self.Element_Right(2, 6)
-        self.Element_Mirror(2, 3)
-        self.Element_Left(2, 0)
+        self.elementLeft(0, 6)
+        self.elementMirror(0, 3)
+        self.elementRight(0, 0)
+        self.elementMirror(1, 6)
+        self.elementMirror(1, 0)
+        self.elementRight(2, 6)
+        self.elementMirror(2, 3)
+        self.elementLeft(2, 0)
 
     def Front_Left(self):
         """앞면을 시계 반대방향으로 회전한다."""
@@ -280,14 +280,14 @@ class Cube:
         myCube[2][6] = Register[0][0]
         myCube[2][3] = Register[1][0]
         myCube[2][0] = Register[2][0]
-        self.Element_Left(0, 6)
-        self.Element_Mirror(0, 3)
-        self.Element_Right(0, 0)
-        self.Element_Mirror(1, 6)
-        self.Element_Mirror(1, 0)
-        self.Element_Right(2, 6)
-        self.Element_Mirror(2, 3)
-        self.Element_Left(2, 0)
+        self.elementLeft(0, 6)
+        self.elementMirror(0, 3)
+        self.elementRight(0, 0)
+        self.elementMirror(1, 6)
+        self.elementMirror(1, 0)
+        self.elementRight(2, 6)
+        self.elementMirror(2, 3)
+        self.elementLeft(2, 0)
 
     def Side_Right(self):
         """앞면과 뒷면의 사이층을 앞축에 대해 시계방향으로 회전한다."""
@@ -302,10 +302,10 @@ class Cube:
         myCube[2][7] = Register[2][2]
         myCube[2][4] = Register[1][1]
         myCube[2][1] = Register[0][2]
-        self.Element_Mirror(0, 7)
-        self.Element_Mirror(0, 1)
-        self.Element_Mirror(2, 7)
-        self.Element_Mirror(2, 1)
+        self.elementMirror(0, 7)
+        self.elementMirror(0, 1)
+        self.elementMirror(2, 7)
+        self.elementMirror(2, 1)
 
     def Side_Left(self):
         """앞면과 뒷면의 사이층을 앞축에 대해 시계 반대방향으로 회전한다."""
@@ -320,10 +320,10 @@ class Cube:
         myCube[2][7] = Register[0][0]
         myCube[2][4] = Register[1][0]
         myCube[2][1] = Register[2][0]
-        self.Element_Mirror(0, 7)
-        self.Element_Mirror(0, 1)
-        self.Element_Mirror(2, 7)
-        self.Element_Mirror(2, 1)
+        self.elementMirror(0, 7)
+        self.elementMirror(0, 1)
+        self.elementMirror(2, 7)
+        self.elementMirror(2, 1)
 
     def Back_Right(self):
         """뒷면을 시계방향으로 회전한다."""
@@ -338,14 +338,14 @@ class Cube:
         myCube[2][2] = Register[2][0]
         myCube[2][5] = Register[1][0]
         myCube[2][8] = Register[0][0]
-        self.Element_Left(0, 2)
-        self.Element_Mirror(0, 5)
-        self.Element_Right(0, 8)
-        self.Element_Mirror(1, 2)
-        self.Element_Mirror(1, 8)
-        self.Element_Right(2, 2)
-        self.Element_Mirror(2, 5)
-        self.Element_Left(2, 8)
+        self.elementLeft(0, 2)
+        self.elementMirror(0, 5)
+        self.elementRight(0, 8)
+        self.elementMirror(1, 2)
+        self.elementMirror(1, 8)
+        self.elementRight(2, 2)
+        self.elementMirror(2, 5)
+        self.elementLeft(2, 8)
 
     def Back_Left(self):
         """뒷면을 시계방향으로 회전한다."""
@@ -360,14 +360,14 @@ class Cube:
         myCube[2][2] = Register[0][2]
         myCube[2][5] = Register[1][1]
         myCube[2][8] = Register[2][2]
-        self.Element_Left(0, 2)
-        self.Element_Mirror(0, 5)
-        self.Element_Right(0, 8)
-        self.Element_Mirror(1, 2)
-        self.Element_Mirror(1, 8)
-        self.Element_Right(2, 2)
-        self.Element_Mirror(2, 5)
-        self.Element_Left(2, 8)
+        self.elementLeft(0, 2)
+        self.elementMirror(0, 5)
+        self.elementRight(0, 8)
+        self.elementMirror(1, 2)
+        self.elementMirror(1, 8)
+        self.elementRight(2, 2)
+        self.elementMirror(2, 5)
+        self.elementLeft(2, 8)
 
     def X_Right(self):
         """큐브 전체를 앞면 축에 대해 시계방향으로 회전한다."""

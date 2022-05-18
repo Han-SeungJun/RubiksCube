@@ -8,7 +8,7 @@ MIX_NUM = 60
 TIME = 0.01
 
 Cube2.createCube()
-Cube2.def_Color()
+Cube2.defColor()
 
 app = wx.App(0)
 
@@ -497,7 +497,7 @@ def SAVE():
     spin_S()
     dialog1 = wx.MessageDialog(main_frame, "저장하시겠습니까?", "저장", wx.CANCEL)
     if dialog1.ShowModal() == wx.ID_OK:
-        Cube2.save_Cube()
+        Cube2.saveCube()
         wx.MessageBox("저장했습니다!", "알림", wx.OK)
     else:
         pass
@@ -512,7 +512,7 @@ def LOAD():
     spin_L()
     dialog2 = wx.MessageDialog(main_frame, "저장파일을 불러오시겠습니까?", "불러오기", wx.CANCEL)
     if dialog2.ShowModal() == wx.ID_OK:
-        Cube2.Load_Cube()
+        Cube2.loadCube()
         Cube_up.Refresh()
         Cube_front.Refresh()
         Cube_right.Refresh()
@@ -529,10 +529,10 @@ keyboard.add_hotkey('ctrl+l', lambda: LOAD())
 
 def MIX():
     for mix_num in range(MIX_NUM):
-        Cube2.def_Number()
-        Cube2.Mix_Cube()
+        Cube2.defNumber()
+        Cube2.mixCube()
         time.sleep(TIME)
-        Cube2.def_Color()
+        Cube2.defColor()
         spin_All()
 
 
@@ -541,7 +541,7 @@ keyboard.add_hotkey('ctrl+m', lambda: MIX())
 
 def CLEAN():
     Cube2.createCube()
-    Cube2.def_Color()
+    Cube2.defColor()
     Cube_up.Refresh()
     Cube_front.Refresh()
     Cube_right.Refresh()
@@ -1313,7 +1313,7 @@ main_frame.Bind(wx.EVT_MENU, onAbout, about)
 
 
 def onSave(event):
-    Cube2.save_Cube()
+    Cube2.saveCube()
     wx.MessageBox("저장했습니다!", "알림", wx.OK)
 
 
@@ -1321,7 +1321,7 @@ main_frame.Bind(wx.EVT_MENU, onSave, save)
 
 
 def onLoad(event):
-    Cube2.Load_Cube()
+    Cube2.loadCube()
     Cube_up.Refresh()
     Cube_front.Refresh()
     Cube_right.Refresh()
@@ -1375,9 +1375,9 @@ main_frame.Bind(wx.EVT_MENU, onZ_L, z_l)
 # 메뉴-도구(세부설정)
 
 def onMix(event):
-    Cube2.def_Number()
+    Cube2.defNumber()
     for mix_num in range(MIX_NUM):
-        Cube2.Mix_Cube()
+        Cube2.mixCube()
         time.sleep(TIME)
         Cube_up.Bind(wx.EVT_PAINT, On_UP_Paint)
         Cube_front.Bind(wx.EVT_PAINT, On_FRONT_Paint)
@@ -1391,7 +1391,7 @@ def onMix(event):
         Cube_left.Refresh()
         Cube_back.Refresh()
         Cube_down.Refresh()
-    Cube2.def_Color()
+    Cube2.defColor()
 
 
 main_frame.Bind(wx.EVT_MENU, onMix, mix)
@@ -1399,7 +1399,7 @@ main_frame.Bind(wx.EVT_MENU, onMix, mix)
 
 def onClean(event):
     Cube2.createCube()
-    Cube2.def_Color()
+    Cube2.defColor()
     Cube_up.Refresh()
     Cube_front.Refresh()
     Cube_right.Refresh()
@@ -1572,7 +1572,7 @@ result = wx.StaticText(implementation_frame, label='결과: ' + '%d' % turn_poin
 #    text = Node()
 def onClick_imple(event):
     Cube2.createCube()
-    Cube2.def_Color()
+    Cube2.defColor()
     spin_All()
 
     def TURN_NUM(event):
@@ -1581,7 +1581,7 @@ def onClick_imple(event):
             text = turn_num.GetValue()
             #            text.p_Next.append(text)
             for t in text:
-                Cube2.def_Number()
+                Cube2.defNumber()
                 turn_point += 1
                 if t == 'u':
                     Cube2.upRight()
@@ -1684,7 +1684,7 @@ def onClick_imple(event):
                     break
                 elif (Cube2.clearCube() == 0):
                     result.SetLabel('결과: ' + '%d' % turn_point)
-                    Cube2.def_Color()
+                    Cube2.defColor()
                     break
                 else:
                     continue

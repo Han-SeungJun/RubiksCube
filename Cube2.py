@@ -57,7 +57,7 @@ class Cube:
         myCube[floor][piece][0] = register[1]
         myCube[floor][piece][1] = register[0]
 
-    def Up_Right(self):
+    def upRight(self):
         """윗면을 시계방향으로 회전한다."""
         Register[0][0:9] = myCube[0][0:9]
         myCube[0][0] = Register[0][2]
@@ -69,7 +69,7 @@ class Cube:
         myCube[0][7] = Register[0][3]
         myCube[0][8] = Register[0][6]
 
-    def Up_Left(self):
+    def upLeft(self):
         """윗면을 시계 반대방향으로 회전한다."""
         Register[0][0:9] = myCube[0][0:9]
         myCube[0][0] = Register[0][6]
@@ -81,7 +81,7 @@ class Cube:
         myCube[0][7] = Register[0][5]
         myCube[0][8] = Register[0][2]
 
-    def Horizon_Right(self):
+    def horizonRight(self):
         """윗면과 아랫면 사이층을 시계방향으로 회전한다."""
         Register[1][0:9] = myCube[1][0:9]
         myCube[1][0] = Register[1][2]
@@ -97,7 +97,7 @@ class Cube:
         self.elementMirror(1, 6)
         self.elementMirror(1, 8)
 
-    def Horizon_Left(self):
+    def horizonLeft(self):
         """윗면과 아랫면 사이층을 시계 반대방향으로 회전한다."""
         Register[1][0:9] = myCube[1][0:9]
         myCube[1][0] = Register[1][6]
@@ -113,7 +113,7 @@ class Cube:
         self.elementMirror(1, 6)
         self.elementMirror(1, 8)
 
-    def Down_Right(self):
+    def downRight(self):
         """아랫면을 시계방향으로 회전한다."""
         Register[2][0:9] = myCube[2][0:9]
         myCube[2][0] = Register[2][6]
@@ -125,7 +125,7 @@ class Cube:
         myCube[2][7] = Register[2][5]
         myCube[2][8] = Register[2][2]
 
-    def Down_Left(self):
+    def downLeft(self):
         """아랫면을 시계 반대방향으로 회전한다."""
         Register[2][0:9] = myCube[2][0:9]
         myCube[2][0] = Register[2][2]
@@ -137,7 +137,7 @@ class Cube:
         myCube[2][7] = Register[2][3]
         myCube[2][8] = Register[2][6]
 
-    def Right_Right(self):
+    def rightRight(self):
         """오른쪽 면을 시계방향으로 회전한다."""
         Register[0][0:3] = myCube[0][0:3]
         Register[1][0:3] = myCube[1][0:3]
@@ -155,7 +155,7 @@ class Cube:
         self.elementRight(2, 0)
         self.elementLeft(2, 2)
 
-    def Right_Left(self):
+    def rightLeft(self):
         """오른쪽 면을 시계 반대방향으로 회전한다."""
         Register[0][0:3] = myCube[0][0:3]
         Register[1][0:3] = myCube[1][0:3]
@@ -173,7 +173,7 @@ class Cube:
         self.elementRight(2, 0)
         self.elementLeft(2, 2)
 
-    def Middle_Right(self):
+    def middleRight(self):
         """오른쪽 면과 왼쪽 면의 사이층을 오른 축에 대해 시계방향으로 회전한다."""
         Register[0][3:6] = myCube[0][3:6]
         Register[1][3:6] = myCube[1][3:6]
@@ -191,7 +191,7 @@ class Cube:
         self.elementMirror(2, 3)
         self.elementMirror(2, 5)
 
-    def Middle_Left(self):
+    def middleLeft(self):
         """오른쪽 면과 왼쪽 면의 사이층을 오른 축에 대해 시계 반대방향으로 회전한다."""
         Register[0][3:6] = myCube[0][3:6]
         Register[1][3:6] = myCube[1][3:6]
@@ -209,7 +209,7 @@ class Cube:
         self.elementMirror(2, 3)
         self.elementMirror(2, 5)
 
-    def Left_Right(self):
+    def leftRight(self):
         """왼쪽 면을 시계방향으로 회전한다."""
         Register[0][6:9] = myCube[0][6:9]
         Register[1][6:9] = myCube[1][6:9]
@@ -227,7 +227,7 @@ class Cube:
         self.elementLeft(2, 6)
         self.elementRight(2, 8)
 
-    def Left_Left(self):
+    def leftLeft(self):
         """왼쪽 면을 시계 반대방향으로 회전한다."""
         Register[0][6:9] = myCube[0][6:9]
         Register[1][6:9] = myCube[1][6:9]
@@ -245,7 +245,7 @@ class Cube:
         self.elementLeft(2, 6)
         self.elementRight(2, 8)
 
-    def Front_Right(self):
+    def frontRight(self):
         """앞면을 시계방향으로 회전한다."""
         Register[0][0:3] = [myCube[0][6], myCube[0][3], myCube[0][0]]
         Register[1][0:2] = [myCube[1][6], myCube[1][0]]
@@ -267,7 +267,7 @@ class Cube:
         self.elementMirror(2, 3)
         self.elementLeft(2, 0)
 
-    def Front_Left(self):
+    def frontLeft(self):
         """앞면을 시계 반대방향으로 회전한다."""
         Register[0][0:3] = [myCube[0][6], myCube[0][3], myCube[0][0]]
         Register[1][0:2] = [myCube[1][6], myCube[1][0]]
@@ -289,7 +289,7 @@ class Cube:
         self.elementMirror(2, 3)
         self.elementLeft(2, 0)
 
-    def Side_Right(self):
+    def sideRight(self):
         """앞면과 뒷면의 사이층을 앞축에 대해 시계방향으로 회전한다."""
         Register[0][0:3] = [myCube[0][7], myCube[0][4], myCube[0][1]]
         Register[1][0:2] = [myCube[1][7], myCube[1][1]]
@@ -307,7 +307,7 @@ class Cube:
         self.elementMirror(2, 7)
         self.elementMirror(2, 1)
 
-    def Side_Left(self):
+    def sideLeft(self):
         """앞면과 뒷면의 사이층을 앞축에 대해 시계 반대방향으로 회전한다."""
         Register[0][0:3] = [myCube[0][7], myCube[0][4], myCube[0][1]]
         Register[1][0:2] = [myCube[1][7], myCube[1][1]]
@@ -325,7 +325,7 @@ class Cube:
         self.elementMirror(2, 7)
         self.elementMirror(2, 1)
 
-    def Back_Right(self):
+    def backRight(self):
         """뒷면을 시계방향으로 회전한다."""
         Register[0][0:3] = [myCube[0][8], myCube[0][5], myCube[0][2]]
         Register[1][0:2] = [myCube[1][8], myCube[1][2]]
@@ -347,7 +347,7 @@ class Cube:
         self.elementMirror(2, 5)
         self.elementLeft(2, 8)
 
-    def Back_Left(self):
+    def backLeft(self):
         """뒷면을 시계방향으로 회전한다."""
         Register[0][0:3] = [myCube[0][8], myCube[0][5], myCube[0][2]]
         Register[1][0:2] = [myCube[1][8], myCube[1][2]]
@@ -369,41 +369,41 @@ class Cube:
         self.elementMirror(2, 5)
         self.elementLeft(2, 8)
 
-    def X_Right(self):
+    def xRight(self):
         """큐브 전체를 앞면 축에 대해 시계방향으로 회전한다."""
-        self.Front_Right()
-        self.Side_Right()
-        self.Back_Left()
+        self.frontRight()
+        self.sideRight()
+        self.backLeft()
 
-    def X_Left(self):
+    def xLeft(self):
         """큐브 전체를 앞면 축에 대해 시계 반대방향으로 회전한다."""
-        self.Front_Left()
-        self.Side_Left()
-        self.Back_Right()
+        self.frontLeft()
+        self.sideLeft()
+        self.backRight()
 
-    def Y_Right(self):
+    def yRight(self):
         """큐브 전체를 오른쪽 면의 축에 대해 시계방향으로 회전한다."""
-        self.Right_Right()
-        self.Middle_Right()
-        self.Left_Left()
+        self.rightRight()
+        self.middleRight()
+        self.leftLeft()
 
-    def Y_Left(self):
+    def yLeft(self):
         """큐브 전체를 오른쪽 면의 축에 대해 시계 반대방향으로 회전한다."""
-        self.Right_Left()
-        self.Middle_Left()
-        self.Left_Right()
+        self.rightLeft()
+        self.middleLeft()
+        self.leftRight()
 
-    def Z_Right(self):
+    def zRight(self):
         """큐브 전체를 윗면의 축에 대해 시계방향으로 회전한다."""
-        self.Up_Right()
-        self.Horizon_Right()
-        self.Down_Left()
+        self.upRight()
+        self.horizonRight()
+        self.downLeft()
 
-    def Z_Left(self):
+    def zLeft(self):
         """큐브 전체를 윗면의 축에 대해 시계 반대방향으로 회전한다."""
-        self.Up_Left()
-        self.Horizon_Left()
-        self.Down_Right()
+        self.upLeft()
+        self.horizonLeft()
+        self.downRight()
 
     def Clear_Cube(self):
         """큐브 전체를 24가지 경우로 돌려보며 모두 맞춰졌는지 판별하는 함수"""
@@ -514,23 +514,23 @@ class Cube:
 
         for xy in range(4):
             for x in range(4):
-                self.X_Right()
+                self.xRight()
                 if (self.If_Clear() == 1):
                     find1[xy][x] = 1
                 else:
                     find1[xy][x] = 0
-            self.Y_Right()
+            self.yRight()
 
         for zxzx in range(2):
-            self.Z_Right()
+            self.zRight()
             for x in range(4):
-                self.X_Right()
+                self.xRight()
                 if (self.If_Clear() == 1):
                     find2[zxzx][x] = 1
                 else:
                     find2[zxzx][x] = 0
-            self.Z_Right()
-            self.X_Right()
+            self.zRight()
+            self.xRight()
             if (self.If_Clear() == 1):
                 find3[zxzx] = 1
             else:
@@ -557,41 +557,41 @@ class Cube:
         self.Cube_Mix_Ceed = random.randint(1, 18)
 
         if (self.Cube_Mix_Ceed == 1):
-            self.Up_Right()
+            self.upRight()
         elif (self.Cube_Mix_Ceed == 2):
-            self.Up_Left()
+            self.upLeft()
         elif (self.Cube_Mix_Ceed == 3):
-            self.Horizon_Right()
+            self.horizonRight()
         elif (self.Cube_Mix_Ceed == 4):
-            self.Horizon_Left()
+            self.horizonLeft()
         elif (self.Cube_Mix_Ceed == 5):
-            self.Down_Right()
+            self.downRight()
         elif (self.Cube_Mix_Ceed == 6):
-            self.Down_Left()
+            self.downLeft()
         elif (self.Cube_Mix_Ceed == 7):
-            self.Right_Right()
+            self.rightRight()
         elif (self.Cube_Mix_Ceed == 8):
-            self.Right_Left()
+            self.rightLeft()
         elif (self.Cube_Mix_Ceed == 9):
-            self.Middle_Right()
+            self.middleRight()
         elif (self.Cube_Mix_Ceed == 10):
-            self.Middle_Left()
+            self.middleLeft()
         elif (self.Cube_Mix_Ceed == 11):
-            self.Left_Right()
+            self.leftRight()
         elif (self.Cube_Mix_Ceed == 12):
-            self.Left_Left()
+            self.leftLeft()
         elif (self.Cube_Mix_Ceed == 13):
-            self.Front_Right()
+            self.frontRight()
         elif (self.Cube_Mix_Ceed == 14):
-            self.Front_Left()
+            self.frontLeft()
         elif (self.Cube_Mix_Ceed == 15):
-            self.Side_Right()
+            self.sideRight()
         elif (self.Cube_Mix_Ceed == 16):
-            self.Side_Left()
+            self.sideLeft()
         elif (self.Cube_Mix_Ceed == 17):
-            self.Back_Right()
+            self.backRight()
         elif (self.Cube_Mix_Ceed == 18):
-            self.Back_Left()
+            self.backLeft()
 
     def save_Cube(self):
         """큐브 데이터를 저장하는 함수"""

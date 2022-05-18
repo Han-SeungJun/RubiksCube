@@ -22,11 +22,11 @@ class Cube:
 
     def createCube(self):
         """큐브의 환경을 조성한다."""
-        global myCube, CUBE  # global은 되도록 쓰지 않는 것이 좋다.
+        global myCube, sampleCube  # global은 되도록 쓰지 않는 것이 좋다.
         global Register, register
-        CUBE = [[[1, 2, 3], [1, 3], [1, 3, 4], [1, 2], [1], [1, 4], [1, 5, 2], [1, 5], [1, 4, 5]],
-                [[2, 3], [3], [4, 3], [2], [], [4], [2, 5], [5], [4, 5]],
-                [[6, 3, 2], [6, 3], [6, 4, 3], [6, 2], [6], [6, 4], [6, 2, 5], [6, 5], [6, 5, 4]]]
+        sampleCube = [[[1, 2, 3], [1, 3], [1, 3, 4], [1, 2], [1], [1, 4], [1, 5, 2], [1, 5], [1, 4, 5]],
+                      [[2, 3], [3], [4, 3], [2], [], [4], [2, 5], [5], [4, 5]],
+                      [[6, 3, 2], [6, 3], [6, 4, 3], [6, 2], [6], [6, 4], [6, 2, 5], [6, 5], [6, 5, 4]]]
         myCube = [[[1, 2, 3], [1, 3], [1, 3, 4], [1, 2], [1], [1, 4], [1, 5, 2], [1, 5], [1, 4, 5]],
                   [[2, 3], [3], [4, 3], [2], [], [4], [2, 5], [5], [4, 5]],
                   [[6, 3, 2], [6, 3], [6, 4, 3], [6, 2], [6], [6, 4], [6, 2, 5], [6, 5], [6, 5, 4]]]
@@ -410,45 +410,45 @@ class Cube:
 
         def If_Clear(self):
             """큐브의 모든 조각들의 요소가 맞춰져있는지 판별하는 함수."""
-            if (CUBE[0][0] == myCube[0][0]):
-                if (CUBE[0][1] == myCube[0][1]):
-                    if (CUBE[0][2] == myCube[0][2]):
-                        if (CUBE[0][3] == myCube[0][3]):
-                            if (CUBE[0][4] == myCube[0][4]):
-                                if (CUBE[0][5] == myCube[0][5]):
-                                    if (CUBE[0][6] == myCube[0][6]):
-                                        if (CUBE[0][7] == myCube[0][7]):
-                                            if (CUBE[0][8] == myCube[0][8]):
-                                                if (CUBE[1][0] == myCube[1][0]):
-                                                    if (CUBE[1][1] == myCube[1][1]):
-                                                        if (CUBE[1][2] == myCube[1][2]):
-                                                            if (CUBE[1][3] == myCube[1][3]):
-                                                                if (CUBE[1][5] == myCube[1][5]):
-                                                                    if (CUBE[1][6] == myCube[1][6]):
-                                                                        if (CUBE[1][7] == myCube[1][7]):
-                                                                            if (CUBE[1][8] == myCube[1][8]):
-                                                                                if (CUBE[2][0] == myCube[2][0]):
-                                                                                    if (CUBE[2][1] == myCube[2][1]):
-                                                                                        if (CUBE[2][2] == myCube[2][2]):
-                                                                                            if (CUBE[2][3] == myCube[2][
+            if (sampleCube[0][0] == myCube[0][0]):
+                if (sampleCube[0][1] == myCube[0][1]):
+                    if (sampleCube[0][2] == myCube[0][2]):
+                        if (sampleCube[0][3] == myCube[0][3]):
+                            if (sampleCube[0][4] == myCube[0][4]):
+                                if (sampleCube[0][5] == myCube[0][5]):
+                                    if (sampleCube[0][6] == myCube[0][6]):
+                                        if (sampleCube[0][7] == myCube[0][7]):
+                                            if (sampleCube[0][8] == myCube[0][8]):
+                                                if (sampleCube[1][0] == myCube[1][0]):
+                                                    if (sampleCube[1][1] == myCube[1][1]):
+                                                        if (sampleCube[1][2] == myCube[1][2]):
+                                                            if (sampleCube[1][3] == myCube[1][3]):
+                                                                if (sampleCube[1][5] == myCube[1][5]):
+                                                                    if (sampleCube[1][6] == myCube[1][6]):
+                                                                        if (sampleCube[1][7] == myCube[1][7]):
+                                                                            if (sampleCube[1][8] == myCube[1][8]):
+                                                                                if (sampleCube[2][0] == myCube[2][0]):
+                                                                                    if (sampleCube[2][1] == myCube[2][1]):
+                                                                                        if (sampleCube[2][2] == myCube[2][2]):
+                                                                                            if (sampleCube[2][3] == myCube[2][
                                                                                                 3]):
-                                                                                                if (CUBE[2][4] ==
+                                                                                                if (sampleCube[2][4] ==
                                                                                                         myCube[2][4]):
-                                                                                                    if (CUBE[2][5] ==
+                                                                                                    if (sampleCube[2][5] ==
                                                                                                             myCube[2][
                                                                                                                 5]):
-                                                                                                        if (CUBE[2][
+                                                                                                        if (sampleCube[2][
                                                                                                             6] ==
                                                                                                                 myCube[
                                                                                                                     2][
                                                                                                                     6]):
-                                                                                                            if (CUBE[2][
+                                                                                                            if (sampleCube[2][
                                                                                                                 7] ==
                                                                                                                     myCube[
                                                                                                                         2][
                                                                                                                         7]):
                                                                                                                 if (
-                                                                                                                        CUBE[
+                                                                                                                        sampleCube[
                                                                                                                             2][
                                                                                                                             8] ==
                                                                                                                         myCube[

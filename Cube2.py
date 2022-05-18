@@ -10,357 +10,364 @@ import wx
 import random
 import sqlite3 as sq
 
+
+# 클래스 이름, 전역 함수 이름 : PascalCase
+# 클래스 내 함수 이름(메소드), 인스턴스변수, 클래스 변수 : camelCase
+# 상수 : CAPITAL_SNAKE
+
 class Cube:
-    def __init__(self, mix_num = 60, time = 0.01):
+    def __init__(self, mix_num=60, time=0.01):
         self.mix_num = mix_num
         self.time = time
 
-    def Create_Cube(self):
+    def createCube(self):
         """큐브의 환경을 조성한다."""
-        global Cube, CUBE
-        global Resister, resister
-        CUBE = [[[1,2,3],[1,3],[1,3,4],[1,2],[1],[1,4],[1,5,2],[1,5],[1,4,5]],
-                [[2,3]  ,[3]  ,[4,3]  ,[2]  ,[] ,[4]  ,[2,5]  ,[5]  ,[4,5]  ],
-                [[6,3,2],[6,3],[6,4,3],[6,2],[6],[6,4],[6,2,5],[6,5],[6,5,4]]]
-        Cube = [[[1,2,3],[1,3],[1,3,4],[1,2],[1],[1,4],[1,5,2],[1,5],[1,4,5]],
-                [[2,3]  ,[3]  ,[4,3]  ,[2]  ,[] ,[4]  ,[2,5]  ,[5]  ,[4,5]  ],
-                [[6,3,2],[6,3],[6,4,3],[6,2],[6],[6,4],[6,2,5],[6,5],[6,5,4]]]
-        Resister = [[[None,None,None],[None,None,None],[None,None,None],[None,None],[None],[None,None],[None,None,None],[None,None],[None,None,None]],
-                    [[None,None]      ,[None]     ,[None,None]      ,[None]     ,[None],[None]      ,[None,None]     ,[None]      ,[None,None]  ],
-                    [[None,None,None],[None,None],[None,None,None],[None,None],[None],[None,None],[None,None,None],[None,None],[None,None,None]]]
-        resister = [None,None,None]
+        global myCube, CUBE  # global은 되도록 쓰지 않는 것이 좋다.
+        global Register, register
+        CUBE = [[[1, 2, 3], [1, 3], [1, 3, 4], [1, 2], [1], [1, 4], [1, 5, 2], [1, 5], [1, 4, 5]],
+                [[2, 3], [3], [4, 3], [2], [], [4], [2, 5], [5], [4, 5]],
+                [[6, 3, 2], [6, 3], [6, 4, 3], [6, 2], [6], [6, 4], [6, 2, 5], [6, 5], [6, 5, 4]]]
+        myCube = [[[1, 2, 3], [1, 3], [1, 3, 4], [1, 2], [1], [1, 4], [1, 5, 2], [1, 5], [1, 4, 5]],
+                  [[2, 3], [3], [4, 3], [2], [], [4], [2, 5], [5], [4, 5]],
+                  [[6, 3, 2], [6, 3], [6, 4, 3], [6, 2], [6], [6, 4], [6, 2, 5], [6, 5], [6, 5, 4]]]
+        Register = [[[None, None, None], [None, None, None], [None, None, None], [None, None], [None], [None, None],
+                     [None, None, None], [None, None], [None, None, None]],
+                    [[None, None], [None], [None, None], [None], [None], [None], [None, None], [None], [None, None]],
+                    [[None, None, None], [None, None], [None, None, None], [None, None], [None], [None, None],
+                     [None, None, None], [None, None], [None, None, None]]]
+        register = [None, None, None]
 
     def Element_Right(self, floor, piece):
         """큐브의 모서리조각을 시계방향으로 돌려준다.  입력방식 : Element_Right(floor, piece)"""
-        resister[0:3] = Cube[floor][piece][0:3]
-        Cube[floor][piece][0] = resister[1]
-        Cube[floor][piece][1] = resister[2]
-        Cube[floor][piece][2] = resister[0]
+        register[0:3] = myCube[floor][piece][0:3]
+        myCube[floor][piece][0] = register[1]
+        myCube[floor][piece][1] = register[2]
+        myCube[floor][piece][2] = register[0]
 
     def Element_Left(self, floor, piece):
         """큐브의 모서리조각을 반시계방향으로 돌려준다.  입력방식 : Element_Left(floor, piece)"""
-        resister[0:3] = Cube[floor][piece][0:3]
-        Cube[floor][piece][0] = resister[2]
-        Cube[floor][piece][1] = resister[0]
-        Cube[floor][piece][2] = resister[1]
+        register[0:3] = myCube[floor][piece][0:3]
+        myCube[floor][piece][0] = register[2]
+        myCube[floor][piece][1] = register[0]
+        myCube[floor][piece][2] = register[1]
 
     def Element_Mirror(self, floor, piece):
         """큐브의 엣지조각을 반전시킨다.  입력방식 : Element_Mirror(floor, piece)"""
-        resister[0:2] = Cube[floor][piece][0:2]
-        Cube[floor][piece][0] = resister[1]
-        Cube[floor][piece][1] = resister[0]
+        register[0:2] = myCube[floor][piece][0:2]
+        myCube[floor][piece][0] = register[1]
+        myCube[floor][piece][1] = register[0]
 
     def Up_Right(self):
         """윗면을 시계방향으로 회전한다."""
-        Resister[0][0:9] = Cube[0][0:9]
-        Cube[0][0] = Resister[0][2]
-        Cube[0][1] = Resister[0][5]
-        Cube[0][2] = Resister[0][8]
-        Cube[0][3] = Resister[0][1]
-        Cube[0][5] = Resister[0][7]
-        Cube[0][6] = Resister[0][0]
-        Cube[0][7] = Resister[0][3]
-        Cube[0][8] = Resister[0][6]
+        Register[0][0:9] = myCube[0][0:9]
+        myCube[0][0] = Register[0][2]
+        myCube[0][1] = Register[0][5]
+        myCube[0][2] = Register[0][8]
+        myCube[0][3] = Register[0][1]
+        myCube[0][5] = Register[0][7]
+        myCube[0][6] = Register[0][0]
+        myCube[0][7] = Register[0][3]
+        myCube[0][8] = Register[0][6]
 
     def Up_Left(self):
         """윗면을 시계 반대방향으로 회전한다."""
-        Resister[0][0:9] = Cube[0][0:9]
-        Cube[0][0] = Resister[0][6]
-        Cube[0][1] = Resister[0][3]
-        Cube[0][2] = Resister[0][0]
-        Cube[0][3] = Resister[0][7]
-        Cube[0][5] = Resister[0][1]
-        Cube[0][6] = Resister[0][8]
-        Cube[0][7] = Resister[0][5]
-        Cube[0][8] = Resister[0][2]
+        Register[0][0:9] = myCube[0][0:9]
+        myCube[0][0] = Register[0][6]
+        myCube[0][1] = Register[0][3]
+        myCube[0][2] = Register[0][0]
+        myCube[0][3] = Register[0][7]
+        myCube[0][5] = Register[0][1]
+        myCube[0][6] = Register[0][8]
+        myCube[0][7] = Register[0][5]
+        myCube[0][8] = Register[0][2]
 
     def Horizon_Right(self):
         """윗면과 아랫면 사이층을 시계방향으로 회전한다."""
-        Resister[1][0:9] = Cube[1][0:9]
-        Cube[1][0] = Resister[1][2]
-        Cube[1][1] = Resister[1][5]
-        Cube[1][2] = Resister[1][8]
-        Cube[1][3] = Resister[1][1]
-        Cube[1][5] = Resister[1][7]
-        Cube[1][6] = Resister[1][0]
-        Cube[1][7] = Resister[1][3]
-        Cube[1][8] = Resister[1][6]
-        self.Element_Mirror(1,0)
-        self.Element_Mirror(1,2)
-        self.Element_Mirror(1,6)
-        self.Element_Mirror(1,8)
+        Register[1][0:9] = myCube[1][0:9]
+        myCube[1][0] = Register[1][2]
+        myCube[1][1] = Register[1][5]
+        myCube[1][2] = Register[1][8]
+        myCube[1][3] = Register[1][1]
+        myCube[1][5] = Register[1][7]
+        myCube[1][6] = Register[1][0]
+        myCube[1][7] = Register[1][3]
+        myCube[1][8] = Register[1][6]
+        self.Element_Mirror(1, 0)
+        self.Element_Mirror(1, 2)
+        self.Element_Mirror(1, 6)
+        self.Element_Mirror(1, 8)
 
     def Horizon_Left(self):
         """윗면과 아랫면 사이층을 시계 반대방향으로 회전한다."""
-        Resister[1][0:9] = Cube[1][0:9]
-        Cube[1][0] = Resister[1][6]
-        Cube[1][1] = Resister[1][3]
-        Cube[1][2] = Resister[1][0]
-        Cube[1][3] = Resister[1][7]
-        Cube[1][5] = Resister[1][1]
-        Cube[1][6] = Resister[1][8]
-        Cube[1][7] = Resister[1][5]
-        Cube[1][8] = Resister[1][2]
-        self.Element_Mirror(1,0)
-        self.Element_Mirror(1,2)
-        self.Element_Mirror(1,6)
-        self.Element_Mirror(1,8)
+        Register[1][0:9] = myCube[1][0:9]
+        myCube[1][0] = Register[1][6]
+        myCube[1][1] = Register[1][3]
+        myCube[1][2] = Register[1][0]
+        myCube[1][3] = Register[1][7]
+        myCube[1][5] = Register[1][1]
+        myCube[1][6] = Register[1][8]
+        myCube[1][7] = Register[1][5]
+        myCube[1][8] = Register[1][2]
+        self.Element_Mirror(1, 0)
+        self.Element_Mirror(1, 2)
+        self.Element_Mirror(1, 6)
+        self.Element_Mirror(1, 8)
 
     def Down_Right(self):
         """아랫면을 시계방향으로 회전한다."""
-        Resister[2][0:9] = Cube[2][0:9]
-        Cube[2][0] = Resister[2][6]
-        Cube[2][1] = Resister[2][3]
-        Cube[2][2] = Resister[2][0]
-        Cube[2][3] = Resister[2][7]
-        Cube[2][5] = Resister[2][1]
-        Cube[2][6] = Resister[2][8]
-        Cube[2][7] = Resister[2][5]
-        Cube[2][8] = Resister[2][2]
+        Register[2][0:9] = myCube[2][0:9]
+        myCube[2][0] = Register[2][6]
+        myCube[2][1] = Register[2][3]
+        myCube[2][2] = Register[2][0]
+        myCube[2][3] = Register[2][7]
+        myCube[2][5] = Register[2][1]
+        myCube[2][6] = Register[2][8]
+        myCube[2][7] = Register[2][5]
+        myCube[2][8] = Register[2][2]
 
     def Down_Left(self):
         """아랫면을 시계 반대방향으로 회전한다."""
-        Resister[2][0:9] = Cube[2][0:9]
-        Cube[2][0] = Resister[2][2]
-        Cube[2][1] = Resister[2][5]
-        Cube[2][2] = Resister[2][8]
-        Cube[2][3] = Resister[2][1]
-        Cube[2][5] = Resister[2][7]
-        Cube[2][6] = Resister[2][0]
-        Cube[2][7] = Resister[2][3]
-        Cube[2][8] = Resister[2][6]
+        Register[2][0:9] = myCube[2][0:9]
+        myCube[2][0] = Register[2][2]
+        myCube[2][1] = Register[2][5]
+        myCube[2][2] = Register[2][8]
+        myCube[2][3] = Register[2][1]
+        myCube[2][5] = Register[2][7]
+        myCube[2][6] = Register[2][0]
+        myCube[2][7] = Register[2][3]
+        myCube[2][8] = Register[2][6]
 
     def Right_Right(self):
         """오른쪽 면을 시계방향으로 회전한다."""
-        Resister[0][0:3] = Cube[0][0:3]
-        Resister[1][0:3] = Cube[1][0:3]
-        Resister[2][0:3] = Cube[2][0:3]
-        Cube[0][0] = Resister[2][0]
-        Cube[0][1] = Resister[1][0]
-        Cube[0][2] = Resister[0][0]
-        Cube[1][0] = Resister[2][1]
-        Cube[1][2] = Resister[0][1]
-        Cube[2][0] = Resister[2][2]
-        Cube[2][1] = Resister[1][2]
-        Cube[2][2] = Resister[0][2]
-        self.Element_Left(0,0)
-        self.Element_Right(0,2)
-        self.Element_Right(2,0)
-        self.Element_Left(2,2)
+        Register[0][0:3] = myCube[0][0:3]
+        Register[1][0:3] = myCube[1][0:3]
+        Register[2][0:3] = myCube[2][0:3]
+        myCube[0][0] = Register[2][0]
+        myCube[0][1] = Register[1][0]
+        myCube[0][2] = Register[0][0]
+        myCube[1][0] = Register[2][1]
+        myCube[1][2] = Register[0][1]
+        myCube[2][0] = Register[2][2]
+        myCube[2][1] = Register[1][2]
+        myCube[2][2] = Register[0][2]
+        self.Element_Left(0, 0)
+        self.Element_Right(0, 2)
+        self.Element_Right(2, 0)
+        self.Element_Left(2, 2)
 
     def Right_Left(self):
         """오른쪽 면을 시계 반대방향으로 회전한다."""
-        Resister[0][0:3] = Cube[0][0:3]
-        Resister[1][0:3] = Cube[1][0:3]
-        Resister[2][0:3] = Cube[2][0:3]
-        Cube[0][0] = Resister[0][2]
-        Cube[0][1] = Resister[1][2]
-        Cube[0][2] = Resister[2][2]
-        Cube[1][0] = Resister[0][1]
-        Cube[1][2] = Resister[2][1]
-        Cube[2][0] = Resister[0][0]
-        Cube[2][1] = Resister[1][0]
-        Cube[2][2] = Resister[2][0]
-        self.Element_Left(0,0)
-        self.Element_Right(0,2)
-        self.Element_Right(2,0)
-        self.Element_Left(2,2)
+        Register[0][0:3] = myCube[0][0:3]
+        Register[1][0:3] = myCube[1][0:3]
+        Register[2][0:3] = myCube[2][0:3]
+        myCube[0][0] = Register[0][2]
+        myCube[0][1] = Register[1][2]
+        myCube[0][2] = Register[2][2]
+        myCube[1][0] = Register[0][1]
+        myCube[1][2] = Register[2][1]
+        myCube[2][0] = Register[0][0]
+        myCube[2][1] = Register[1][0]
+        myCube[2][2] = Register[2][0]
+        self.Element_Left(0, 0)
+        self.Element_Right(0, 2)
+        self.Element_Right(2, 0)
+        self.Element_Left(2, 2)
 
     def Middle_Right(self):
         """오른쪽 면과 왼쪽 면의 사이층을 오른 축에 대해 시계방향으로 회전한다."""
-        Resister[0][3:6] = Cube[0][3:6]
-        Resister[1][3:6] = Cube[1][3:6]
-        Resister[2][3:6] = Cube[2][3:6]
-        Cube[0][3] = Resister[2][3]
-        Cube[0][4] = Resister[1][3]
-        Cube[0][5] = Resister[0][3]
-        Cube[1][3] = Resister[2][4]
-        Cube[1][5] = Resister[0][4]
-        Cube[2][3] = Resister[2][5]
-        Cube[2][4] = Resister[1][5]
-        Cube[2][5] = Resister[0][5]
-        self.Element_Mirror(0,3)
-        self.Element_Mirror(0,5)
-        self.Element_Mirror(2,3)
-        self.Element_Mirror(2,5)
+        Register[0][3:6] = myCube[0][3:6]
+        Register[1][3:6] = myCube[1][3:6]
+        Register[2][3:6] = myCube[2][3:6]
+        myCube[0][3] = Register[2][3]
+        myCube[0][4] = Register[1][3]
+        myCube[0][5] = Register[0][3]
+        myCube[1][3] = Register[2][4]
+        myCube[1][5] = Register[0][4]
+        myCube[2][3] = Register[2][5]
+        myCube[2][4] = Register[1][5]
+        myCube[2][5] = Register[0][5]
+        self.Element_Mirror(0, 3)
+        self.Element_Mirror(0, 5)
+        self.Element_Mirror(2, 3)
+        self.Element_Mirror(2, 5)
 
     def Middle_Left(self):
         """오른쪽 면과 왼쪽 면의 사이층을 오른 축에 대해 시계 반대방향으로 회전한다."""
-        Resister[0][3:6] = Cube[0][3:6]
-        Resister[1][3:6] = Cube[1][3:6]
-        Resister[2][3:6] = Cube[2][3:6]
-        Cube[0][3] = Resister[0][5]
-        Cube[0][4] = Resister[1][5]
-        Cube[0][5] = Resister[2][5]
-        Cube[1][3] = Resister[0][4]
-        Cube[1][5] = Resister[2][4]
-        Cube[2][3] = Resister[0][3]
-        Cube[2][4] = Resister[1][3]
-        Cube[2][5] = Resister[2][3]
-        self.Element_Mirror(0,3)
-        self.Element_Mirror(0,5)
-        self.Element_Mirror(2,3)
-        self.Element_Mirror(2,5)
+        Register[0][3:6] = myCube[0][3:6]
+        Register[1][3:6] = myCube[1][3:6]
+        Register[2][3:6] = myCube[2][3:6]
+        myCube[0][3] = Register[0][5]
+        myCube[0][4] = Register[1][5]
+        myCube[0][5] = Register[2][5]
+        myCube[1][3] = Register[0][4]
+        myCube[1][5] = Register[2][4]
+        myCube[2][3] = Register[0][3]
+        myCube[2][4] = Register[1][3]
+        myCube[2][5] = Register[2][3]
+        self.Element_Mirror(0, 3)
+        self.Element_Mirror(0, 5)
+        self.Element_Mirror(2, 3)
+        self.Element_Mirror(2, 5)
 
     def Left_Right(self):
         """왼쪽 면을 시계방향으로 회전한다."""
-        Resister[0][6:9] = Cube[0][6:9]
-        Resister[1][6:9] = Cube[1][6:9]
-        Resister[2][6:9] = Cube[2][6:9]
-        Cube[0][6] = Resister[0][8]
-        Cube[0][7] = Resister[1][8]
-        Cube[0][8] = Resister[2][8]
-        Cube[1][6] = Resister[0][7]
-        Cube[1][8] = Resister[2][7]
-        Cube[2][6] = Resister[0][6]
-        Cube[2][7] = Resister[1][6]
-        Cube[2][8] = Resister[2][6]
-        self.Element_Right(0,6)
-        self.Element_Left(0,8)
-        self.Element_Left(2,6)
-        self.Element_Right(2,8)
+        Register[0][6:9] = myCube[0][6:9]
+        Register[1][6:9] = myCube[1][6:9]
+        Register[2][6:9] = myCube[2][6:9]
+        myCube[0][6] = Register[0][8]
+        myCube[0][7] = Register[1][8]
+        myCube[0][8] = Register[2][8]
+        myCube[1][6] = Register[0][7]
+        myCube[1][8] = Register[2][7]
+        myCube[2][6] = Register[0][6]
+        myCube[2][7] = Register[1][6]
+        myCube[2][8] = Register[2][6]
+        self.Element_Right(0, 6)
+        self.Element_Left(0, 8)
+        self.Element_Left(2, 6)
+        self.Element_Right(2, 8)
 
     def Left_Left(self):
         """왼쪽 면을 시계 반대방향으로 회전한다."""
-        Resister[0][6:9] = Cube[0][6:9]
-        Resister[1][6:9] = Cube[1][6:9]
-        Resister[2][6:9] = Cube[2][6:9]
-        Cube[0][6] = Resister[2][6]
-        Cube[0][7] = Resister[1][6]
-        Cube[0][8] = Resister[0][6]
-        Cube[1][6] = Resister[2][7]
-        Cube[1][8] = Resister[0][7]
-        Cube[2][6] = Resister[2][8]
-        Cube[2][7] = Resister[1][8]
-        Cube[2][8] = Resister[0][8]
-        self.Element_Right(0,6)
-        self.Element_Left(0,8)
-        self.Element_Left(2,6)
-        self.Element_Right(2,8)
+        Register[0][6:9] = myCube[0][6:9]
+        Register[1][6:9] = myCube[1][6:9]
+        Register[2][6:9] = myCube[2][6:9]
+        myCube[0][6] = Register[2][6]
+        myCube[0][7] = Register[1][6]
+        myCube[0][8] = Register[0][6]
+        myCube[1][6] = Register[2][7]
+        myCube[1][8] = Register[0][7]
+        myCube[2][6] = Register[2][8]
+        myCube[2][7] = Register[1][8]
+        myCube[2][8] = Register[0][8]
+        self.Element_Right(0, 6)
+        self.Element_Left(0, 8)
+        self.Element_Left(2, 6)
+        self.Element_Right(2, 8)
 
     def Front_Right(self):
         """앞면을 시계방향으로 회전한다."""
-        Resister[0][0:3] = [Cube[0][6], Cube[0][3], Cube[0][0]]
-        Resister[1][0:2] = [Cube[1][6], Cube[1][0]]
-        Resister[2][0:3] = [Cube[2][6], Cube[2][3], Cube[2][0]]
-        Cube[0][6] = Resister[2][0]
-        Cube[0][3] = Resister[1][0]
-        Cube[0][0] = Resister[0][0]
-        Cube[1][6] = Resister[2][1]
-        Cube[1][0] = Resister[0][1]
-        Cube[2][6] = Resister[2][2]
-        Cube[2][3] = Resister[1][1]
-        Cube[2][0] = Resister[0][2]
-        self.Element_Left(0,6)
-        self.Element_Mirror(0,3)
-        self.Element_Right(0,0)
-        self.Element_Mirror(1,6)
-        self.Element_Mirror(1,0)
-        self.Element_Right(2,6)
-        self.Element_Mirror(2,3)
-        self.Element_Left(2,0)
+        Register[0][0:3] = [myCube[0][6], myCube[0][3], myCube[0][0]]
+        Register[1][0:2] = [myCube[1][6], myCube[1][0]]
+        Register[2][0:3] = [myCube[2][6], myCube[2][3], myCube[2][0]]
+        myCube[0][6] = Register[2][0]
+        myCube[0][3] = Register[1][0]
+        myCube[0][0] = Register[0][0]
+        myCube[1][6] = Register[2][1]
+        myCube[1][0] = Register[0][1]
+        myCube[2][6] = Register[2][2]
+        myCube[2][3] = Register[1][1]
+        myCube[2][0] = Register[0][2]
+        self.Element_Left(0, 6)
+        self.Element_Mirror(0, 3)
+        self.Element_Right(0, 0)
+        self.Element_Mirror(1, 6)
+        self.Element_Mirror(1, 0)
+        self.Element_Right(2, 6)
+        self.Element_Mirror(2, 3)
+        self.Element_Left(2, 0)
 
     def Front_Left(self):
         """앞면을 시계 반대방향으로 회전한다."""
-        Resister[0][0:3] = [Cube[0][6], Cube[0][3], Cube[0][0]]
-        Resister[1][0:2] = [Cube[1][6], Cube[1][0]]
-        Resister[2][0:3] = [Cube[2][6], Cube[2][3], Cube[2][0]]
-        Cube[0][6] = Resister[0][2]
-        Cube[0][3] = Resister[1][1]
-        Cube[0][0] = Resister[2][2]
-        Cube[1][6] = Resister[0][1]
-        Cube[1][0] = Resister[2][1]
-        Cube[2][6] = Resister[0][0]
-        Cube[2][3] = Resister[1][0]
-        Cube[2][0] = Resister[2][0]
-        self.Element_Left(0,6)
-        self.Element_Mirror(0,3)
-        self.Element_Right(0,0)
-        self.Element_Mirror(1,6)
-        self.Element_Mirror(1,0)
-        self.Element_Right(2,6)
-        self.Element_Mirror(2,3)
-        self.Element_Left(2,0)
+        Register[0][0:3] = [myCube[0][6], myCube[0][3], myCube[0][0]]
+        Register[1][0:2] = [myCube[1][6], myCube[1][0]]
+        Register[2][0:3] = [myCube[2][6], myCube[2][3], myCube[2][0]]
+        myCube[0][6] = Register[0][2]
+        myCube[0][3] = Register[1][1]
+        myCube[0][0] = Register[2][2]
+        myCube[1][6] = Register[0][1]
+        myCube[1][0] = Register[2][1]
+        myCube[2][6] = Register[0][0]
+        myCube[2][3] = Register[1][0]
+        myCube[2][0] = Register[2][0]
+        self.Element_Left(0, 6)
+        self.Element_Mirror(0, 3)
+        self.Element_Right(0, 0)
+        self.Element_Mirror(1, 6)
+        self.Element_Mirror(1, 0)
+        self.Element_Right(2, 6)
+        self.Element_Mirror(2, 3)
+        self.Element_Left(2, 0)
 
     def Side_Right(self):
         """앞면과 뒷면의 사이층을 앞축에 대해 시계방향으로 회전한다."""
-        Resister[0][0:3] = [Cube[0][7], Cube[0][4], Cube[0][1]]
-        Resister[1][0:2] = [Cube[1][7], Cube[1][1]]
-        Resister[2][0:3] = [Cube[2][7], Cube[2][4], Cube[2][1]]
-        Cube[0][7] = Resister[2][0]
-        Cube[0][4] = Resister[1][0]
-        Cube[0][1] = Resister[0][0]
-        Cube[1][7] = Resister[2][1]
-        Cube[1][1] = Resister[0][1]
-        Cube[2][7] = Resister[2][2]
-        Cube[2][4] = Resister[1][1]
-        Cube[2][1] = Resister[0][2]
-        self.Element_Mirror(0,7)
-        self.Element_Mirror(0,1)
-        self.Element_Mirror(2,7)
-        self.Element_Mirror(2,1)
+        Register[0][0:3] = [myCube[0][7], myCube[0][4], myCube[0][1]]
+        Register[1][0:2] = [myCube[1][7], myCube[1][1]]
+        Register[2][0:3] = [myCube[2][7], myCube[2][4], myCube[2][1]]
+        myCube[0][7] = Register[2][0]
+        myCube[0][4] = Register[1][0]
+        myCube[0][1] = Register[0][0]
+        myCube[1][7] = Register[2][1]
+        myCube[1][1] = Register[0][1]
+        myCube[2][7] = Register[2][2]
+        myCube[2][4] = Register[1][1]
+        myCube[2][1] = Register[0][2]
+        self.Element_Mirror(0, 7)
+        self.Element_Mirror(0, 1)
+        self.Element_Mirror(2, 7)
+        self.Element_Mirror(2, 1)
 
     def Side_Left(self):
         """앞면과 뒷면의 사이층을 앞축에 대해 시계 반대방향으로 회전한다."""
-        Resister[0][0:3] = [Cube[0][7], Cube[0][4], Cube[0][1]]
-        Resister[1][0:2] = [Cube[1][7], Cube[1][1]]
-        Resister[2][0:3] = [Cube[2][7], Cube[2][4], Cube[2][1]]
-        Cube[0][7] = Resister[0][2]
-        Cube[0][4] = Resister[1][1]
-        Cube[0][1] = Resister[2][2]
-        Cube[1][7] = Resister[0][1]
-        Cube[1][1] = Resister[2][1]
-        Cube[2][7] = Resister[0][0]
-        Cube[2][4] = Resister[1][0]
-        Cube[2][1] = Resister[2][0]
-        self.Element_Mirror(0,7)
-        self.Element_Mirror(0,1)
-        self.Element_Mirror(2,7)
-        self.Element_Mirror(2,1)
+        Register[0][0:3] = [myCube[0][7], myCube[0][4], myCube[0][1]]
+        Register[1][0:2] = [myCube[1][7], myCube[1][1]]
+        Register[2][0:3] = [myCube[2][7], myCube[2][4], myCube[2][1]]
+        myCube[0][7] = Register[0][2]
+        myCube[0][4] = Register[1][1]
+        myCube[0][1] = Register[2][2]
+        myCube[1][7] = Register[0][1]
+        myCube[1][1] = Register[2][1]
+        myCube[2][7] = Register[0][0]
+        myCube[2][4] = Register[1][0]
+        myCube[2][1] = Register[2][0]
+        self.Element_Mirror(0, 7)
+        self.Element_Mirror(0, 1)
+        self.Element_Mirror(2, 7)
+        self.Element_Mirror(2, 1)
 
     def Back_Right(self):
         """뒷면을 시계방향으로 회전한다."""
-        Resister[0][0:3] = [Cube[0][8], Cube[0][5], Cube[0][2]]
-        Resister[1][0:2] = [Cube[1][8], Cube[1][2]]
-        Resister[2][0:3] = [Cube[2][8], Cube[2][5], Cube[2][2]]
-        Cube[0][2] = Resister[2][2]
-        Cube[0][5] = Resister[1][1]
-        Cube[0][8] = Resister[0][2]
-        Cube[1][2] = Resister[2][1]
-        Cube[1][8] = Resister[0][1]
-        Cube[2][2] = Resister[2][0]
-        Cube[2][5] = Resister[1][0]
-        Cube[2][8] = Resister[0][0]
-        self.Element_Left(0,2)
-        self.Element_Mirror(0,5)
-        self.Element_Right(0,8)
-        self.Element_Mirror(1,2)
-        self.Element_Mirror(1,8)
-        self.Element_Right(2,2)
-        self.Element_Mirror(2,5)
-        self.Element_Left(2,8)
+        Register[0][0:3] = [myCube[0][8], myCube[0][5], myCube[0][2]]
+        Register[1][0:2] = [myCube[1][8], myCube[1][2]]
+        Register[2][0:3] = [myCube[2][8], myCube[2][5], myCube[2][2]]
+        myCube[0][2] = Register[2][2]
+        myCube[0][5] = Register[1][1]
+        myCube[0][8] = Register[0][2]
+        myCube[1][2] = Register[2][1]
+        myCube[1][8] = Register[0][1]
+        myCube[2][2] = Register[2][0]
+        myCube[2][5] = Register[1][0]
+        myCube[2][8] = Register[0][0]
+        self.Element_Left(0, 2)
+        self.Element_Mirror(0, 5)
+        self.Element_Right(0, 8)
+        self.Element_Mirror(1, 2)
+        self.Element_Mirror(1, 8)
+        self.Element_Right(2, 2)
+        self.Element_Mirror(2, 5)
+        self.Element_Left(2, 8)
 
     def Back_Left(self):
         """뒷면을 시계방향으로 회전한다."""
-        Resister[0][0:3] = [Cube[0][8], Cube[0][5], Cube[0][2]]
-        Resister[1][0:2] = [Cube[1][8], Cube[1][2]]
-        Resister[2][0:3] = [Cube[2][8], Cube[2][5], Cube[2][2]]
-        Cube[0][2] = Resister[0][0]
-        Cube[0][5] = Resister[1][0]
-        Cube[0][8] = Resister[2][0]
-        Cube[1][2] = Resister[0][1]
-        Cube[1][8] = Resister[2][1]
-        Cube[2][2] = Resister[0][2]
-        Cube[2][5] = Resister[1][1]
-        Cube[2][8] = Resister[2][2]
-        self.Element_Left(0,2)
-        self.Element_Mirror(0,5)
-        self.Element_Right(0,8)
-        self.Element_Mirror(1,2)
-        self.Element_Mirror(1,8)
-        self.Element_Right(2,2)
-        self.Element_Mirror(2,5)
-        self.Element_Left(2,8)
+        Register[0][0:3] = [myCube[0][8], myCube[0][5], myCube[0][2]]
+        Register[1][0:2] = [myCube[1][8], myCube[1][2]]
+        Register[2][0:3] = [myCube[2][8], myCube[2][5], myCube[2][2]]
+        myCube[0][2] = Register[0][0]
+        myCube[0][5] = Register[1][0]
+        myCube[0][8] = Register[2][0]
+        myCube[1][2] = Register[0][1]
+        myCube[1][8] = Register[2][1]
+        myCube[2][2] = Register[0][2]
+        myCube[2][5] = Register[1][1]
+        myCube[2][8] = Register[2][2]
+        self.Element_Left(0, 2)
+        self.Element_Mirror(0, 5)
+        self.Element_Right(0, 8)
+        self.Element_Mirror(1, 2)
+        self.Element_Mirror(1, 8)
+        self.Element_Right(2, 2)
+        self.Element_Mirror(2, 5)
+        self.Element_Left(2, 8)
 
     def X_Right(self):
         """큐브 전체를 앞면 축에 대해 시계방향으로 회전한다."""
@@ -403,32 +410,50 @@ class Cube:
 
         def If_Clear(self):
             """큐브의 모든 조각들의 요소가 맞춰져있는지 판별하는 함수."""
-            if(CUBE[0][0] == Cube[0][0]):
-                if(CUBE[0][1] == Cube[0][1]):
-                    if(CUBE[0][2] == Cube[0][2]):
-                        if(CUBE[0][3] == Cube[0][3]):
-                            if(CUBE[0][4] == Cube[0][4]):
-                                if(CUBE[0][5] == Cube[0][5]):
-                                    if(CUBE[0][6] == Cube[0][6]):
-                                        if(CUBE[0][7] == Cube[0][7]):
-                                            if(CUBE[0][8] == Cube[0][8]):
-                                                if(CUBE[1][0] == Cube[1][0]):
-                                                    if(CUBE[1][1] == Cube[1][1]):
-                                                        if(CUBE[1][2] == Cube[1][2]):
-                                                            if(CUBE[1][3] == Cube[1][3]):
-                                                                if(CUBE[1][5] == Cube[1][5]):
-                                                                    if(CUBE[1][6] == Cube[1][6]):
-                                                                        if(CUBE[1][7] == Cube[1][7]):
-                                                                            if(CUBE[1][8] == Cube[1][8]):
-                                                                                if(CUBE[2][0] == Cube[2][0]):
-                                                                                    if(CUBE[2][1] == Cube[2][1]):
-                                                                                        if(CUBE[2][2] == Cube[2][2]):
-                                                                                            if(CUBE[2][3] == Cube[2][3]):
-                                                                                                if(CUBE[2][4] == Cube[2][4]):
-                                                                                                    if(CUBE[2][5] == Cube[2][5]):
-                                                                                                        if(CUBE[2][6] == Cube[2][6]):
-                                                                                                            if(CUBE[2][7] == Cube[2][7]):
-                                                                                                                if(CUBE[2][8] == Cube[2][8]):
+            if (CUBE[0][0] == myCube[0][0]):
+                if (CUBE[0][1] == myCube[0][1]):
+                    if (CUBE[0][2] == myCube[0][2]):
+                        if (CUBE[0][3] == myCube[0][3]):
+                            if (CUBE[0][4] == myCube[0][4]):
+                                if (CUBE[0][5] == myCube[0][5]):
+                                    if (CUBE[0][6] == myCube[0][6]):
+                                        if (CUBE[0][7] == myCube[0][7]):
+                                            if (CUBE[0][8] == myCube[0][8]):
+                                                if (CUBE[1][0] == myCube[1][0]):
+                                                    if (CUBE[1][1] == myCube[1][1]):
+                                                        if (CUBE[1][2] == myCube[1][2]):
+                                                            if (CUBE[1][3] == myCube[1][3]):
+                                                                if (CUBE[1][5] == myCube[1][5]):
+                                                                    if (CUBE[1][6] == myCube[1][6]):
+                                                                        if (CUBE[1][7] == myCube[1][7]):
+                                                                            if (CUBE[1][8] == myCube[1][8]):
+                                                                                if (CUBE[2][0] == myCube[2][0]):
+                                                                                    if (CUBE[2][1] == myCube[2][1]):
+                                                                                        if (CUBE[2][2] == myCube[2][2]):
+                                                                                            if (CUBE[2][3] == myCube[2][
+                                                                                                3]):
+                                                                                                if (CUBE[2][4] ==
+                                                                                                        myCube[2][4]):
+                                                                                                    if (CUBE[2][5] ==
+                                                                                                            myCube[2][
+                                                                                                                5]):
+                                                                                                        if (CUBE[2][
+                                                                                                            6] ==
+                                                                                                                myCube[
+                                                                                                                    2][
+                                                                                                                    6]):
+                                                                                                            if (CUBE[2][
+                                                                                                                7] ==
+                                                                                                                    myCube[
+                                                                                                                        2][
+                                                                                                                        7]):
+                                                                                                                if (
+                                                                                                                        CUBE[
+                                                                                                                            2][
+                                                                                                                            8] ==
+                                                                                                                        myCube[
+                                                                                                                            2][
+                                                                                                                            8]):
                                                                                                                     return 1
                                                                                                                 else:
                                                                                                                     return 0
@@ -483,8 +508,7 @@ class Cube:
             else:
                 return 0
 
-
-        find1 = [[None, None, None, None], [None, None, None, None], [None, None, None, None],[None, None, None, None]]
+        find1 = [[None, None, None, None], [None, None, None, None], [None, None, None, None], [None, None, None, None]]
         find2 = [[None, None, None, None], [None, None, None, None]]
         find3 = [None, None]
 
@@ -504,7 +528,7 @@ class Cube:
                 if (self.If_Clear() == 1):
                     find2[zxzx][x] = 1
                 else:
-                    find2[zxzx][x] =0
+                    find2[zxzx][x] = 0
             self.Z_Right()
             self.X_Right()
             if (self.If_Clear() == 1):
@@ -512,7 +536,7 @@ class Cube:
             else:
                 find3[zxzx] = 0
 
-        if (find1[0][0] == 1 or find1[0][1] == 1 or find1[0][2] == 1 or find1[0][3] ==  1):
+        if (find1[0][0] == 1 or find1[0][1] == 1 or find1[0][2] == 1 or find1[0][3] == 1):
             return 0
         elif (find1[1][0] == 1 or find1[1][1] == 1 or find1[1][2] == 1 or find1[1][3] == 1):
             return 0
@@ -529,9 +553,8 @@ class Cube:
         else:
             return 1
 
-
     def Mix_Cube(self):
-        self.Cube_Mix_Ceed = random.randint(1,18)
+        self.Cube_Mix_Ceed = random.randint(1, 18)
 
         if (self.Cube_Mix_Ceed == 1):
             self.Up_Right()
@@ -581,32 +604,32 @@ class Cube:
         cursor.execute("""CREATE TABLE pieceAddr(Floor int, Position int, Element int)""")
 
         ElementList = (
-            (Cube[0][0][0]), (Cube[0][0][1]), (Cube[0][0][2]),
-            (Cube[0][1][0]), (Cube[0][1][1]),
-            (Cube[0][2][0]), (Cube[0][2][1]), (Cube[0][2][2]),
-            (Cube[0][3][0]), (Cube[0][3][1]),
-            (Cube[0][4][0]),
-            (Cube[0][5][0]), (Cube[0][5][1]),
-            (Cube[0][6][0]), (Cube[0][6][1]), (Cube[0][6][2]),
-            (Cube[0][7][0]), (Cube[0][7][1]),
-            (Cube[0][8][0]), (Cube[0][8][1]), (Cube[0][8][2]),
-            (Cube[1][0][0]), (Cube[1][0][1]),
-            (Cube[1][1][0]),
-            (Cube[1][2][0]), (Cube[1][2][1]),
-            (Cube[1][3][0]),
-            (Cube[1][5][0]),
-            (Cube[1][6][0]), (Cube[1][6][1]),
-            (Cube[1][7][0]),
-            (Cube[1][8][0]), (Cube[1][8][1]),
-            (Cube[2][0][0]), (Cube[2][0][1]), (Cube[2][0][2]),
-            (Cube[2][1][0]), (Cube[2][1][1]),
-            (Cube[2][2][0]), (Cube[2][2][1]), (Cube[2][2][2]),
-            (Cube[2][3][0]), (Cube[2][3][1]),
-            (Cube[2][4][0]),
-            (Cube[2][5][0]), (Cube[2][5][1]),
-            (Cube[2][6][0]), (Cube[2][6][1]), (Cube[2][6][2]),
-            (Cube[2][7][0]), (Cube[2][7][1]),
-            (Cube[2][8][0]), (Cube[2][8][1]), (Cube[2][8][2]),
+            (myCube[0][0][0]), (myCube[0][0][1]), (myCube[0][0][2]),
+            (myCube[0][1][0]), (myCube[0][1][1]),
+            (myCube[0][2][0]), (myCube[0][2][1]), (myCube[0][2][2]),
+            (myCube[0][3][0]), (myCube[0][3][1]),
+            (myCube[0][4][0]),
+            (myCube[0][5][0]), (myCube[0][5][1]),
+            (myCube[0][6][0]), (myCube[0][6][1]), (myCube[0][6][2]),
+            (myCube[0][7][0]), (myCube[0][7][1]),
+            (myCube[0][8][0]), (myCube[0][8][1]), (myCube[0][8][2]),
+            (myCube[1][0][0]), (myCube[1][0][1]),
+            (myCube[1][1][0]),
+            (myCube[1][2][0]), (myCube[1][2][1]),
+            (myCube[1][3][0]),
+            (myCube[1][5][0]),
+            (myCube[1][6][0]), (myCube[1][6][1]),
+            (myCube[1][7][0]),
+            (myCube[1][8][0]), (myCube[1][8][1]),
+            (myCube[2][0][0]), (myCube[2][0][1]), (myCube[2][0][2]),
+            (myCube[2][1][0]), (myCube[2][1][1]),
+            (myCube[2][2][0]), (myCube[2][2][1]), (myCube[2][2][2]),
+            (myCube[2][3][0]), (myCube[2][3][1]),
+            (myCube[2][4][0]),
+            (myCube[2][5][0]), (myCube[2][5][1]),
+            (myCube[2][6][0]), (myCube[2][6][1]), (myCube[2][6][2]),
+            (myCube[2][7][0]), (myCube[2][7][1]),
+            (myCube[2][8][0]), (myCube[2][8][1]), (myCube[2][8][2]),
         )
 
         cursor.execute("INSERT INTO pieceAddr VALUES(?, ?, ?)", (0, 0, ElementList[0]))
@@ -690,60 +713,60 @@ class Cube:
             cursor.execute("SELECT Element FROM pieceAddr WHERE Position = '%d'" % x)
             ElementList[x] = cursor.fetchone()
 
-        Cube[0][0][0] = ElementList[0][0]
-        Cube[0][0][1] = ElementList[1][0]
-        Cube[0][0][2] = ElementList[2][0]
-        Cube[0][1][0] = ElementList[3][0]
-        Cube[0][1][1] = ElementList[4][0]
-        Cube[0][2][0] = ElementList[5][0]
-        Cube[0][2][1] = ElementList[6][0]
-        Cube[0][2][2] = ElementList[7][0]
-        Cube[0][3][0] = ElementList[8][0]
-        Cube[0][3][1] = ElementList[9][0]
-        Cube[0][4][0] = ElementList[10][0]
-        Cube[0][5][0] = ElementList[11][0]
-        Cube[0][5][1] = ElementList[12][0]
-        Cube[0][6][0] = ElementList[13][0]
-        Cube[0][6][1] = ElementList[14][0]
-        Cube[0][6][2] = ElementList[15][0]
-        Cube[0][7][0] = ElementList[16][0]
-        Cube[0][7][1] = ElementList[17][0]
-        Cube[0][8][0] = ElementList[18][0]
-        Cube[0][8][1] = ElementList[19][0]
-        Cube[0][8][2] = ElementList[20][0]
-        Cube[1][0][0] = ElementList[21][0]
-        Cube[1][0][1] = ElementList[22][0]
-        Cube[1][1][0] = ElementList[23][0]
-        Cube[1][2][0] = ElementList[24][0]
-        Cube[1][2][1] = ElementList[25][0]
-        Cube[1][3][0] = ElementList[26][0]
-        Cube[1][5][0] = ElementList[27][0]
-        Cube[1][6][0] = ElementList[28][0]
-        Cube[1][6][1] = ElementList[29][0]
-        Cube[1][7][0] = ElementList[30][0]
-        Cube[1][8][0] = ElementList[31][0]
-        Cube[1][8][1] = ElementList[32][0]
-        Cube[2][0][0] = ElementList[33][0]
-        Cube[2][0][1] = ElementList[34][0]
-        Cube[2][0][2] = ElementList[35][0]
-        Cube[2][1][0] = ElementList[36][0]
-        Cube[2][1][1] = ElementList[37][0]
-        Cube[2][2][0] = ElementList[38][0]
-        Cube[2][2][1] = ElementList[39][0]
-        Cube[2][2][2] = ElementList[40][0]
-        Cube[2][3][0] = ElementList[41][0]
-        Cube[2][3][1] = ElementList[42][0]
-        Cube[2][4][0] = ElementList[43][0]
-        Cube[2][5][0] = ElementList[44][0]
-        Cube[2][5][1] = ElementList[45][0]
-        Cube[2][6][0] = ElementList[46][0]
-        Cube[2][6][1] = ElementList[47][0]
-        Cube[2][6][2] = ElementList[48][0]
-        Cube[2][7][0] = ElementList[49][0]
-        Cube[2][7][1] = ElementList[50][0]
-        Cube[2][8][0] = ElementList[51][0]
-        Cube[2][8][1] = ElementList[52][0]
-        Cube[2][8][2] = ElementList[53][0]
+        myCube[0][0][0] = ElementList[0][0]
+        myCube[0][0][1] = ElementList[1][0]
+        myCube[0][0][2] = ElementList[2][0]
+        myCube[0][1][0] = ElementList[3][0]
+        myCube[0][1][1] = ElementList[4][0]
+        myCube[0][2][0] = ElementList[5][0]
+        myCube[0][2][1] = ElementList[6][0]
+        myCube[0][2][2] = ElementList[7][0]
+        myCube[0][3][0] = ElementList[8][0]
+        myCube[0][3][1] = ElementList[9][0]
+        myCube[0][4][0] = ElementList[10][0]
+        myCube[0][5][0] = ElementList[11][0]
+        myCube[0][5][1] = ElementList[12][0]
+        myCube[0][6][0] = ElementList[13][0]
+        myCube[0][6][1] = ElementList[14][0]
+        myCube[0][6][2] = ElementList[15][0]
+        myCube[0][7][0] = ElementList[16][0]
+        myCube[0][7][1] = ElementList[17][0]
+        myCube[0][8][0] = ElementList[18][0]
+        myCube[0][8][1] = ElementList[19][0]
+        myCube[0][8][2] = ElementList[20][0]
+        myCube[1][0][0] = ElementList[21][0]
+        myCube[1][0][1] = ElementList[22][0]
+        myCube[1][1][0] = ElementList[23][0]
+        myCube[1][2][0] = ElementList[24][0]
+        myCube[1][2][1] = ElementList[25][0]
+        myCube[1][3][0] = ElementList[26][0]
+        myCube[1][5][0] = ElementList[27][0]
+        myCube[1][6][0] = ElementList[28][0]
+        myCube[1][6][1] = ElementList[29][0]
+        myCube[1][7][0] = ElementList[30][0]
+        myCube[1][8][0] = ElementList[31][0]
+        myCube[1][8][1] = ElementList[32][0]
+        myCube[2][0][0] = ElementList[33][0]
+        myCube[2][0][1] = ElementList[34][0]
+        myCube[2][0][2] = ElementList[35][0]
+        myCube[2][1][0] = ElementList[36][0]
+        myCube[2][1][1] = ElementList[37][0]
+        myCube[2][2][0] = ElementList[38][0]
+        myCube[2][2][1] = ElementList[39][0]
+        myCube[2][2][2] = ElementList[40][0]
+        myCube[2][3][0] = ElementList[41][0]
+        myCube[2][3][1] = ElementList[42][0]
+        myCube[2][4][0] = ElementList[43][0]
+        myCube[2][5][0] = ElementList[44][0]
+        myCube[2][5][1] = ElementList[45][0]
+        myCube[2][6][0] = ElementList[46][0]
+        myCube[2][6][1] = ElementList[47][0]
+        myCube[2][6][2] = ElementList[48][0]
+        myCube[2][7][0] = ElementList[49][0]
+        myCube[2][7][1] = ElementList[50][0]
+        myCube[2][8][0] = ElementList[51][0]
+        myCube[2][8][1] = ElementList[52][0]
+        myCube[2][8][2] = ElementList[53][0]
 
         self.def_Color()
 
@@ -754,18 +777,18 @@ class Cube:
 
     def dist_Color(self, floor, piece, color):
         """각 큐브 조각의 색을 디코딩"""
-        if (Cube[floor][piece][color] == 1):
-            Cube[floor][piece][color] = wx.YELLOW
-        elif (Cube[floor][piece][color] == 2):
-            Cube[floor][piece][color] = wx.BLUE
-        elif (Cube[floor][piece][color] == 3):
-            Cube[floor][piece][color] = wx.RED
-        elif (Cube[floor][piece][color] == 4):
-            Cube[floor][piece][color] = wx.Colour(0, 150, 0, 0)
-        elif (Cube[floor][piece][color] == 5):
-            Cube[floor][piece][color] = wx.Colour(250, 125, 0, 0)
-        elif (Cube[floor][piece][color] == 6):
-            Cube[floor][piece][color] = wx.WHITE
+        if (myCube[floor][piece][color] == 1):
+            myCube[floor][piece][color] = wx.YELLOW
+        elif (myCube[floor][piece][color] == 2):
+            myCube[floor][piece][color] = wx.BLUE
+        elif (myCube[floor][piece][color] == 3):
+            myCube[floor][piece][color] = wx.RED
+        elif (myCube[floor][piece][color] == 4):
+            myCube[floor][piece][color] = wx.Colour(0, 150, 0, 0)
+        elif (myCube[floor][piece][color] == 5):
+            myCube[floor][piece][color] = wx.Colour(250, 125, 0, 0)
+        elif (myCube[floor][piece][color] == 6):
+            myCube[floor][piece][color] = wx.WHITE
         else:
             return 0
 
@@ -775,31 +798,31 @@ class Cube:
             self.dist_Color(i, 4, 0)
             for l in range(1, 5):
                 for m in range(2):
-                    self.dist_Color(i, 2*l-1, m)
+                    self.dist_Color(i, 2 * l - 1, m)
             for n in range(2):
                 self.dist_Color(1, i, n)
-                self.dist_Color(1, i+6, n)
+                self.dist_Color(1, i + 6, n)
             for j in range(0, 3, 2):
                 for k in range(3):
                     self.dist_Color(i, j, k)
-                    self.dist_Color(i, j+6, k)
+                    self.dist_Color(i, j + 6, k)
         for p in range(4):
-            self.dist_Color(1, 2*p+1, 0)
+            self.dist_Color(1, 2 * p + 1, 0)
 
     def dist_Number(self, floor, piece, color):
         """각 큐브 조각의 색을 데이터로 인코딩"""
-        if (Cube[floor][piece][color] == wx.YELLOW):
-            Cube[floor][piece][color] = 1
-        elif (Cube[floor][piece][color] == wx.BLUE):
-            Cube[floor][piece][color] = 2
-        elif (Cube[floor][piece][color] == wx.RED):
-            Cube[floor][piece][color] = 3
-        elif (Cube[floor][piece][color] == wx.Colour(0, 150, 0, 0)):
-            Cube[floor][piece][color] = 4
-        elif (Cube[floor][piece][color] == wx.Colour(250, 125, 0, 0)):
-            Cube[floor][piece][color] = 5
-        elif (Cube[floor][piece][color] == wx.WHITE):
-            Cube[floor][piece][color] = 6
+        if (myCube[floor][piece][color] == wx.YELLOW):
+            myCube[floor][piece][color] = 1
+        elif (myCube[floor][piece][color] == wx.BLUE):
+            myCube[floor][piece][color] = 2
+        elif (myCube[floor][piece][color] == wx.RED):
+            myCube[floor][piece][color] = 3
+        elif (myCube[floor][piece][color] == wx.Colour(0, 150, 0, 0)):
+            myCube[floor][piece][color] = 4
+        elif (myCube[floor][piece][color] == wx.Colour(250, 125, 0, 0)):
+            myCube[floor][piece][color] = 5
+        elif (myCube[floor][piece][color] == wx.WHITE):
+            myCube[floor][piece][color] = 6
         else:
             return 0
 
@@ -809,20 +832,22 @@ class Cube:
             self.dist_Number(i, 4, 0)
             for l in range(1, 5):
                 for m in range(2):
-                    self.dist_Number(i, 2*l-1, m)
+                    self.dist_Number(i, 2 * l - 1, m)
             for n in range(2):
                 self.dist_Number(1, i, n)
-                self.dist_Number(1, i+6, n)
+                self.dist_Number(1, i + 6, n)
             for j in range(0, 3, 2):
                 for k in range(3):
                     self.dist_Number(i, j, k)
-                    self.dist_Number(i, j+6, k)
+                    self.dist_Number(i, j + 6, k)
         for p in range(4):
-            self.dist_Number(1, 2*p+1, 0)
-
+            self.dist_Number(1, 2 * p + 1, 0)
 
     #
     #    함수
     #    종료
     #
 
+
+if __name__ == "__main__":
+    print()

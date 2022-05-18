@@ -7,7 +7,7 @@ Cube2 = Cube2.Cube(mix_num=60, time=0.01)
 MIX_NUM = 60
 TIME = 0.01
 
-Cube2.Create_Cube()
+Cube2.createCube()
 Cube2.def_Color()
 
 app = wx.App(0)
@@ -540,7 +540,7 @@ keyboard.add_hotkey('ctrl+m', lambda: MIX())
 
 
 def CLEAN():
-    Cube2.Create_Cube()
+    Cube2.createCube()
     Cube2.def_Color()
     Cube_up.Refresh()
     Cube_front.Refresh()
@@ -1398,7 +1398,7 @@ main_frame.Bind(wx.EVT_MENU, onMix, mix)
 
 
 def onClean(event):
-    Cube2.Create_Cube()
+    Cube2.createCube()
     Cube2.def_Color()
     Cube_up.Refresh()
     Cube_front.Refresh()
@@ -1571,7 +1571,7 @@ result = wx.StaticText(implementation_frame, label='결과: ' + '%d' % turn_poin
 
 #    text = Node()
 def onClick_imple(event):
-    Cube2.Create_Cube()
+    Cube2.createCube()
     Cube2.def_Color()
     spin_All()
 

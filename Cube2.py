@@ -15,10 +15,12 @@ import sqlite3 as sq
 # 클래스 내 함수 이름(메소드), 인스턴스변수, 클래스 변수 : camelCase
 # 상수 : CAPITAL_SNAKE
 
-class Cube:
-    def __init__(self, mix_num=60, time=0.01):
-        self.mix_num = mix_num
-        self.time = time
+
+class CubeBody:
+
+    def __init__(self, MIX_NUM=60, TIME=0.01):
+        self.mix_num = MIX_NUM
+        self.time = TIME
 
     def createCube(self):
         """큐브의 환경을 조성한다."""

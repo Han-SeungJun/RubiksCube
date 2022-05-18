@@ -1,17 +1,17 @@
 import Cube2
 
-myCube = Cube2
+cubic_object = Cube2.CubeBody
 
-myCube.createCube()
+cubic_object.createCube()
 
 Round_Count = 0
 
 while(1):
 
-    myCube.yRight()
+    cubic_object.yRight()
 
     Round_Count += 1
-    if (myCube.clearCube() == 0):
+    if (cubic_object.clearCube() == 0):
         print("큐브가 맞춰졌습니다!!")
         break
     else:

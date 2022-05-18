@@ -408,103 +408,19 @@ class Cube:
     def Clear_Cube(self):
         """큐브 전체를 24가지 경우로 돌려보며 모두 맞춰졌는지 판별하는 함수"""
 
-        def If_Clear(self):
+        def ifClear(self):
             """큐브의 모든 조각들의 요소가 맞춰져있는지 판별하는 함수."""
-            if (sampleCube[0][0] == myCube[0][0]):
-                if (sampleCube[0][1] == myCube[0][1]):
-                    if (sampleCube[0][2] == myCube[0][2]):
-                        if (sampleCube[0][3] == myCube[0][3]):
-                            if (sampleCube[0][4] == myCube[0][4]):
-                                if (sampleCube[0][5] == myCube[0][5]):
-                                    if (sampleCube[0][6] == myCube[0][6]):
-                                        if (sampleCube[0][7] == myCube[0][7]):
-                                            if (sampleCube[0][8] == myCube[0][8]):
-                                                if (sampleCube[1][0] == myCube[1][0]):
-                                                    if (sampleCube[1][1] == myCube[1][1]):
-                                                        if (sampleCube[1][2] == myCube[1][2]):
-                                                            if (sampleCube[1][3] == myCube[1][3]):
-                                                                if (sampleCube[1][5] == myCube[1][5]):
-                                                                    if (sampleCube[1][6] == myCube[1][6]):
-                                                                        if (sampleCube[1][7] == myCube[1][7]):
-                                                                            if (sampleCube[1][8] == myCube[1][8]):
-                                                                                if (sampleCube[2][0] == myCube[2][0]):
-                                                                                    if (sampleCube[2][1] == myCube[2][1]):
-                                                                                        if (sampleCube[2][2] == myCube[2][2]):
-                                                                                            if (sampleCube[2][3] == myCube[2][
-                                                                                                3]):
-                                                                                                if (sampleCube[2][4] ==
-                                                                                                        myCube[2][4]):
-                                                                                                    if (sampleCube[2][5] ==
-                                                                                                            myCube[2][
-                                                                                                                5]):
-                                                                                                        if (sampleCube[2][
-                                                                                                            6] ==
-                                                                                                                myCube[
-                                                                                                                    2][
-                                                                                                                    6]):
-                                                                                                            if (sampleCube[2][
-                                                                                                                7] ==
-                                                                                                                    myCube[
-                                                                                                                        2][
-                                                                                                                        7]):
-                                                                                                                if (
-                                                                                                                        sampleCube[
-                                                                                                                            2][
-                                                                                                                            8] ==
-                                                                                                                        myCube[
-                                                                                                                            2][
-                                                                                                                            8]):
-                                                                                                                    return 1
-                                                                                                                else:
-                                                                                                                    return 0
-                                                                                                            else:
-                                                                                                                return 0
-                                                                                                        else:
-                                                                                                            return 0
-                                                                                                    else:
-                                                                                                        return 0
-                                                                                                else:
-                                                                                                    return 0
-                                                                                            else:
-                                                                                                return 0
-                                                                                        else:
-                                                                                            return 0
-                                                                                    else:
-                                                                                        return 0
-                                                                                else:
-                                                                                    return 0
-                                                                            else:
-                                                                                return 0
-                                                                        else:
-                                                                            return 0
-                                                                    else:
-                                                                        return 0
-                                                                else:
-                                                                    return 0
-                                                            else:
-                                                                return 0
-                                                        else:
-                                                            return 0
-                                                    else:
-                                                        return 0
-                                                else:
-                                                    return 0
-                                            else:
-                                                return 0
-                                        else:
-                                            return 0
-                                    else:
-                                        return 0
-                                else:
-                                    return 0
-                            else:
-                                return 0
-                        else:
-                            return 0
-                    else:
-                        return 0
-                else:
-                    return 0
+            if (sampleCube[0][0] == myCube[0][0] and sampleCube[0][1] == myCube[0][1] and sampleCube[0][2] == myCube[0][2] and
+                sampleCube[0][3] == myCube[0][3] and sampleCube[0][4] == myCube[0][4] and sampleCube[0][5] == myCube[0][5] and
+                sampleCube[0][6] == myCube[0][6] and sampleCube[0][7] == myCube[0][7] and sampleCube[0][8] == myCube[0][8] and
+                sampleCube[1][0] == myCube[1][0] and sampleCube[1][1] == myCube[1][1] and sampleCube[1][2] == myCube[1][2] and
+                sampleCube[1][3] == myCube[1][3] and sampleCube[1][5] == myCube[1][5] and sampleCube[1][6] == myCube[1][6] and
+                sampleCube[1][7] == myCube[1][7] and sampleCube[1][8] == myCube[1][8] and
+                sampleCube[2][0] == myCube[2][0] and sampleCube[2][1] == myCube[2][1] and sampleCube[2][2] == myCube[2][2] and
+                sampleCube[2][3] == myCube[2][3] and sampleCube[2][4] == myCube[2][4] and sampleCube[2][5] == myCube[2][5] and
+                sampleCube[2][6] == myCube[2][6] and sampleCube[2][7] == myCube[2][7] and sampleCube[2][8] == myCube[2][8]):
+
+                return 1
             else:
                 return 0
 
@@ -515,7 +431,7 @@ class Cube:
         for xy in range(4):
             for x in range(4):
                 self.xRight()
-                if (self.If_Clear() == 1):
+                if (self.ifClear() == 1):
                     find1[xy][x] = 1
                 else:
                     find1[xy][x] = 0
@@ -525,13 +441,13 @@ class Cube:
             self.zRight()
             for x in range(4):
                 self.xRight()
-                if (self.If_Clear() == 1):
+                if (self.ifClear() == 1):
                     find2[zxzx][x] = 1
                 else:
                     find2[zxzx][x] = 0
             self.zRight()
             self.xRight()
-            if (self.If_Clear() == 1):
+            if (self.ifClear() == 1):
                 find3[zxzx] = 1
             else:
                 find3[zxzx] = 0

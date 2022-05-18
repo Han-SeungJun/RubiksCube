@@ -1682,7 +1682,7 @@ def onClick_imple(event):
                 elif t != turn_list[0:23]:
                     wx.MessageBox('%c' % t + "는 잘못된 입력값 입니다.", "경고", wx.OK)
                     break
-                elif (Cube2.Clear_Cube() == 0):
+                elif (Cube2.clearCube() == 0):
                     result.SetLabel('결과: ' + '%d' % turn_point)
                     Cube2.def_Color()
                     break

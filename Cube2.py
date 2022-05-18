@@ -405,7 +405,7 @@ class Cube:
         self.horizonLeft()
         self.downRight()
 
-    def Clear_Cube(self):
+    def clearCube(self):
         """큐브 전체를 24가지 경우로 돌려보며 모두 맞춰졌는지 판별하는 함수"""
 
         def ifClear(self):

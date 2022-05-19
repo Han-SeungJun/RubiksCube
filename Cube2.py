@@ -15,10 +15,10 @@ import sqlite3 as sq
 # 클래스 내 함수 이름(메소드), 인스턴스변수, 클래스 변수 : camelCase
 # 상수 : CAPITAL_SNAKE
 
-global myCube
-global sampleCube  # global은 되도록 쓰지 않는 것이 좋다.
-global Register
-global register
+global myCube       # global은 되도록 쓰지 않는 것이 좋다.
+global sampleCube
+global cubeRegister
+global pieceRegister
 
 class CubeBody:
 
@@ -34,68 +34,68 @@ class CubeBody:
         myCube = [[[1, 2, 3], [1, 3], [1, 3, 4], [1, 2], [1], [1, 4], [1, 5, 2], [1, 5], [1, 4, 5]],
                   [[2, 3], [3], [4, 3], [2], [], [4], [2, 5], [5], [4, 5]],
                   [[6, 3, 2], [6, 3], [6, 4, 3], [6, 2], [6], [6, 4], [6, 2, 5], [6, 5], [6, 5, 4]]]
-        Register = [[[None, None, None], [None, None, None], [None, None, None], [None, None], [None], [None, None],
-                     [None, None, None], [None, None], [None, None, None]],
-                    [[None, None], [None], [None, None], [None], [None], [None], [None, None], [None], [None, None]],
-                    [[None, None, None], [None, None], [None, None, None], [None, None], [None], [None, None],
+        cubeRegister = [[[None, None, None], [None, None, None], [None, None, None], [None, None], [None], [None, None],
+                         [None, None, None], [None, None], [None, None, None]],
+                        [[None, None], [None], [None, None], [None], [None], [None], [None, None], [None], [None, None]],
+                        [[None, None, None], [None, None], [None, None, None], [None, None], [None], [None, None],
                      [None, None, None], [None, None], [None, None, None]]]
-        register = [None, None, None]
+        pieceRegister = [None, None, None]
 
     def elementClockwise(self, floor, piece):
         """큐브의 모서리조각을 시계방향으로 돌려준다.  입력방식 : Element_Right(floor, piece)"""
-        register[0:3] = myCube[floor][piece][0:3]
-        myCube[floor][piece][0] = register[1]
-        myCube[floor][piece][1] = register[2]
-        myCube[floor][piece][2] = register[0]
+        pieceRegister[0:3] = myCube[floor][piece][0:3]
+        myCube[floor][piece][0] = pieceRegister[1]
+        myCube[floor][piece][1] = pieceRegister[2]
+        myCube[floor][piece][2] = pieceRegister[0]
 
     def elementCounterclockwise(self, floor, piece):
         """큐브의 모서리조각을 반시계방향으로 돌려준다.  입력방식 : Element_Left(floor, piece)"""
-        register[0:3] = myCube[floor][piece][0:3]
-        myCube[floor][piece][0] = register[2]
-        myCube[floor][piece][1] = register[0]
-        myCube[floor][piece][2] = register[1]
+        pieceRegister[0:3] = myCube[floor][piece][0:3]
+        myCube[floor][piece][0] = pieceRegister[2]
+        myCube[floor][piece][1] = pieceRegister[0]
+        myCube[floor][piece][2] = pieceRegister[1]
 
     def elementMirror(self, floor, piece):
         """큐브의 엣지조각을 반전시킨다.  입력방식 : Element_Mirror(floor, piece)"""
-        register[0:2] = myCube[floor][piece][0:2]
-        myCube[floor][piece][0] = register[1]
-        myCube[floor][piece][1] = register[0]
+        pieceRegister[0:2] = myCube[floor][piece][0:2]
+        myCube[floor][piece][0] = pieceRegister[1]
+        myCube[floor][piece][1] = pieceRegister[0]
 
     def upRight(self):
         """윗면을 시계방향으로 회전한다."""
-        Register[0][0:9] = myCube[0][0:9]
-        myCube[0][0] = Register[0][2]
-        myCube[0][1] = Register[0][5]
-        myCube[0][2] = Register[0][8]
-        myCube[0][3] = Register[0][1]
-        myCube[0][5] = Register[0][7]
-        myCube[0][6] = Register[0][0]
-        myCube[0][7] = Register[0][3]
-        myCube[0][8] = Register[0][6]
+        cubeRegister[0][0:9] = myCube[0][0:9]
+        myCube[0][0] = cubeRegister[0][2]
+        myCube[0][1] = cubeRegister[0][5]
+        myCube[0][2] = cubeRegister[0][8]
+        myCube[0][3] = cubeRegister[0][1]
+        myCube[0][5] = cubeRegister[0][7]
+        myCube[0][6] = cubeRegister[0][0]
+        myCube[0][7] = cubeRegister[0][3]
+        myCube[0][8] = cubeRegister[0][6]
 
     def upLeft(self):
         """윗면을 시계 반대방향으로 회전한다."""
-        Register[0][0:9] = myCube[0][0:9]
-        myCube[0][0] = Register[0][6]
-        myCube[0][1] = Register[0][3]
-        myCube[0][2] = Register[0][0]
-        myCube[0][3] = Register[0][7]
-        myCube[0][5] = Register[0][1]
-        myCube[0][6] = Register[0][8]
-        myCube[0][7] = Register[0][5]
-        myCube[0][8] = Register[0][2]
+        cubeRegister[0][0:9] = myCube[0][0:9]
+        myCube[0][0] = cubeRegister[0][6]
+        myCube[0][1] = cubeRegister[0][3]
+        myCube[0][2] = cubeRegister[0][0]
+        myCube[0][3] = cubeRegister[0][7]
+        myCube[0][5] = cubeRegister[0][1]
+        myCube[0][6] = cubeRegister[0][8]
+        myCube[0][7] = cubeRegister[0][5]
+        myCube[0][8] = cubeRegister[0][2]
 
     def horizonRight(self):
         """윗면과 아랫면 사이층을 시계방향으로 회전한다."""
-        Register[1][0:9] = myCube[1][0:9]
-        myCube[1][0] = Register[1][2]
-        myCube[1][1] = Register[1][5]
-        myCube[1][2] = Register[1][8]
-        myCube[1][3] = Register[1][1]
-        myCube[1][5] = Register[1][7]
-        myCube[1][6] = Register[1][0]
-        myCube[1][7] = Register[1][3]
-        myCube[1][8] = Register[1][6]
+        cubeRegister[1][0:9] = myCube[1][0:9]
+        myCube[1][0] = cubeRegister[1][2]
+        myCube[1][1] = cubeRegister[1][5]
+        myCube[1][2] = cubeRegister[1][8]
+        myCube[1][3] = cubeRegister[1][1]
+        myCube[1][5] = cubeRegister[1][7]
+        myCube[1][6] = cubeRegister[1][0]
+        myCube[1][7] = cubeRegister[1][3]
+        myCube[1][8] = cubeRegister[1][6]
         self.elementMirror(1, 0)
         self.elementMirror(1, 2)
         self.elementMirror(1, 6)
@@ -103,15 +103,15 @@ class CubeBody:
 
     def horizonLeft(self):
         """윗면과 아랫면 사이층을 시계 반대방향으로 회전한다."""
-        Register[1][0:9] = myCube[1][0:9]
-        myCube[1][0] = Register[1][6]
-        myCube[1][1] = Register[1][3]
-        myCube[1][2] = Register[1][0]
-        myCube[1][3] = Register[1][7]
-        myCube[1][5] = Register[1][1]
-        myCube[1][6] = Register[1][8]
-        myCube[1][7] = Register[1][5]
-        myCube[1][8] = Register[1][2]
+        cubeRegister[1][0:9] = myCube[1][0:9]
+        myCube[1][0] = cubeRegister[1][6]
+        myCube[1][1] = cubeRegister[1][3]
+        myCube[1][2] = cubeRegister[1][0]
+        myCube[1][3] = cubeRegister[1][7]
+        myCube[1][5] = cubeRegister[1][1]
+        myCube[1][6] = cubeRegister[1][8]
+        myCube[1][7] = cubeRegister[1][5]
+        myCube[1][8] = cubeRegister[1][2]
         self.elementMirror(1, 0)
         self.elementMirror(1, 2)
         self.elementMirror(1, 6)
@@ -119,41 +119,41 @@ class CubeBody:
 
     def downRight(self):
         """아랫면을 시계방향으로 회전한다."""
-        Register[2][0:9] = myCube[2][0:9]
-        myCube[2][0] = Register[2][6]
-        myCube[2][1] = Register[2][3]
-        myCube[2][2] = Register[2][0]
-        myCube[2][3] = Register[2][7]
-        myCube[2][5] = Register[2][1]
-        myCube[2][6] = Register[2][8]
-        myCube[2][7] = Register[2][5]
-        myCube[2][8] = Register[2][2]
+        cubeRegister[2][0:9] = myCube[2][0:9]
+        myCube[2][0] = cubeRegister[2][6]
+        myCube[2][1] = cubeRegister[2][3]
+        myCube[2][2] = cubeRegister[2][0]
+        myCube[2][3] = cubeRegister[2][7]
+        myCube[2][5] = cubeRegister[2][1]
+        myCube[2][6] = cubeRegister[2][8]
+        myCube[2][7] = cubeRegister[2][5]
+        myCube[2][8] = cubeRegister[2][2]
 
     def downLeft(self):
         """아랫면을 시계 반대방향으로 회전한다."""
-        Register[2][0:9] = myCube[2][0:9]
-        myCube[2][0] = Register[2][2]
-        myCube[2][1] = Register[2][5]
-        myCube[2][2] = Register[2][8]
-        myCube[2][3] = Register[2][1]
-        myCube[2][5] = Register[2][7]
-        myCube[2][6] = Register[2][0]
-        myCube[2][7] = Register[2][3]
-        myCube[2][8] = Register[2][6]
+        cubeRegister[2][0:9] = myCube[2][0:9]
+        myCube[2][0] = cubeRegister[2][2]
+        myCube[2][1] = cubeRegister[2][5]
+        myCube[2][2] = cubeRegister[2][8]
+        myCube[2][3] = cubeRegister[2][1]
+        myCube[2][5] = cubeRegister[2][7]
+        myCube[2][6] = cubeRegister[2][0]
+        myCube[2][7] = cubeRegister[2][3]
+        myCube[2][8] = cubeRegister[2][6]
 
     def rightRight(self):
         """오른쪽 면을 시계방향으로 회전한다."""
-        Register[0][0:3] = myCube[0][0:3]
-        Register[1][0:3] = myCube[1][0:3]
-        Register[2][0:3] = myCube[2][0:3]
-        myCube[0][0] = Register[2][0]
-        myCube[0][1] = Register[1][0]
-        myCube[0][2] = Register[0][0]
-        myCube[1][0] = Register[2][1]
-        myCube[1][2] = Register[0][1]
-        myCube[2][0] = Register[2][2]
-        myCube[2][1] = Register[1][2]
-        myCube[2][2] = Register[0][2]
+        cubeRegister[0][0:3] = myCube[0][0:3]
+        cubeRegister[1][0:3] = myCube[1][0:3]
+        cubeRegister[2][0:3] = myCube[2][0:3]
+        myCube[0][0] = cubeRegister[2][0]
+        myCube[0][1] = cubeRegister[1][0]
+        myCube[0][2] = cubeRegister[0][0]
+        myCube[1][0] = cubeRegister[2][1]
+        myCube[1][2] = cubeRegister[0][1]
+        myCube[2][0] = cubeRegister[2][2]
+        myCube[2][1] = cubeRegister[1][2]
+        myCube[2][2] = cubeRegister[0][2]
         self.elementCounterclockwise(0, 0)
         self.elementClockwise(0, 2)
         self.elementClockwise(2, 0)
@@ -161,17 +161,17 @@ class CubeBody:
 
     def rightLeft(self):
         """오른쪽 면을 시계 반대방향으로 회전한다."""
-        Register[0][0:3] = myCube[0][0:3]
-        Register[1][0:3] = myCube[1][0:3]
-        Register[2][0:3] = myCube[2][0:3]
-        myCube[0][0] = Register[0][2]
-        myCube[0][1] = Register[1][2]
-        myCube[0][2] = Register[2][2]
-        myCube[1][0] = Register[0][1]
-        myCube[1][2] = Register[2][1]
-        myCube[2][0] = Register[0][0]
-        myCube[2][1] = Register[1][0]
-        myCube[2][2] = Register[2][0]
+        cubeRegister[0][0:3] = myCube[0][0:3]
+        cubeRegister[1][0:3] = myCube[1][0:3]
+        cubeRegister[2][0:3] = myCube[2][0:3]
+        myCube[0][0] = cubeRegister[0][2]
+        myCube[0][1] = cubeRegister[1][2]
+        myCube[0][2] = cubeRegister[2][2]
+        myCube[1][0] = cubeRegister[0][1]
+        myCube[1][2] = cubeRegister[2][1]
+        myCube[2][0] = cubeRegister[0][0]
+        myCube[2][1] = cubeRegister[1][0]
+        myCube[2][2] = cubeRegister[2][0]
         self.elementCounterclockwise(0, 0)
         self.elementClockwise(0, 2)
         self.elementClockwise(2, 0)
@@ -179,17 +179,17 @@ class CubeBody:
 
     def middleRight(self):
         """오른쪽 면과 왼쪽 면의 사이층을 오른 축에 대해 시계방향으로 회전한다."""
-        Register[0][3:6] = myCube[0][3:6]
-        Register[1][3:6] = myCube[1][3:6]
-        Register[2][3:6] = myCube[2][3:6]
-        myCube[0][3] = Register[2][3]
-        myCube[0][4] = Register[1][3]
-        myCube[0][5] = Register[0][3]
-        myCube[1][3] = Register[2][4]
-        myCube[1][5] = Register[0][4]
-        myCube[2][3] = Register[2][5]
-        myCube[2][4] = Register[1][5]
-        myCube[2][5] = Register[0][5]
+        cubeRegister[0][3:6] = myCube[0][3:6]
+        cubeRegister[1][3:6] = myCube[1][3:6]
+        cubeRegister[2][3:6] = myCube[2][3:6]
+        myCube[0][3] = cubeRegister[2][3]
+        myCube[0][4] = cubeRegister[1][3]
+        myCube[0][5] = cubeRegister[0][3]
+        myCube[1][3] = cubeRegister[2][4]
+        myCube[1][5] = cubeRegister[0][4]
+        myCube[2][3] = cubeRegister[2][5]
+        myCube[2][4] = cubeRegister[1][5]
+        myCube[2][5] = cubeRegister[0][5]
         self.elementMirror(0, 3)
         self.elementMirror(0, 5)
         self.elementMirror(2, 3)
@@ -197,17 +197,17 @@ class CubeBody:
 
     def middleLeft(self):
         """오른쪽 면과 왼쪽 면의 사이층을 오른 축에 대해 시계 반대방향으로 회전한다."""
-        Register[0][3:6] = myCube[0][3:6]
-        Register[1][3:6] = myCube[1][3:6]
-        Register[2][3:6] = myCube[2][3:6]
-        myCube[0][3] = Register[0][5]
-        myCube[0][4] = Register[1][5]
-        myCube[0][5] = Register[2][5]
-        myCube[1][3] = Register[0][4]
-        myCube[1][5] = Register[2][4]
-        myCube[2][3] = Register[0][3]
-        myCube[2][4] = Register[1][3]
-        myCube[2][5] = Register[2][3]
+        cubeRegister[0][3:6] = myCube[0][3:6]
+        cubeRegister[1][3:6] = myCube[1][3:6]
+        cubeRegister[2][3:6] = myCube[2][3:6]
+        myCube[0][3] = cubeRegister[0][5]
+        myCube[0][4] = cubeRegister[1][5]
+        myCube[0][5] = cubeRegister[2][5]
+        myCube[1][3] = cubeRegister[0][4]
+        myCube[1][5] = cubeRegister[2][4]
+        myCube[2][3] = cubeRegister[0][3]
+        myCube[2][4] = cubeRegister[1][3]
+        myCube[2][5] = cubeRegister[2][3]
         self.elementMirror(0, 3)
         self.elementMirror(0, 5)
         self.elementMirror(2, 3)
@@ -215,17 +215,17 @@ class CubeBody:
 
     def leftRight(self):
         """왼쪽 면을 시계방향으로 회전한다."""
-        Register[0][6:9] = myCube[0][6:9]
-        Register[1][6:9] = myCube[1][6:9]
-        Register[2][6:9] = myCube[2][6:9]
-        myCube[0][6] = Register[0][8]
-        myCube[0][7] = Register[1][8]
-        myCube[0][8] = Register[2][8]
-        myCube[1][6] = Register[0][7]
-        myCube[1][8] = Register[2][7]
-        myCube[2][6] = Register[0][6]
-        myCube[2][7] = Register[1][6]
-        myCube[2][8] = Register[2][6]
+        cubeRegister[0][6:9] = myCube[0][6:9]
+        cubeRegister[1][6:9] = myCube[1][6:9]
+        cubeRegister[2][6:9] = myCube[2][6:9]
+        myCube[0][6] = cubeRegister[0][8]
+        myCube[0][7] = cubeRegister[1][8]
+        myCube[0][8] = cubeRegister[2][8]
+        myCube[1][6] = cubeRegister[0][7]
+        myCube[1][8] = cubeRegister[2][7]
+        myCube[2][6] = cubeRegister[0][6]
+        myCube[2][7] = cubeRegister[1][6]
+        myCube[2][8] = cubeRegister[2][6]
         self.elementClockwise(0, 6)
         self.elementCounterclockwise(0, 8)
         self.elementCounterclockwise(2, 6)
@@ -233,17 +233,17 @@ class CubeBody:
 
     def leftLeft(self):
         """왼쪽 면을 시계 반대방향으로 회전한다."""
-        Register[0][6:9] = myCube[0][6:9]
-        Register[1][6:9] = myCube[1][6:9]
-        Register[2][6:9] = myCube[2][6:9]
-        myCube[0][6] = Register[2][6]
-        myCube[0][7] = Register[1][6]
-        myCube[0][8] = Register[0][6]
-        myCube[1][6] = Register[2][7]
-        myCube[1][8] = Register[0][7]
-        myCube[2][6] = Register[2][8]
-        myCube[2][7] = Register[1][8]
-        myCube[2][8] = Register[0][8]
+        cubeRegister[0][6:9] = myCube[0][6:9]
+        cubeRegister[1][6:9] = myCube[1][6:9]
+        cubeRegister[2][6:9] = myCube[2][6:9]
+        myCube[0][6] = cubeRegister[2][6]
+        myCube[0][7] = cubeRegister[1][6]
+        myCube[0][8] = cubeRegister[0][6]
+        myCube[1][6] = cubeRegister[2][7]
+        myCube[1][8] = cubeRegister[0][7]
+        myCube[2][6] = cubeRegister[2][8]
+        myCube[2][7] = cubeRegister[1][8]
+        myCube[2][8] = cubeRegister[0][8]
         self.elementClockwise(0, 6)
         self.elementCounterclockwise(0, 8)
         self.elementCounterclockwise(2, 6)
@@ -251,17 +251,17 @@ class CubeBody:
 
     def frontRight(self):
         """앞면을 시계방향으로 회전한다."""
-        Register[0][0:3] = [myCube[0][6], myCube[0][3], myCube[0][0]]
-        Register[1][0:2] = [myCube[1][6], myCube[1][0]]
-        Register[2][0:3] = [myCube[2][6], myCube[2][3], myCube[2][0]]
-        myCube[0][6] = Register[2][0]
-        myCube[0][3] = Register[1][0]
-        myCube[0][0] = Register[0][0]
-        myCube[1][6] = Register[2][1]
-        myCube[1][0] = Register[0][1]
-        myCube[2][6] = Register[2][2]
-        myCube[2][3] = Register[1][1]
-        myCube[2][0] = Register[0][2]
+        cubeRegister[0][0:3] = [myCube[0][6], myCube[0][3], myCube[0][0]]
+        cubeRegister[1][0:2] = [myCube[1][6], myCube[1][0]]
+        cubeRegister[2][0:3] = [myCube[2][6], myCube[2][3], myCube[2][0]]
+        myCube[0][6] = cubeRegister[2][0]
+        myCube[0][3] = cubeRegister[1][0]
+        myCube[0][0] = cubeRegister[0][0]
+        myCube[1][6] = cubeRegister[2][1]
+        myCube[1][0] = cubeRegister[0][1]
+        myCube[2][6] = cubeRegister[2][2]
+        myCube[2][3] = cubeRegister[1][1]
+        myCube[2][0] = cubeRegister[0][2]
         self.elementCounterclockwise(0, 6)
         self.elementMirror(0, 3)
         self.elementClockwise(0, 0)
@@ -273,17 +273,17 @@ class CubeBody:
 
     def frontLeft(self):
         """앞면을 시계 반대방향으로 회전한다."""
-        Register[0][0:3] = [myCube[0][6], myCube[0][3], myCube[0][0]]
-        Register[1][0:2] = [myCube[1][6], myCube[1][0]]
-        Register[2][0:3] = [myCube[2][6], myCube[2][3], myCube[2][0]]
-        myCube[0][6] = Register[0][2]
-        myCube[0][3] = Register[1][1]
-        myCube[0][0] = Register[2][2]
-        myCube[1][6] = Register[0][1]
-        myCube[1][0] = Register[2][1]
-        myCube[2][6] = Register[0][0]
-        myCube[2][3] = Register[1][0]
-        myCube[2][0] = Register[2][0]
+        cubeRegister[0][0:3] = [myCube[0][6], myCube[0][3], myCube[0][0]]
+        cubeRegister[1][0:2] = [myCube[1][6], myCube[1][0]]
+        cubeRegister[2][0:3] = [myCube[2][6], myCube[2][3], myCube[2][0]]
+        myCube[0][6] = cubeRegister[0][2]
+        myCube[0][3] = cubeRegister[1][1]
+        myCube[0][0] = cubeRegister[2][2]
+        myCube[1][6] = cubeRegister[0][1]
+        myCube[1][0] = cubeRegister[2][1]
+        myCube[2][6] = cubeRegister[0][0]
+        myCube[2][3] = cubeRegister[1][0]
+        myCube[2][0] = cubeRegister[2][0]
         self.elementCounterclockwise(0, 6)
         self.elementMirror(0, 3)
         self.elementClockwise(0, 0)
@@ -295,17 +295,17 @@ class CubeBody:
 
     def sideRight(self):
         """앞면과 뒷면의 사이층을 앞축에 대해 시계방향으로 회전한다."""
-        Register[0][0:3] = [myCube[0][7], myCube[0][4], myCube[0][1]]
-        Register[1][0:2] = [myCube[1][7], myCube[1][1]]
-        Register[2][0:3] = [myCube[2][7], myCube[2][4], myCube[2][1]]
-        myCube[0][7] = Register[2][0]
-        myCube[0][4] = Register[1][0]
-        myCube[0][1] = Register[0][0]
-        myCube[1][7] = Register[2][1]
-        myCube[1][1] = Register[0][1]
-        myCube[2][7] = Register[2][2]
-        myCube[2][4] = Register[1][1]
-        myCube[2][1] = Register[0][2]
+        cubeRegister[0][0:3] = [myCube[0][7], myCube[0][4], myCube[0][1]]
+        cubeRegister[1][0:2] = [myCube[1][7], myCube[1][1]]
+        cubeRegister[2][0:3] = [myCube[2][7], myCube[2][4], myCube[2][1]]
+        myCube[0][7] = cubeRegister[2][0]
+        myCube[0][4] = cubeRegister[1][0]
+        myCube[0][1] = cubeRegister[0][0]
+        myCube[1][7] = cubeRegister[2][1]
+        myCube[1][1] = cubeRegister[0][1]
+        myCube[2][7] = cubeRegister[2][2]
+        myCube[2][4] = cubeRegister[1][1]
+        myCube[2][1] = cubeRegister[0][2]
         self.elementMirror(0, 7)
         self.elementMirror(0, 1)
         self.elementMirror(2, 7)
@@ -313,17 +313,17 @@ class CubeBody:
 
     def sideLeft(self):
         """앞면과 뒷면의 사이층을 앞축에 대해 시계 반대방향으로 회전한다."""
-        Register[0][0:3] = [myCube[0][7], myCube[0][4], myCube[0][1]]
-        Register[1][0:2] = [myCube[1][7], myCube[1][1]]
-        Register[2][0:3] = [myCube[2][7], myCube[2][4], myCube[2][1]]
-        myCube[0][7] = Register[0][2]
-        myCube[0][4] = Register[1][1]
-        myCube[0][1] = Register[2][2]
-        myCube[1][7] = Register[0][1]
-        myCube[1][1] = Register[2][1]
-        myCube[2][7] = Register[0][0]
-        myCube[2][4] = Register[1][0]
-        myCube[2][1] = Register[2][0]
+        cubeRegister[0][0:3] = [myCube[0][7], myCube[0][4], myCube[0][1]]
+        cubeRegister[1][0:2] = [myCube[1][7], myCube[1][1]]
+        cubeRegister[2][0:3] = [myCube[2][7], myCube[2][4], myCube[2][1]]
+        myCube[0][7] = cubeRegister[0][2]
+        myCube[0][4] = cubeRegister[1][1]
+        myCube[0][1] = cubeRegister[2][2]
+        myCube[1][7] = cubeRegister[0][1]
+        myCube[1][1] = cubeRegister[2][1]
+        myCube[2][7] = cubeRegister[0][0]
+        myCube[2][4] = cubeRegister[1][0]
+        myCube[2][1] = cubeRegister[2][0]
         self.elementMirror(0, 7)
         self.elementMirror(0, 1)
         self.elementMirror(2, 7)
@@ -331,17 +331,17 @@ class CubeBody:
 
     def backRight(self):
         """뒷면을 시계방향으로 회전한다."""
-        Register[0][0:3] = [myCube[0][8], myCube[0][5], myCube[0][2]]
-        Register[1][0:2] = [myCube[1][8], myCube[1][2]]
-        Register[2][0:3] = [myCube[2][8], myCube[2][5], myCube[2][2]]
-        myCube[0][2] = Register[2][2]
-        myCube[0][5] = Register[1][1]
-        myCube[0][8] = Register[0][2]
-        myCube[1][2] = Register[2][1]
-        myCube[1][8] = Register[0][1]
-        myCube[2][2] = Register[2][0]
-        myCube[2][5] = Register[1][0]
-        myCube[2][8] = Register[0][0]
+        cubeRegister[0][0:3] = [myCube[0][8], myCube[0][5], myCube[0][2]]
+        cubeRegister[1][0:2] = [myCube[1][8], myCube[1][2]]
+        cubeRegister[2][0:3] = [myCube[2][8], myCube[2][5], myCube[2][2]]
+        myCube[0][2] = cubeRegister[2][2]
+        myCube[0][5] = cubeRegister[1][1]
+        myCube[0][8] = cubeRegister[0][2]
+        myCube[1][2] = cubeRegister[2][1]
+        myCube[1][8] = cubeRegister[0][1]
+        myCube[2][2] = cubeRegister[2][0]
+        myCube[2][5] = cubeRegister[1][0]
+        myCube[2][8] = cubeRegister[0][0]
         self.elementCounterclockwise(0, 2)
         self.elementMirror(0, 5)
         self.elementClockwise(0, 8)
@@ -353,17 +353,17 @@ class CubeBody:
 
     def backLeft(self):
         """뒷면을 시계방향으로 회전한다."""
-        Register[0][0:3] = [myCube[0][8], myCube[0][5], myCube[0][2]]
-        Register[1][0:2] = [myCube[1][8], myCube[1][2]]
-        Register[2][0:3] = [myCube[2][8], myCube[2][5], myCube[2][2]]
-        myCube[0][2] = Register[0][0]
-        myCube[0][5] = Register[1][0]
-        myCube[0][8] = Register[2][0]
-        myCube[1][2] = Register[0][1]
-        myCube[1][8] = Register[2][1]
-        myCube[2][2] = Register[0][2]
-        myCube[2][5] = Register[1][1]
-        myCube[2][8] = Register[2][2]
+        cubeRegister[0][0:3] = [myCube[0][8], myCube[0][5], myCube[0][2]]
+        cubeRegister[1][0:2] = [myCube[1][8], myCube[1][2]]
+        cubeRegister[2][0:3] = [myCube[2][8], myCube[2][5], myCube[2][2]]
+        myCube[0][2] = cubeRegister[0][0]
+        myCube[0][5] = cubeRegister[1][0]
+        myCube[0][8] = cubeRegister[2][0]
+        myCube[1][2] = cubeRegister[0][1]
+        myCube[1][8] = cubeRegister[2][1]
+        myCube[2][2] = cubeRegister[0][2]
+        myCube[2][5] = cubeRegister[1][1]
+        myCube[2][8] = cubeRegister[2][2]
         self.elementCounterclockwise(0, 2)
         self.elementMirror(0, 5)
         self.elementClockwise(0, 8)

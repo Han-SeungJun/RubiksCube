@@ -15,6 +15,10 @@ import sqlite3 as sq
 # 클래스 내 함수 이름(메소드), 인스턴스변수, 클래스 변수 : camelCase
 # 상수 : CAPITAL_SNAKE
 
+global myCube
+global sampleCube  # global은 되도록 쓰지 않는 것이 좋다.
+global Register
+global register
 
 class CubeBody:
 
@@ -24,8 +28,6 @@ class CubeBody:
 
     def createCube(self):
         """큐브의 환경을 조성한다."""
-        global myCube, sampleCube  # global은 되도록 쓰지 않는 것이 좋다.
-        global Register, register
         sampleCube = [[[1, 2, 3], [1, 3], [1, 3, 4], [1, 2], [1], [1, 4], [1, 5, 2], [1, 5], [1, 4, 5]],
                       [[2, 3], [3], [4, 3], [2], [], [4], [2, 5], [5], [4, 5]],
                       [[6, 3, 2], [6, 3], [6, 4, 3], [6, 2], [6], [6, 4], [6, 2, 5], [6, 5], [6, 5, 4]]]

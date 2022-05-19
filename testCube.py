@@ -1,6 +1,6 @@
-import Cube2
+import cube
 
-cubic_object = Cube2.CubeBody
+cubic_object = cube.CubeBody
 
 cubic_object.createCube()
 

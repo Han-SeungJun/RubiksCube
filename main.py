@@ -1,14 +1,14 @@
 import wx
 import time
-import Cube2
+import cube
 import keyboard
 
-Cube2 = Cube2.CubeBody(MIX_NUM=60, TIME=0.01)
+cube_body = cube.CubeBody(MIX_NUM=60, TIME=0.01)
 MIX_NUM = 60
 TIME = 0.01
 
-Cube2.createCube()
-Cube2.defColor()
+cube_body.createCube()
+cube_body.defColor()
 
 app = wx.App(0)
 
@@ -130,23 +130,23 @@ box.Add(lbl3, flag=wx.ALIGN_RIGHT)
 def On_UP_Paint(event):
     dc = wx.PaintDC(Cube_up)
     dc.SetPen(wx.BLACK_PEN)
-    dc.SetBrush(wx.Brush(Cube2.CubeBody[0][8][0]))
+    dc.SetBrush(wx.Brush(cube_body.CubeBody[0][8][0]))
     dc.DrawRectangle(0, 0, 60, 60)
-    dc.SetBrush(wx.Brush(Cube2.CubeBody[0][5][0]))
+    dc.SetBrush(wx.Brush(cube_body.CubeBody[0][5][0]))
     dc.DrawRectangle(60, 0, 60, 60)
-    dc.SetBrush(wx.Brush(Cube2.CubeBody[0][2][0]))
+    dc.SetBrush(wx.Brush(cube_body.CubeBody[0][2][0]))
     dc.DrawRectangle(120, 0, 60, 60)
-    dc.SetBrush(wx.Brush(Cube2.CubeBody[0][7][0]))
+    dc.SetBrush(wx.Brush(cube_body.CubeBody[0][7][0]))
     dc.DrawRectangle(0, 60, 60, 60)
-    dc.SetBrush(wx.Brush(Cube2.CubeBody[0][4][0]))
+    dc.SetBrush(wx.Brush(cube_body.CubeBody[0][4][0]))
     dc.DrawRectangle(60, 60, 60, 60)
-    dc.SetBrush(wx.Brush(Cube2.CubeBody[0][1][0]))
+    dc.SetBrush(wx.Brush(cube_body.CubeBody[0][1][0]))
     dc.DrawRectangle(120, 60, 60, 60)
-    dc.SetBrush(wx.Brush(Cube2.CubeBody[0][6][0]))
+    dc.SetBrush(wx.Brush(cube_body.CubeBody[0][6][0]))
     dc.DrawRectangle(0, 120, 60, 60)
-    dc.SetBrush(wx.Brush(Cube2.CubeBody[0][3][0]))
+    dc.SetBrush(wx.Brush(cube_body.CubeBody[0][3][0]))
     dc.DrawRectangle(60, 120, 60, 60)
-    dc.SetBrush(wx.Brush(Cube2.CubeBody[0][0][0]))
+    dc.SetBrush(wx.Brush(cube_body.CubeBody[0][0][0]))
     dc.DrawRectangle(120, 120, 60, 60)
 
 
@@ -158,23 +158,23 @@ Cube_up.Bind(wx.EVT_PAINT, On_UP_Paint)
 def On_FRONT_Paint(event):
     dc = wx.PaintDC(Cube_front)
     dc.SetPen(wx.BLACK_PEN)
-    dc.SetBrush(wx.Brush(Cube2.CubeBody[0][6][2]))
+    dc.SetBrush(wx.Brush(cube_body.CubeBody[0][6][2]))
     dc.DrawRectangle(0, 0, 60, 60)
-    dc.SetBrush(wx.Brush(Cube2.CubeBody[0][3][1]))
+    dc.SetBrush(wx.Brush(cube_body.CubeBody[0][3][1]))
     dc.DrawRectangle(60, 0, 60, 60)
-    dc.SetBrush(wx.Brush(Cube2.CubeBody[0][0][1]))
+    dc.SetBrush(wx.Brush(cube_body.CubeBody[0][0][1]))
     dc.DrawRectangle(120, 0, 60, 60)
-    dc.SetBrush(wx.Brush(Cube2.CubeBody[1][6][0]))
+    dc.SetBrush(wx.Brush(cube_body.CubeBody[1][6][0]))
     dc.DrawRectangle(0, 60, 60, 60)
-    dc.SetBrush(wx.Brush(Cube2.CubeBody[1][3][0]))
+    dc.SetBrush(wx.Brush(cube_body.CubeBody[1][3][0]))
     dc.DrawRectangle(60, 60, 60, 60)
-    dc.SetBrush(wx.Brush(Cube2.CubeBody[1][0][0]))
+    dc.SetBrush(wx.Brush(cube_body.CubeBody[1][0][0]))
     dc.DrawRectangle(120, 60, 60, 60)
-    dc.SetBrush(wx.Brush(Cube2.CubeBody[2][6][1]))
+    dc.SetBrush(wx.Brush(cube_body.CubeBody[2][6][1]))
     dc.DrawRectangle(0, 120, 60, 60)
-    dc.SetBrush(wx.Brush(Cube2.CubeBody[2][3][1]))
+    dc.SetBrush(wx.Brush(cube_body.CubeBody[2][3][1]))
     dc.DrawRectangle(60, 120, 60, 60)
-    dc.SetBrush(wx.Brush(Cube2.CubeBody[2][0][2]))
+    dc.SetBrush(wx.Brush(cube_body.CubeBody[2][0][2]))
     dc.DrawRectangle(120, 120, 60, 60)
 
 
@@ -186,23 +186,23 @@ Cube_front.Bind(wx.EVT_PAINT, On_FRONT_Paint)
 def On_DOWN_Paint(event):
     dc = wx.PaintDC(Cube_down)
     dc.SetPen(wx.BLACK_PEN)
-    dc.SetBrush(wx.Brush(Cube2.CubeBody[2][6][0]))
+    dc.SetBrush(wx.Brush(cube_body.CubeBody[2][6][0]))
     dc.DrawRectangle(0, 0, 60, 60)
-    dc.SetBrush(wx.Brush(Cube2.CubeBody[2][3][0]))
+    dc.SetBrush(wx.Brush(cube_body.CubeBody[2][3][0]))
     dc.DrawRectangle(60, 0, 60, 60)
-    dc.SetBrush(wx.Brush(Cube2.CubeBody[2][0][0]))
+    dc.SetBrush(wx.Brush(cube_body.CubeBody[2][0][0]))
     dc.DrawRectangle(120, 0, 60, 60)
-    dc.SetBrush(wx.Brush(Cube2.CubeBody[2][7][0]))
+    dc.SetBrush(wx.Brush(cube_body.CubeBody[2][7][0]))
     dc.DrawRectangle(0, 60, 60, 60)
-    dc.SetBrush(wx.Brush(Cube2.CubeBody[2][4][0]))
+    dc.SetBrush(wx.Brush(cube_body.CubeBody[2][4][0]))
     dc.DrawRectangle(60, 60, 60, 60)
-    dc.SetBrush(wx.Brush(Cube2.CubeBody[2][1][0]))
+    dc.SetBrush(wx.Brush(cube_body.CubeBody[2][1][0]))
     dc.DrawRectangle(120, 60, 60, 60)
-    dc.SetBrush(wx.Brush(Cube2.CubeBody[2][8][0]))
+    dc.SetBrush(wx.Brush(cube_body.CubeBody[2][8][0]))
     dc.DrawRectangle(0, 120, 60, 60)
-    dc.SetBrush(wx.Brush(Cube2.CubeBody[2][5][0]))
+    dc.SetBrush(wx.Brush(cube_body.CubeBody[2][5][0]))
     dc.DrawRectangle(60, 120, 60, 60)
-    dc.SetBrush(wx.Brush(Cube2.CubeBody[2][2][0]))
+    dc.SetBrush(wx.Brush(cube_body.CubeBody[2][2][0]))
     dc.DrawRectangle(120, 120, 60, 60)
 
 
@@ -214,23 +214,23 @@ Cube_down.Bind(wx.EVT_PAINT, On_DOWN_Paint)
 def On_RIGHT_Paint(event):
     dc = wx.PaintDC(Cube_right)
     dc.SetPen(wx.BLACK_PEN)
-    dc.SetBrush(wx.Brush(Cube2.CubeBody[0][0][2]))
+    dc.SetBrush(wx.Brush(cube_body.CubeBody[0][0][2]))
     dc.DrawRectangle(0, 0, 60, 60)
-    dc.SetBrush(wx.Brush(Cube2.CubeBody[0][1][1]))
+    dc.SetBrush(wx.Brush(cube_body.CubeBody[0][1][1]))
     dc.DrawRectangle(60, 0, 60, 60)
-    dc.SetBrush(wx.Brush(Cube2.CubeBody[0][2][1]))
+    dc.SetBrush(wx.Brush(cube_body.CubeBody[0][2][1]))
     dc.DrawRectangle(120, 0, 60, 60)
-    dc.SetBrush(wx.Brush(Cube2.CubeBody[1][0][1]))
+    dc.SetBrush(wx.Brush(cube_body.CubeBody[1][0][1]))
     dc.DrawRectangle(0, 60, 60, 60)
-    dc.SetBrush(wx.Brush(Cube2.CubeBody[1][1][0]))
+    dc.SetBrush(wx.Brush(cube_body.CubeBody[1][1][0]))
     dc.DrawRectangle(60, 60, 60, 60)
-    dc.SetBrush(wx.Brush(Cube2.CubeBody[1][2][1]))
+    dc.SetBrush(wx.Brush(cube_body.CubeBody[1][2][1]))
     dc.DrawRectangle(120, 60, 60, 60)
-    dc.SetBrush(wx.Brush(Cube2.CubeBody[2][0][1]))
+    dc.SetBrush(wx.Brush(cube_body.CubeBody[2][0][1]))
     dc.DrawRectangle(0, 120, 60, 60)
-    dc.SetBrush(wx.Brush(Cube2.CubeBody[2][1][1]))
+    dc.SetBrush(wx.Brush(cube_body.CubeBody[2][1][1]))
     dc.DrawRectangle(60, 120, 60, 60)
-    dc.SetBrush(wx.Brush(Cube2.CubeBody[2][2][2]))
+    dc.SetBrush(wx.Brush(cube_body.CubeBody[2][2][2]))
     dc.DrawRectangle(120, 120, 60, 60)
 
 
@@ -242,23 +242,23 @@ Cube_right.Bind(wx.EVT_PAINT, On_RIGHT_Paint)
 def On_LEFT_Paint(event):
     dc = wx.PaintDC(Cube_left)
     dc.SetPen(wx.BLACK_PEN)
-    dc.SetBrush(wx.Brush(Cube2.CubeBody[0][8][2]))
+    dc.SetBrush(wx.Brush(cube_body.CubeBody[0][8][2]))
     dc.DrawRectangle(0, 0, 60, 60)
-    dc.SetBrush(wx.Brush(Cube2.CubeBody[0][7][1]))
+    dc.SetBrush(wx.Brush(cube_body.CubeBody[0][7][1]))
     dc.DrawRectangle(60, 0, 60, 60)
-    dc.SetBrush(wx.Brush(Cube2.CubeBody[0][6][1]))
+    dc.SetBrush(wx.Brush(cube_body.CubeBody[0][6][1]))
     dc.DrawRectangle(120, 0, 60, 60)
-    dc.SetBrush(wx.Brush(Cube2.CubeBody[1][8][1]))
+    dc.SetBrush(wx.Brush(cube_body.CubeBody[1][8][1]))
     dc.DrawRectangle(0, 60, 60, 60)
-    dc.SetBrush(wx.Brush(Cube2.CubeBody[1][7][0]))
+    dc.SetBrush(wx.Brush(cube_body.CubeBody[1][7][0]))
     dc.DrawRectangle(60, 60, 60, 60)
-    dc.SetBrush(wx.Brush(Cube2.CubeBody[1][6][1]))
+    dc.SetBrush(wx.Brush(cube_body.CubeBody[1][6][1]))
     dc.DrawRectangle(120, 60, 60, 60)
-    dc.SetBrush(wx.Brush(Cube2.CubeBody[2][8][1]))
+    dc.SetBrush(wx.Brush(cube_body.CubeBody[2][8][1]))
     dc.DrawRectangle(0, 120, 60, 60)
-    dc.SetBrush(wx.Brush(Cube2.CubeBody[2][7][1]))
+    dc.SetBrush(wx.Brush(cube_body.CubeBody[2][7][1]))
     dc.DrawRectangle(60, 120, 60, 60)
-    dc.SetBrush(wx.Brush(Cube2.CubeBody[2][6][2]))
+    dc.SetBrush(wx.Brush(cube_body.CubeBody[2][6][2]))
     dc.DrawRectangle(120, 120, 60, 60)
 
 
@@ -270,23 +270,23 @@ Cube_left.Bind(wx.EVT_PAINT, On_LEFT_Paint)
 def On_BACK_Paint(event):
     dc = wx.PaintDC(Cube_back)
     dc.SetPen(wx.BLACK_PEN)
-    dc.SetBrush(wx.Brush(Cube2.CubeBody[0][2][2]))
+    dc.SetBrush(wx.Brush(cube_body.CubeBody[0][2][2]))
     dc.DrawRectangle(0, 0, 60, 60)
-    dc.SetBrush(wx.Brush(Cube2.CubeBody[0][5][1]))
+    dc.SetBrush(wx.Brush(cube_body.CubeBody[0][5][1]))
     dc.DrawRectangle(60, 0, 60, 60)
-    dc.SetBrush(wx.Brush(Cube2.CubeBody[0][8][1]))
+    dc.SetBrush(wx.Brush(cube_body.CubeBody[0][8][1]))
     dc.DrawRectangle(120, 0, 60, 60)
-    dc.SetBrush(wx.Brush(Cube2.CubeBody[1][2][0]))
+    dc.SetBrush(wx.Brush(cube_body.CubeBody[1][2][0]))
     dc.DrawRectangle(0, 60, 60, 60)
-    dc.SetBrush(wx.Brush(Cube2.CubeBody[1][5][0]))
+    dc.SetBrush(wx.Brush(cube_body.CubeBody[1][5][0]))
     dc.DrawRectangle(60, 60, 60, 60)
-    dc.SetBrush(wx.Brush(Cube2.CubeBody[1][8][0]))
+    dc.SetBrush(wx.Brush(cube_body.CubeBody[1][8][0]))
     dc.DrawRectangle(120, 60, 60, 60)
-    dc.SetBrush(wx.Brush(Cube2.CubeBody[2][2][1]))
+    dc.SetBrush(wx.Brush(cube_body.CubeBody[2][2][1]))
     dc.DrawRectangle(0, 120, 60, 60)
-    dc.SetBrush(wx.Brush(Cube2.CubeBody[2][5][1]))
+    dc.SetBrush(wx.Brush(cube_body.CubeBody[2][5][1]))
     dc.DrawRectangle(60, 120, 60, 60)
-    dc.SetBrush(wx.Brush(Cube2.CubeBody[2][8][2]))
+    dc.SetBrush(wx.Brush(cube_body.CubeBody[2][8][2]))
     dc.DrawRectangle(120, 120, 60, 60)
 
 
@@ -493,11 +493,11 @@ def spin_All():
 # 키보드 이벤트 설정(단축키 지정 및 키보드 입력 이벤트)
 
 def SAVE():
-    Cube2.sideLeft()
+    cube_body.sideLeft()
     spin_S()
     dialog1 = wx.MessageDialog(main_frame, "저장하시겠습니까?", "저장", wx.CANCEL)
     if dialog1.ShowModal() == wx.ID_OK:
-        Cube2.saveCube()
+        cube_body.saveCube()
         wx.MessageBox("저장했습니다!", "알림", wx.OK)
     else:
         pass
@@ -508,11 +508,11 @@ keyboard.add_hotkey('ctrl+s', lambda: SAVE())
 
 
 def LOAD():
-    Cube2.leftLeft()
+    cube_body.leftLeft()
     spin_L()
     dialog2 = wx.MessageDialog(main_frame, "저장파일을 불러오시겠습니까?", "불러오기", wx.CANCEL)
     if dialog2.ShowModal() == wx.ID_OK:
-        Cube2.loadCube()
+        cube_body.loadCube()
         Cube_up.Refresh()
         Cube_front.Refresh()
         Cube_right.Refresh()
@@ -529,10 +529,10 @@ keyboard.add_hotkey('ctrl+l', lambda: LOAD())
 
 def MIX():
     for mix_num in range(MIX_NUM):
-        Cube2.defNumber()
-        Cube2.mixCube()
+        cube_body.defNumber()
+        cube_body.mixCube()
         time.sleep(TIME)
-        Cube2.defColor()
+        cube_body.defColor()
         spin_All()
 
 
@@ -540,8 +540,8 @@ keyboard.add_hotkey('ctrl+m', lambda: MIX())
 
 
 def CLEAN():
-    Cube2.createCube()
-    Cube2.defColor()
+    cube_body.createCube()
+    cube_body.defColor()
     Cube_up.Refresh()
     Cube_front.Refresh()
     Cube_right.Refresh()
@@ -566,8 +566,8 @@ keyboard.add_hotkey('ctrl+q', lambda: QUIT())
 
 
 def Left_U():
-    Cube2.upLeft()
-    Cube2.upLeft()
+    cube_body.upLeft()
+    cube_body.upLeft()
     spin_U()
     time.sleep(TIME)
 
@@ -576,8 +576,8 @@ keyboard.add_hotkey("shift+u", lambda: Left_U())
 
 
 def Left_H():
-    Cube2.horizonLeft()
-    Cube2.horizonLeft()
+    cube_body.horizonLeft()
+    cube_body.horizonLeft()
     spin_H()
     time.sleep(TIME)
 
@@ -586,8 +586,8 @@ keyboard.add_hotkey("shift+h", lambda: Left_H())
 
 
 def Left_D():
-    Cube2.downLeft()
-    Cube2.downLeft()
+    cube_body.downLeft()
+    cube_body.downLeft()
     spin_D()
     time.sleep(TIME)
 
@@ -596,8 +596,8 @@ keyboard.add_hotkey("shift+d", lambda: Left_D())
 
 
 def Left_R():
-    Cube2.rightLeft()
-    Cube2.rightLeft()
+    cube_body.rightLeft()
+    cube_body.rightLeft()
     spin_R()
     time.sleep(TIME)
 
@@ -606,8 +606,8 @@ keyboard.add_hotkey("shift+r", lambda: Left_R())
 
 
 def Left_M():
-    Cube2.middleLeft()
-    Cube2.middleLeft()
+    cube_body.middleLeft()
+    cube_body.middleLeft()
     spin_M()
     time.sleep(TIME)
 
@@ -616,8 +616,8 @@ keyboard.add_hotkey("shift+m", lambda: Left_M())
 
 
 def Left_L():
-    Cube2.leftLeft()
-    Cube2.leftLeft()
+    cube_body.leftLeft()
+    cube_body.leftLeft()
     spin_L()
     time.sleep(TIME)
 
@@ -626,8 +626,8 @@ keyboard.add_hotkey("shift+l", lambda: Left_L())
 
 
 def Left_F():
-    Cube2.frontLeft()
-    Cube2.frontLeft()
+    cube_body.frontLeft()
+    cube_body.frontLeft()
     spin_F()
     time.sleep(TIME)
 
@@ -636,8 +636,8 @@ keyboard.add_hotkey("shift+f", lambda: Left_F())
 
 
 def Left_S():
-    Cube2.sideLeft()
-    Cube2.sideLeft()
+    cube_body.sideLeft()
+    cube_body.sideLeft()
     spin_S()
     time.sleep(TIME)
 
@@ -646,8 +646,8 @@ keyboard.add_hotkey("shift+s", lambda: Left_S())
 
 
 def Left_B():
-    Cube2.backLeft()
-    Cube2.backLeft()
+    cube_body.backLeft()
+    cube_body.backLeft()
     spin_B()
     time.sleep(TIME)
 
@@ -656,8 +656,8 @@ keyboard.add_hotkey("shift+b", lambda: Left_B())
 
 
 def Left_X():
-    Cube2.xLeft()
-    Cube2.xLeft()
+    cube_body.xLeft()
+    cube_body.xLeft()
     spin_All()
     time.sleep(TIME)
 
@@ -666,8 +666,8 @@ keyboard.add_hotkey("shift+x", lambda: Left_X())
 
 
 def Left_Y():
-    Cube2.yLeft()
-    Cube2.yLeft()
+    cube_body.yLeft()
+    cube_body.yLeft()
     spin_All()
     time.sleep(TIME)
 
@@ -676,8 +676,8 @@ keyboard.add_hotkey("shift+y", lambda: Left_Y())
 
 
 def Left_Z():
-    Cube2.zLeft()
-    Cube2.zLeft()
+    cube_body.zLeft()
+    cube_body.zLeft()
     spin_All()
     time.sleep(TIME)
 
@@ -687,51 +687,51 @@ keyboard.add_hotkey("shift+z", lambda: Left_Z())
 
 def on_Key(event):
     if keyboard.is_pressed('u'):
-        Cube2.upRight()
+        cube_body.upRight()
         spin_U()
         time.sleep(TIME)
     elif keyboard.is_pressed('h'):
-        Cube2.horizonRight()
+        cube_body.horizonRight()
         spin_H()
         time.sleep(TIME)
     elif keyboard.is_pressed('d'):
-        Cube2.downRight()
+        cube_body.downRight()
         spin_D()
         time.sleep(TIME)
     elif keyboard.is_pressed('r'):
-        Cube2.rightRight()
+        cube_body.rightRight()
         spin_R()
         time.sleep(TIME)
     elif keyboard.is_pressed('m'):
-        Cube2.middleRight()
+        cube_body.middleRight()
         spin_M()
         time.sleep(TIME)
     elif keyboard.is_pressed('l'):
-        Cube2.leftRight()
+        cube_body.leftRight()
         spin_L()
         time.sleep(TIME)
     elif keyboard.is_pressed('f'):
-        Cube2.frontRight()
+        cube_body.frontRight()
         spin_F()
         time.sleep(TIME)
     elif keyboard.is_pressed('s'):
-        Cube2.sideRight()
+        cube_body.sideRight()
         spin_S()
         time.sleep(TIME)
     elif keyboard.is_pressed('b'):
-        Cube2.backRight()
+        cube_body.backRight()
         spin_B()
         time.sleep(TIME)
     elif keyboard.is_pressed('x'):
-        Cube2.xRight()
+        cube_body.xRight()
         spin_All()
         time.sleep(TIME)
     elif keyboard.is_pressed('y'):
-        Cube2.yRight()
+        cube_body.yRight()
         spin_All()
         time.sleep(TIME)
     elif keyboard.is_pressed('z'):
-        Cube2.zRight()
+        cube_body.zRight()
         spin_All()
         time.sleep(TIME)
     else:
@@ -744,7 +744,7 @@ main_frame.Bind(wx.EVT_KEY_DOWN, on_Key)
 # 버튼 이벤트 설정
 
 def onU_R(event):
-    Cube2.upRight()
+    cube_body.upRight()
     Cube_up.Bind(wx.EVT_PAINT, On_UP_Paint)
     Cube_front.Bind(wx.EVT_PAINT, On_FRONT_Paint)
     Cube_right.Bind(wx.EVT_PAINT, On_RIGHT_Paint)
@@ -761,7 +761,7 @@ U_R.Bind(wx.EVT_BUTTON, onU_R)
 
 
 def onU_L(event):
-    Cube2.upLeft()
+    cube_body.upLeft()
     Cube_up.Bind(wx.EVT_PAINT, On_UP_Paint)
     Cube_front.Bind(wx.EVT_PAINT, On_FRONT_Paint)
     Cube_right.Bind(wx.EVT_PAINT, On_RIGHT_Paint)
@@ -778,7 +778,7 @@ U_L.Bind(wx.EVT_BUTTON, onU_L)
 
 
 def onH_R(event):
-    Cube2.horizonRight()
+    cube_body.horizonRight()
     Cube_front.Bind(wx.EVT_PAINT, On_FRONT_Paint)
     Cube_right.Bind(wx.EVT_PAINT, On_RIGHT_Paint)
     Cube_left.Bind(wx.EVT_PAINT, On_LEFT_Paint)
@@ -793,7 +793,7 @@ H_R.Bind(wx.EVT_BUTTON, onH_R)
 
 
 def onH_L(event):
-    Cube2.horizonLeft()
+    cube_body.horizonLeft()
     Cube_front.Bind(wx.EVT_PAINT, On_FRONT_Paint)
     Cube_right.Bind(wx.EVT_PAINT, On_RIGHT_Paint)
     Cube_left.Bind(wx.EVT_PAINT, On_LEFT_Paint)
@@ -808,7 +808,7 @@ H_L.Bind(wx.EVT_BUTTON, onH_L)
 
 
 def onD_R(event):
-    Cube2.downRight()
+    cube_body.downRight()
     Cube_front.Bind(wx.EVT_PAINT, On_FRONT_Paint)
     Cube_right.Bind(wx.EVT_PAINT, On_RIGHT_Paint)
     Cube_left.Bind(wx.EVT_PAINT, On_LEFT_Paint)
@@ -825,7 +825,7 @@ D_R.Bind(wx.EVT_BUTTON, onD_R)
 
 
 def onD_L(event):
-    Cube2.downLeft()
+    cube_body.downLeft()
     Cube_front.Bind(wx.EVT_PAINT, On_FRONT_Paint)
     Cube_right.Bind(wx.EVT_PAINT, On_RIGHT_Paint)
     Cube_left.Bind(wx.EVT_PAINT, On_LEFT_Paint)
@@ -842,7 +842,7 @@ D_L.Bind(wx.EVT_BUTTON, onD_L)
 
 
 def onR_R(event):
-    Cube2.rightRight()
+    cube_body.rightRight()
     Cube_up.Bind(wx.EVT_PAINT, On_UP_Paint)
     Cube_front.Bind(wx.EVT_PAINT, On_FRONT_Paint)
     Cube_right.Bind(wx.EVT_PAINT, On_RIGHT_Paint)
@@ -859,7 +859,7 @@ R_R.Bind(wx.EVT_BUTTON, onR_R)
 
 
 def onR_L(event):
-    Cube2.rightLeft()
+    cube_body.rightLeft()
     Cube_up.Bind(wx.EVT_PAINT, On_UP_Paint)
     Cube_front.Bind(wx.EVT_PAINT, On_FRONT_Paint)
     Cube_right.Bind(wx.EVT_PAINT, On_RIGHT_Paint)
@@ -876,7 +876,7 @@ R_L.Bind(wx.EVT_BUTTON, onR_L)
 
 
 def onM_R(event):
-    Cube2.middleRight()
+    cube_body.middleRight()
     Cube_up.Bind(wx.EVT_PAINT, On_UP_Paint)
     Cube_front.Bind(wx.EVT_PAINT, On_FRONT_Paint)
     Cube_down.Bind(wx.EVT_PAINT, On_DOWN_Paint)
@@ -891,7 +891,7 @@ M_R.Bind(wx.EVT_BUTTON, onM_R)
 
 
 def onM_L(event):
-    Cube2.middleLeft()
+    cube_body.middleLeft()
     Cube_up.Bind(wx.EVT_PAINT, On_UP_Paint)
     Cube_front.Bind(wx.EVT_PAINT, On_FRONT_Paint)
     Cube_down.Bind(wx.EVT_PAINT, On_DOWN_Paint)
@@ -906,7 +906,7 @@ M_L.Bind(wx.EVT_BUTTON, onM_L)
 
 
 def onL_R(event):
-    Cube2.leftRight()
+    cube_body.leftRight()
     Cube_up.Bind(wx.EVT_PAINT, On_UP_Paint)
     Cube_front.Bind(wx.EVT_PAINT, On_FRONT_Paint)
     Cube_down.Bind(wx.EVT_PAINT, On_DOWN_Paint)
@@ -923,7 +923,7 @@ L_R.Bind(wx.EVT_BUTTON, onL_R)
 
 
 def onL_L(event):
-    Cube2.leftLeft()
+    cube_body.leftLeft()
     Cube_up.Bind(wx.EVT_PAINT, On_UP_Paint)
     Cube_front.Bind(wx.EVT_PAINT, On_FRONT_Paint)
     Cube_down.Bind(wx.EVT_PAINT, On_DOWN_Paint)
@@ -940,7 +940,7 @@ L_L.Bind(wx.EVT_BUTTON, onL_L)
 
 
 def onF_R(event):
-    Cube2.frontRight()
+    cube_body.frontRight()
     Cube_up.Bind(wx.EVT_PAINT, On_UP_Paint)
     Cube_front.Bind(wx.EVT_PAINT, On_FRONT_Paint)
     Cube_down.Bind(wx.EVT_PAINT, On_DOWN_Paint)
@@ -957,7 +957,7 @@ F_R.Bind(wx.EVT_BUTTON, onF_R)
 
 
 def onF_L(event):
-    Cube2.frontLeft()
+    cube_body.frontLeft()
     Cube_up.Bind(wx.EVT_PAINT, On_UP_Paint)
     Cube_front.Bind(wx.EVT_PAINT, On_FRONT_Paint)
     Cube_down.Bind(wx.EVT_PAINT, On_DOWN_Paint)
@@ -974,7 +974,7 @@ F_L.Bind(wx.EVT_BUTTON, onF_L)
 
 
 def onS_R(event):
-    Cube2.sideRight()
+    cube_body.sideRight()
     Cube_up.Bind(wx.EVT_PAINT, On_UP_Paint)
     Cube_down.Bind(wx.EVT_PAINT, On_DOWN_Paint)
     Cube_right.Bind(wx.EVT_PAINT, On_RIGHT_Paint)
@@ -989,7 +989,7 @@ S_R.Bind(wx.EVT_BUTTON, onS_R)
 
 
 def onS_L(event):
-    Cube2.sideLeft()
+    cube_body.sideLeft()
     Cube_up.Bind(wx.EVT_PAINT, On_UP_Paint)
     Cube_down.Bind(wx.EVT_PAINT, On_DOWN_Paint)
     Cube_right.Bind(wx.EVT_PAINT, On_RIGHT_Paint)
@@ -1004,7 +1004,7 @@ S_L.Bind(wx.EVT_BUTTON, onS_L)
 
 
 def onB_R(event):
-    Cube2.backRight()
+    cube_body.backRight()
     Cube_up.Bind(wx.EVT_PAINT, On_UP_Paint)
     Cube_down.Bind(wx.EVT_PAINT, On_DOWN_Paint)
     Cube_right.Bind(wx.EVT_PAINT, On_RIGHT_Paint)
@@ -1021,7 +1021,7 @@ B_R.Bind(wx.EVT_BUTTON, onB_R)
 
 
 def onB_L(event):
-    Cube2.backLeft()
+    cube_body.backLeft()
     Cube_up.Bind(wx.EVT_PAINT, On_UP_Paint)
     Cube_down.Bind(wx.EVT_PAINT, On_DOWN_Paint)
     Cube_right.Bind(wx.EVT_PAINT, On_RIGHT_Paint)
@@ -1038,7 +1038,7 @@ B_L.Bind(wx.EVT_BUTTON, onB_L)
 
 
 def onX_R(event):
-    Cube2.xRight()
+    cube_body.xRight()
     Cube_up.Bind(wx.EVT_PAINT, On_UP_Paint)
     Cube_front.Bind(wx.EVT_PAINT, On_FRONT_Paint)
     Cube_down.Bind(wx.EVT_PAINT, On_DOWN_Paint)
@@ -1057,7 +1057,7 @@ X_R.Bind(wx.EVT_BUTTON, onX_R)
 
 
 def onX_L(event):
-    Cube2.xLeft()
+    cube_body.xLeft()
     Cube_up.Bind(wx.EVT_PAINT, On_UP_Paint)
     Cube_front.Bind(wx.EVT_PAINT, On_FRONT_Paint)
     Cube_down.Bind(wx.EVT_PAINT, On_DOWN_Paint)
@@ -1076,7 +1076,7 @@ X_L.Bind(wx.EVT_BUTTON, onX_L)
 
 
 def onY_R(event):
-    Cube2.yRight()
+    cube_body.yRight()
     Cube_up.Bind(wx.EVT_PAINT, On_UP_Paint)
     Cube_front.Bind(wx.EVT_PAINT, On_FRONT_Paint)
     Cube_down.Bind(wx.EVT_PAINT, On_DOWN_Paint)
@@ -1095,7 +1095,7 @@ Y_R.Bind(wx.EVT_BUTTON, onY_R)
 
 
 def onY_L(event):
-    Cube2.yLeft()
+    cube_body.yLeft()
     Cube_up.Bind(wx.EVT_PAINT, On_UP_Paint)
     Cube_front.Bind(wx.EVT_PAINT, On_FRONT_Paint)
     Cube_down.Bind(wx.EVT_PAINT, On_DOWN_Paint)
@@ -1114,7 +1114,7 @@ Y_L.Bind(wx.EVT_BUTTON, onY_L)
 
 
 def onZ_R(event):
-    Cube2.zRight()
+    cube_body.zRight()
     Cube_up.Bind(wx.EVT_PAINT, On_UP_Paint)
     Cube_front.Bind(wx.EVT_PAINT, On_FRONT_Paint)
     Cube_down.Bind(wx.EVT_PAINT, On_DOWN_Paint)
@@ -1133,7 +1133,7 @@ Z_R.Bind(wx.EVT_BUTTON, onZ_R)
 
 
 def onZ_L(event):
-    Cube2.zLeft()
+    cube_body.zLeft()
     Cube_up.Bind(wx.EVT_PAINT, On_UP_Paint)
     Cube_front.Bind(wx.EVT_PAINT, On_FRONT_Paint)
     Cube_down.Bind(wx.EVT_PAINT, On_DOWN_Paint)
@@ -1313,7 +1313,7 @@ main_frame.Bind(wx.EVT_MENU, onAbout, about)
 
 
 def onSave(event):
-    Cube2.saveCube()
+    cube_body.saveCube()
     wx.MessageBox("저장했습니다!", "알림", wx.OK)
 
 
@@ -1321,7 +1321,7 @@ main_frame.Bind(wx.EVT_MENU, onSave, save)
 
 
 def onLoad(event):
-    Cube2.loadCube()
+    cube_body.loadCube()
     Cube_up.Refresh()
     Cube_front.Refresh()
     Cube_right.Refresh()
@@ -1375,9 +1375,9 @@ main_frame.Bind(wx.EVT_MENU, onZ_L, z_l)
 # 메뉴-도구(세부설정)
 
 def onMix(event):
-    Cube2.defNumber()
+    cube_body.defNumber()
     for mix_num in range(MIX_NUM):
-        Cube2.mixCube()
+        cube_body.mixCube()
         time.sleep(TIME)
         Cube_up.Bind(wx.EVT_PAINT, On_UP_Paint)
         Cube_front.Bind(wx.EVT_PAINT, On_FRONT_Paint)
@@ -1391,15 +1391,15 @@ def onMix(event):
         Cube_left.Refresh()
         Cube_back.Refresh()
         Cube_down.Refresh()
-    Cube2.defColor()
+    cube_body.defColor()
 
 
 main_frame.Bind(wx.EVT_MENU, onMix, mix)
 
 
 def onClean(event):
-    Cube2.createCube()
-    Cube2.defColor()
+    cube_body.createCube()
+    cube_body.defColor()
     Cube_up.Refresh()
     Cube_front.Refresh()
     Cube_right.Refresh()
@@ -1571,8 +1571,8 @@ result = wx.StaticText(implementation_frame, label='결과: ' + '%d' % turn_poin
 
 #    text = Node()
 def onClick_imple(event):
-    Cube2.createCube()
-    Cube2.defColor()
+    cube_body.createCube()
+    cube_body.defColor()
     spin_All()
 
     def TURN_NUM(event):
@@ -1581,110 +1581,110 @@ def onClick_imple(event):
             text = turn_num.GetValue()
             #            text.p_Next.append(text)
             for t in text:
-                Cube2.defNumber()
+                cube_body.defNumber()
                 turn_point += 1
                 if t == 'u':
-                    Cube2.upRight()
+                    cube_body.upRight()
                     spin_U()
                     time.sleep(TIME)
                 elif t == 'U':
-                    Cube2.upLeft()
+                    cube_body.upLeft()
                     spin_U()
                     time.sleep(TIME)
                 elif t == 'd':
-                    Cube2.downRight()
+                    cube_body.downRight()
                     spin_D()
                     time.sleep(TIME)
                 elif t == 'D':
-                    Cube2.downLeft()
+                    cube_body.downLeft()
                     spin_D()
                     time.sleep(TIME)
                 elif t == 'r':
-                    Cube2.rightRight()
+                    cube_body.rightRight()
                     spin_R()
                     time.sleep(TIME)
                 elif t == 'R':
-                    Cube2.rightLeft()
+                    cube_body.rightLeft()
                     spin_R()
                     time.sleep(TIME)
                 elif t == 'l':
-                    Cube2.leftRight()
+                    cube_body.leftRight()
                     spin_L()
                     time.sleep(TIME)
                 elif t == 'L':
-                    Cube2.leftLeft()
+                    cube_body.leftLeft()
                     spin_L()
                     time.sleep(TIME)
                 elif t == 'f':
-                    Cube2.frontRight()
+                    cube_body.frontRight()
                     spin_F()
                     time.sleep(TIME)
                 elif t == 'F':
-                    Cube2.frontLeft()
+                    cube_body.frontLeft()
                     spin_F()
                     time.sleep(TIME)
                 elif t == 'b':
-                    Cube2.backRight()
+                    cube_body.backRight()
                     spin_B()
                     time.sleep(TIME)
                 elif t == 'B':
-                    Cube2.backLeft()
+                    cube_body.backLeft()
                     spin_B()
                     time.sleep(TIME)
                 elif t == 'h':
-                    Cube2.horizonRight()
+                    cube_body.horizonRight()
                     spin_H()
                     time.sleep(TIME)
                 elif t == 'H':
-                    Cube2.horizonLeft()
+                    cube_body.horizonLeft()
                     spin_H()
                     time.sleep(TIME)
                 elif t == 'm':
-                    Cube2.middleRight()
+                    cube_body.middleRight()
                     spin_M()
                     time.sleep(TIME)
                 elif t == 'M':
-                    Cube2.middleLeft()
+                    cube_body.middleLeft()
                     spin_M()
                     time.sleep(TIME)
                 elif t == 's':
-                    Cube2.sideRight()
+                    cube_body.sideRight()
                     spin_S()
                     time.sleep(TIME)
                 elif t == 'S':
-                    Cube2.sideLeft()
+                    cube_body.sideLeft()
                     spin_S()
                     time.sleep(TIME)
                 elif t == 'x':
-                    Cube2.xRight()
+                    cube_body.xRight()
                     spin_All()
                     time.sleep(TIME)
                 elif t == 'X':
-                    Cube2.xLeft()
+                    cube_body.xLeft()
                     spin_All()
                     time.sleep(TIME)
                 elif t == 'y':
-                    Cube2.yRight()
+                    cube_body.yRight()
                     spin_All()
                     time.sleep(TIME)
                 elif t == 'Y':
-                    Cube2.yLeft()
+                    cube_body.yLeft()
                     spin_All()
                     time.sleep(TIME)
                 elif t == 'z':
-                    Cube2.zRight()
+                    cube_body.zRight()
                     spin_All()
                     time.sleep(TIME)
                 elif t == 'Z':
-                    Cube2.zLeft()
+                    cube_body.zLeft()
                     spin_All()
                     time.sleep(TIME)
                 elif t != turn_list[0:23]:
                     wx.MessageBox('%c' % t + "는 잘못된 입력값 입니다.", "경고", wx.OK)
                     break
-                elif (Cube2.clearCube() == 0):
+                elif (cube_body.clearCube() == 0):
                     result.SetLabel('결과: ' + '%d' % turn_point)
-                    Cube2.defColor()
+                    cube_body.defColor()
                     break
                 else:
                     continue

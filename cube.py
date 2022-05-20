@@ -55,7 +55,7 @@ class CubeBody:
         myCube[floor][piece][1] = pieceRegister[0]
         myCube[floor][piece][2] = pieceRegister[1]
 
-    def elementMirror(self, floor, piece):
+    def elementReverse(self, floor, piece):
         """큐브의 엣지조각을 반전시킨다.  입력방식 : Element_Mirror(floor, piece)"""
         pieceRegister[0:2] = myCube[floor][piece][0:2]
         myCube[floor][piece][0] = pieceRegister[1]
@@ -96,10 +96,10 @@ class CubeBody:
         myCube[1][6] = cubeRegister[1][0]
         myCube[1][7] = cubeRegister[1][3]
         myCube[1][8] = cubeRegister[1][6]
-        self.elementMirror(1, 0)
-        self.elementMirror(1, 2)
-        self.elementMirror(1, 6)
-        self.elementMirror(1, 8)
+        self.elementReverse(1, 0)
+        self.elementReverse(1, 2)
+        self.elementReverse(1, 6)
+        self.elementReverse(1, 8)
 
     def horizonLeft(self):
         """윗면과 아랫면 사이층을 시계 반대방향으로 회전한다."""
@@ -112,10 +112,10 @@ class CubeBody:
         myCube[1][6] = cubeRegister[1][8]
         myCube[1][7] = cubeRegister[1][5]
         myCube[1][8] = cubeRegister[1][2]
-        self.elementMirror(1, 0)
-        self.elementMirror(1, 2)
-        self.elementMirror(1, 6)
-        self.elementMirror(1, 8)
+        self.elementReverse(1, 0)
+        self.elementReverse(1, 2)
+        self.elementReverse(1, 6)
+        self.elementReverse(1, 8)
 
     def downRight(self):
         """아랫면을 시계방향으로 회전한다."""
@@ -190,10 +190,10 @@ class CubeBody:
         myCube[2][3] = cubeRegister[2][5]
         myCube[2][4] = cubeRegister[1][5]
         myCube[2][5] = cubeRegister[0][5]
-        self.elementMirror(0, 3)
-        self.elementMirror(0, 5)
-        self.elementMirror(2, 3)
-        self.elementMirror(2, 5)
+        self.elementReverse(0, 3)
+        self.elementReverse(0, 5)
+        self.elementReverse(2, 3)
+        self.elementReverse(2, 5)
 
     def middleLeft(self):
         """오른쪽 면과 왼쪽 면의 사이층을 오른 축에 대해 시계 반대방향으로 회전한다."""
@@ -208,10 +208,10 @@ class CubeBody:
         myCube[2][3] = cubeRegister[0][3]
         myCube[2][4] = cubeRegister[1][3]
         myCube[2][5] = cubeRegister[2][3]
-        self.elementMirror(0, 3)
-        self.elementMirror(0, 5)
-        self.elementMirror(2, 3)
-        self.elementMirror(2, 5)
+        self.elementReverse(0, 3)
+        self.elementReverse(0, 5)
+        self.elementReverse(2, 3)
+        self.elementReverse(2, 5)
 
     def leftRight(self):
         """왼쪽 면을 시계방향으로 회전한다."""
@@ -263,12 +263,12 @@ class CubeBody:
         myCube[2][3] = cubeRegister[1][1]
         myCube[2][0] = cubeRegister[0][2]
         self.elementCounterclockwise(0, 6)
-        self.elementMirror(0, 3)
+        self.elementReverse(0, 3)
         self.elementClockwise(0, 0)
-        self.elementMirror(1, 6)
-        self.elementMirror(1, 0)
+        self.elementReverse(1, 6)
+        self.elementReverse(1, 0)
         self.elementClockwise(2, 6)
-        self.elementMirror(2, 3)
+        self.elementReverse(2, 3)
         self.elementCounterclockwise(2, 0)
 
     def frontLeft(self):
@@ -285,12 +285,12 @@ class CubeBody:
         myCube[2][3] = cubeRegister[1][0]
         myCube[2][0] = cubeRegister[2][0]
         self.elementCounterclockwise(0, 6)
-        self.elementMirror(0, 3)
+        self.elementReverse(0, 3)
         self.elementClockwise(0, 0)
-        self.elementMirror(1, 6)
-        self.elementMirror(1, 0)
+        self.elementReverse(1, 6)
+        self.elementReverse(1, 0)
         self.elementClockwise(2, 6)
-        self.elementMirror(2, 3)
+        self.elementReverse(2, 3)
         self.elementCounterclockwise(2, 0)
 
     def sideRight(self):
@@ -306,10 +306,10 @@ class CubeBody:
         myCube[2][7] = cubeRegister[2][2]
         myCube[2][4] = cubeRegister[1][1]
         myCube[2][1] = cubeRegister[0][2]
-        self.elementMirror(0, 7)
-        self.elementMirror(0, 1)
-        self.elementMirror(2, 7)
-        self.elementMirror(2, 1)
+        self.elementReverse(0, 7)
+        self.elementReverse(0, 1)
+        self.elementReverse(2, 7)
+        self.elementReverse(2, 1)
 
     def sideLeft(self):
         """앞면과 뒷면의 사이층을 앞축에 대해 시계 반대방향으로 회전한다."""
@@ -324,10 +324,10 @@ class CubeBody:
         myCube[2][7] = cubeRegister[0][0]
         myCube[2][4] = cubeRegister[1][0]
         myCube[2][1] = cubeRegister[2][0]
-        self.elementMirror(0, 7)
-        self.elementMirror(0, 1)
-        self.elementMirror(2, 7)
-        self.elementMirror(2, 1)
+        self.elementReverse(0, 7)
+        self.elementReverse(0, 1)
+        self.elementReverse(2, 7)
+        self.elementReverse(2, 1)
 
     def backRight(self):
         """뒷면을 시계방향으로 회전한다."""
@@ -343,12 +343,12 @@ class CubeBody:
         myCube[2][5] = cubeRegister[1][0]
         myCube[2][8] = cubeRegister[0][0]
         self.elementCounterclockwise(0, 2)
-        self.elementMirror(0, 5)
+        self.elementReverse(0, 5)
         self.elementClockwise(0, 8)
-        self.elementMirror(1, 2)
-        self.elementMirror(1, 8)
+        self.elementReverse(1, 2)
+        self.elementReverse(1, 8)
         self.elementClockwise(2, 2)
-        self.elementMirror(2, 5)
+        self.elementReverse(2, 5)
         self.elementCounterclockwise(2, 8)
 
     def backLeft(self):
@@ -365,12 +365,12 @@ class CubeBody:
         myCube[2][5] = cubeRegister[1][1]
         myCube[2][8] = cubeRegister[2][2]
         self.elementCounterclockwise(0, 2)
-        self.elementMirror(0, 5)
+        self.elementReverse(0, 5)
         self.elementClockwise(0, 8)
-        self.elementMirror(1, 2)
-        self.elementMirror(1, 8)
+        self.elementReverse(1, 2)
+        self.elementReverse(1, 8)
         self.elementClockwise(2, 2)
-        self.elementMirror(2, 5)
+        self.elementReverse(2, 5)
         self.elementCounterclockwise(2, 8)
 
     def xRight(self):

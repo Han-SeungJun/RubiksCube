@@ -1,15 +1,19 @@
-<h1> 큐브 프로젝트 🎲🧊 </h1>
+<h1> Cube Project 🎲🧊 </h1>
 
-  <h3> 파이썬 기반의 큐브 프로그램을 만들어보자! </h3>
+  <h3> Let's make a cube program in python! </h3>
 
-  <h6> 이 프로젝트는 사람들에게 잘 알려진 3×3×3 큐브를 프로그램으로 만든 것이다. </h6>
+  <h6> This project is a program made of a well-known 3×3×3 cube in everyone. </h6>
 
-  <h6> 어느정도 예상은 했겠지만 큐브의 데이터는 3차원 배열로 이뤄져 있다. </h6>
+  <h6> As you might have expected, the cube is composed of a three-dimensional array. </h6>
 
-  <h6> 하지만 큐브의 회전은 90도 회전변환이어서 이것을 함수로 구현하는 것은 꽤나 복잡하다. </h6>
+  <h6> But implementing this as a function is quite complicated. </h6>
 
-  <h6> 하지만 프로젝트 설명을 잘 따라오면 단순한 구현 뿐만 아니라 어떤 알고리즘으로 이뤄지는지도 이해할 수 있을 것이다. </h6>
+  <h6> Because, the rotation of the cube is a 90degree rotation transformation. </h6>
+
+  <h6> The rotation of the cube causes the color data of each piece to be transformed into a non-linear mechanism. </h6>
+
+  <h6> However, this project description will allow you to understand not only a simple implementation, but also what algorithm it is  made of. </h6>
   
-  <h6> 각설하고.. </h6>
+  <h6> Without further ado.. </h6>
   
   <h3> Let's play cube! 😉~ </h3>

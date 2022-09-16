@@ -3,9 +3,7 @@ import time
 import cube
 import keyboard
 
-cube_body = cube.CubeBody(MIX_NUM=60, TIME=0.01)
-MIX_NUM = 60
-TIME = 0.01
+cube_body = cube.CubeBody()
 
 cube_body.createCube()
 cube_body.defColor()

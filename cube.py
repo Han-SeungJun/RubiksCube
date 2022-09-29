@@ -471,44 +471,45 @@ class CubeBody:
             return 1
 
     def mixCube(self):
-        self.CUBE_MIX_CEED = random.randint(1, 18)
+        for mix in mix_num:
+            self.CUBE_MIX_CEED = random.randint(1, 18)
 
-        if (self.CUBE_MIX_CEED == 1):
-            self.upRight()
-        elif (self.CUBE_MIX_CEED == 2):
-            self.upLeft()
-        elif (self.CUBE_MIX_CEED == 3):
-            self.horizonRight()
-        elif (self.CUBE_MIX_CEED == 4):
-            self.horizonLeft()
-        elif (self.CUBE_MIX_CEED == 5):
-            self.downRight()
-        elif (self.CUBE_MIX_CEED == 6):
-            self.downLeft()
-        elif (self.CUBE_MIX_CEED == 7):
-            self.rightRight()
-        elif (self.CUBE_MIX_CEED == 8):
-            self.rightLeft()
-        elif (self.CUBE_MIX_CEED == 9):
-            self.middleRight()
-        elif (self.CUBE_MIX_CEED == 10):
-            self.middleLeft()
-        elif (self.CUBE_MIX_CEED == 11):
-            self.leftRight()
-        elif (self.CUBE_MIX_CEED == 12):
-            self.leftLeft()
-        elif (self.CUBE_MIX_CEED == 13):
-            self.frontRight()
-        elif (self.CUBE_MIX_CEED == 14):
-            self.frontLeft()
-        elif (self.CUBE_MIX_CEED == 15):
-            self.sideRight()
-        elif (self.CUBE_MIX_CEED == 16):
-            self.sideLeft()
-        elif (self.CUBE_MIX_CEED == 17):
-            self.backRight()
-        elif (self.CUBE_MIX_CEED == 18):
-            self.backLeft()
+            if (self.CUBE_MIX_CEED == 1):
+                self.upRight()
+            elif (self.CUBE_MIX_CEED == 2):
+                self.upLeft()
+            elif (self.CUBE_MIX_CEED == 3):
+                self.horizonRight()
+            elif (self.CUBE_MIX_CEED == 4):
+                self.horizonLeft()
+            elif (self.CUBE_MIX_CEED == 5):
+                self.downRight()
+            elif (self.CUBE_MIX_CEED == 6):
+                self.downLeft()
+            elif (self.CUBE_MIX_CEED == 7):
+                self.rightRight()
+            elif (self.CUBE_MIX_CEED == 8):
+                self.rightLeft()
+            elif (self.CUBE_MIX_CEED == 9):
+                self.middleRight()
+            elif (self.CUBE_MIX_CEED == 10):
+                self.middleLeft()
+            elif (self.CUBE_MIX_CEED == 11):
+                self.leftRight()
+            elif (self.CUBE_MIX_CEED == 12):
+                self.leftLeft()
+            elif (self.CUBE_MIX_CEED == 13):
+                self.frontRight()
+            elif (self.CUBE_MIX_CEED == 14):
+                self.frontLeft()
+            elif (self.CUBE_MIX_CEED == 15):
+                self.sideRight()
+            elif (self.CUBE_MIX_CEED == 16):
+                self.sideLeft()
+            elif (self.CUBE_MIX_CEED == 17):
+                self.backRight()
+            elif (self.CUBE_MIX_CEED == 18):
+                self.backLeft()
 
     def saveCube(self):
         """큐브 데이터를 저장하는 함수"""

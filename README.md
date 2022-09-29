@@ -1,6 +1,8 @@
-<h1> Cube Project 🎲🧊 </h1>
+<h1> Cube Emulator 🎲🧊 </h1>
 
-  <h3> Let's make a cube program in python! </h3>
+  <h3> Let's make a cube Emulator in python! </h3>
+  
+  ![cube_ui](https://user-images.githubusercontent.com/105290026/192979037-34962af3-eaf3-4153-a8a5-9fa64b6ec1df.jpg)
 
   <h6> This project is a program made of a well-known 3×3×3 cube in everyone. </h6>
 

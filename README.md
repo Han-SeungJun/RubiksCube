@@ -18,4 +18,4 @@
   
   <h6> Without further ado.. </h6>
   
-  <h3> Let's play cube! 😉~ </h3>
+  <h3> Let's play cube~ </h3>

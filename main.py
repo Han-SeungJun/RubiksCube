@@ -127,7 +127,7 @@ box.Add(lbl3, flag=wx.ALIGN_RIGHT)
 
 # 큐브윗면 그래픽 디자인
 
-def On_UP_Paint(event):
+def On_up_paint(event):
     dc = wx.PaintDC(Cube_up)
     dc.SetPen(wx.BLACK_PEN)
     dc.SetBrush(wx.Brush(cube_body.myCube[0][8][0]))
@@ -149,13 +149,11 @@ def On_UP_Paint(event):
     dc.SetBrush(wx.Brush(cube_body.myCube[0][0][0]))
     dc.DrawRectangle(120, 120, 60, 60)
 
-
-Cube_up.Bind(wx.EVT_PAINT, On_UP_Paint)
-
+Cube_up.Bind(wx.EVT_PAINT, On_up_paint)
 
 # 큐브앞면 그래픽 디자인
 
-def On_FRONT_Paint(event):
+def On_front_paint(event):
     dc = wx.PaintDC(Cube_front)
     dc.SetPen(wx.BLACK_PEN)
     dc.SetBrush(wx.Brush(cube_body.myCube[0][6][2]))
@@ -177,13 +175,11 @@ def On_FRONT_Paint(event):
     dc.SetBrush(wx.Brush(cube_body.myCube[2][0][2]))
     dc.DrawRectangle(120, 120, 60, 60)
 
-
-Cube_front.Bind(wx.EVT_PAINT, On_FRONT_Paint)
-
+Cube_front.Bind(wx.EVT_PAINT, On_front_paint)
 
 # 큐브밑면 그래픽 디자인
 
-def On_DOWN_Paint(event):
+def On_down_paint(event):
     dc = wx.PaintDC(Cube_down)
     dc.SetPen(wx.BLACK_PEN)
     dc.SetBrush(wx.Brush(cube_body.myCube[2][6][0]))
@@ -205,13 +201,11 @@ def On_DOWN_Paint(event):
     dc.SetBrush(wx.Brush(cube_body.myCube[2][2][0]))
     dc.DrawRectangle(120, 120, 60, 60)
 
-
-Cube_down.Bind(wx.EVT_PAINT, On_DOWN_Paint)
-
+Cube_down.Bind(wx.EVT_PAINT, On_down_paint)
 
 # 큐브오른쪽면 디자인
 
-def On_RIGHT_Paint(event):
+def On_right_paint(event):
     dc = wx.PaintDC(Cube_right)
     dc.SetPen(wx.BLACK_PEN)
     dc.SetBrush(wx.Brush(cube_body.myCube[0][0][2]))
@@ -233,13 +227,11 @@ def On_RIGHT_Paint(event):
     dc.SetBrush(wx.Brush(cube_body.myCube[2][2][2]))
     dc.DrawRectangle(120, 120, 60, 60)
 
-
-Cube_right.Bind(wx.EVT_PAINT, On_RIGHT_Paint)
-
+Cube_right.Bind(wx.EVT_PAINT, On_right_paint)
 
 # 큐브왼쪽면 디자인
 
-def On_LEFT_Paint(event):
+def On_left_paint(event):
     dc = wx.PaintDC(Cube_left)
     dc.SetPen(wx.BLACK_PEN)
     dc.SetBrush(wx.Brush(cube_body.myCube[0][8][2]))
@@ -261,13 +253,11 @@ def On_LEFT_Paint(event):
     dc.SetBrush(wx.Brush(cube_body.myCube[2][6][2]))
     dc.DrawRectangle(120, 120, 60, 60)
 
-
-Cube_left.Bind(wx.EVT_PAINT, On_LEFT_Paint)
-
+Cube_left.Bind(wx.EVT_PAINT, On_left_paint)
 
 # 큐브뒷면 디자인
 
-def On_BACK_Paint(event):
+def On_back_paint(event):
     dc = wx.PaintDC(Cube_back)
     dc.SetPen(wx.BLACK_PEN)
     dc.SetBrush(wx.Brush(cube_body.myCube[0][8][1]))
@@ -289,8 +279,7 @@ def On_BACK_Paint(event):
     dc.SetBrush(wx.Brush(cube_body.myCube[2][2][1]))
     dc.DrawRectangle(120, 120, 60, 60)
 
-
-Cube_back.Bind(wx.EVT_PAINT, On_BACK_Paint)
+Cube_back.Bind(wx.EVT_PAINT, On_back_paint)
 
 # ## 메인 리모콘 윈도우 셋팅 (버튼 & 설명)
 
@@ -365,11 +354,11 @@ box.Add(panel_Inform)
 # 큐브 회전이벤트 함수 생성
 
 def spin_U():
-    Cube_up.Bind(wx.EVT_PAINT, On_UP_Paint)
-    Cube_front.Bind(wx.EVT_PAINT, On_FRONT_Paint)
-    Cube_right.Bind(wx.EVT_PAINT, On_RIGHT_Paint)
-    Cube_left.Bind(wx.EVT_PAINT, On_LEFT_Paint)
-    Cube_back.Bind(wx.EVT_PAINT, On_BACK_Paint)
+    Cube_up.Bind(wx.EVT_PAINT, On_up_paint)
+    Cube_front.Bind(wx.EVT_PAINT, On_front_paint)
+    Cube_right.Bind(wx.EVT_PAINT, On_right_paint)
+    Cube_left.Bind(wx.EVT_PAINT, On_left_paint)
+    Cube_back.Bind(wx.EVT_PAINT, On_back_paint)
     Cube_up.Refresh()
     Cube_front.Refresh()
     Cube_right.Refresh()
@@ -378,10 +367,10 @@ def spin_U():
 
 
 def spin_H():
-    Cube_front.Bind(wx.EVT_PAINT, On_FRONT_Paint)
-    Cube_right.Bind(wx.EVT_PAINT, On_RIGHT_Paint)
-    Cube_left.Bind(wx.EVT_PAINT, On_LEFT_Paint)
-    Cube_back.Bind(wx.EVT_PAINT, On_BACK_Paint)
+    Cube_front.Bind(wx.EVT_PAINT, On_front_paint)
+    Cube_right.Bind(wx.EVT_PAINT, On_right_paint)
+    Cube_left.Bind(wx.EVT_PAINT, On_left_paint)
+    Cube_back.Bind(wx.EVT_PAINT, On_back_paint)
     Cube_front.Refresh()
     Cube_right.Refresh()
     Cube_left.Refresh()
@@ -389,11 +378,11 @@ def spin_H():
 
 
 def spin_D():
-    Cube_front.Bind(wx.EVT_PAINT, On_FRONT_Paint)
-    Cube_right.Bind(wx.EVT_PAINT, On_RIGHT_Paint)
-    Cube_left.Bind(wx.EVT_PAINT, On_LEFT_Paint)
-    Cube_back.Bind(wx.EVT_PAINT, On_BACK_Paint)
-    Cube_down.Bind(wx.EVT_PAINT, On_DOWN_Paint)
+    Cube_front.Bind(wx.EVT_PAINT, On_front_paint)
+    Cube_right.Bind(wx.EVT_PAINT, On_right_paint)
+    Cube_left.Bind(wx.EVT_PAINT, On_left_paint)
+    Cube_back.Bind(wx.EVT_PAINT, On_back_paint)
+    Cube_down.Bind(wx.EVT_PAINT, On_down_paint)
     Cube_front.Refresh()
     Cube_right.Refresh()
     Cube_left.Refresh()
@@ -402,11 +391,11 @@ def spin_D():
 
 
 def spin_R():
-    Cube_up.Bind(wx.EVT_PAINT, On_UP_Paint)
-    Cube_front.Bind(wx.EVT_PAINT, On_FRONT_Paint)
-    Cube_right.Bind(wx.EVT_PAINT, On_RIGHT_Paint)
-    Cube_down.Bind(wx.EVT_PAINT, On_DOWN_Paint)
-    Cube_back.Bind(wx.EVT_PAINT, On_BACK_Paint)
+    Cube_up.Bind(wx.EVT_PAINT, On_up_paint)
+    Cube_front.Bind(wx.EVT_PAINT, On_front_paint)
+    Cube_right.Bind(wx.EVT_PAINT, On_right_paint)
+    Cube_down.Bind(wx.EVT_PAINT, On_down_paint)
+    Cube_back.Bind(wx.EVT_PAINT, On_back_paint)
     Cube_up.Refresh()
     Cube_front.Refresh()
     Cube_right.Refresh()
@@ -415,10 +404,10 @@ def spin_R():
 
 
 def spin_M():
-    Cube_up.Bind(wx.EVT_PAINT, On_UP_Paint)
-    Cube_front.Bind(wx.EVT_PAINT, On_FRONT_Paint)
-    Cube_down.Bind(wx.EVT_PAINT, On_DOWN_Paint)
-    Cube_back.Bind(wx.EVT_PAINT, On_BACK_Paint)
+    Cube_up.Bind(wx.EVT_PAINT, On_up_paint)
+    Cube_front.Bind(wx.EVT_PAINT, On_front_paint)
+    Cube_down.Bind(wx.EVT_PAINT, On_down_paint)
+    Cube_back.Bind(wx.EVT_PAINT, On_back_paint)
     Cube_up.Refresh()
     Cube_front.Refresh()
     Cube_back.Refresh()
@@ -426,11 +415,11 @@ def spin_M():
 
 
 def spin_L():
-    Cube_up.Bind(wx.EVT_PAINT, On_UP_Paint)
-    Cube_front.Bind(wx.EVT_PAINT, On_FRONT_Paint)
-    Cube_down.Bind(wx.EVT_PAINT, On_DOWN_Paint)
-    Cube_left.Bind(wx.EVT_PAINT, On_LEFT_Paint)
-    Cube_back.Bind(wx.EVT_PAINT, On_BACK_Paint)
+    Cube_up.Bind(wx.EVT_PAINT, On_up_paint)
+    Cube_front.Bind(wx.EVT_PAINT, On_front_paint)
+    Cube_down.Bind(wx.EVT_PAINT, On_down_paint)
+    Cube_left.Bind(wx.EVT_PAINT, On_left_paint)
+    Cube_back.Bind(wx.EVT_PAINT, On_back_paint)
     Cube_up.Refresh()
     Cube_front.Refresh()
     Cube_left.Refresh()
@@ -439,11 +428,11 @@ def spin_L():
 
 
 def spin_F():
-    Cube_up.Bind(wx.EVT_PAINT, On_UP_Paint)
-    Cube_front.Bind(wx.EVT_PAINT, On_FRONT_Paint)
-    Cube_down.Bind(wx.EVT_PAINT, On_DOWN_Paint)
-    Cube_right.Bind(wx.EVT_PAINT, On_RIGHT_Paint)
-    Cube_left.Bind(wx.EVT_PAINT, On_LEFT_Paint)
+    Cube_up.Bind(wx.EVT_PAINT, On_up_paint)
+    Cube_front.Bind(wx.EVT_PAINT, On_front_paint)
+    Cube_down.Bind(wx.EVT_PAINT, On_down_paint)
+    Cube_right.Bind(wx.EVT_PAINT, On_right_paint)
+    Cube_left.Bind(wx.EVT_PAINT, On_left_paint)
     Cube_up.Refresh()
     Cube_front.Refresh()
     Cube_right.Refresh()
@@ -452,10 +441,10 @@ def spin_F():
 
 
 def spin_S():
-    Cube_up.Bind(wx.EVT_PAINT, On_UP_Paint)
-    Cube_down.Bind(wx.EVT_PAINT, On_DOWN_Paint)
-    Cube_right.Bind(wx.EVT_PAINT, On_RIGHT_Paint)
-    Cube_left.Bind(wx.EVT_PAINT, On_LEFT_Paint)
+    Cube_up.Bind(wx.EVT_PAINT, On_up_paint)
+    Cube_down.Bind(wx.EVT_PAINT, On_down_paint)
+    Cube_right.Bind(wx.EVT_PAINT, On_right_paint)
+    Cube_left.Bind(wx.EVT_PAINT, On_left_paint)
     Cube_up.Refresh()
     Cube_right.Refresh()
     Cube_left.Refresh()
@@ -463,11 +452,11 @@ def spin_S():
 
 
 def spin_B():
-    Cube_up.Bind(wx.EVT_PAINT, On_UP_Paint)
-    Cube_down.Bind(wx.EVT_PAINT, On_DOWN_Paint)
-    Cube_right.Bind(wx.EVT_PAINT, On_RIGHT_Paint)
-    Cube_left.Bind(wx.EVT_PAINT, On_LEFT_Paint)
-    Cube_back.Bind(wx.EVT_PAINT, On_BACK_Paint)
+    Cube_up.Bind(wx.EVT_PAINT, On_up_paint)
+    Cube_down.Bind(wx.EVT_PAINT, On_down_paint)
+    Cube_right.Bind(wx.EVT_PAINT, On_right_paint)
+    Cube_left.Bind(wx.EVT_PAINT, On_left_paint)
+    Cube_back.Bind(wx.EVT_PAINT, On_back_paint)
     Cube_up.Refresh()
     Cube_right.Refresh()
     Cube_left.Refresh()
@@ -476,12 +465,12 @@ def spin_B():
 
 
 def spin_All():
-    Cube_up.Bind(wx.EVT_PAINT, On_UP_Paint)
-    Cube_front.Bind(wx.EVT_PAINT, On_FRONT_Paint)
-    Cube_down.Bind(wx.EVT_PAINT, On_DOWN_Paint)
-    Cube_right.Bind(wx.EVT_PAINT, On_RIGHT_Paint)
-    Cube_left.Bind(wx.EVT_PAINT, On_LEFT_Paint)
-    Cube_back.Bind(wx.EVT_PAINT, On_BACK_Paint)
+    Cube_up.Bind(wx.EVT_PAINT, On_up_paint)
+    Cube_front.Bind(wx.EVT_PAINT, On_front_paint)
+    Cube_down.Bind(wx.EVT_PAINT, On_down_paint)
+    Cube_right.Bind(wx.EVT_PAINT, On_right_paint)
+    Cube_left.Bind(wx.EVT_PAINT, On_left_paint)
+    Cube_back.Bind(wx.EVT_PAINT, On_back_paint)
     Cube_up.Refresh()
     Cube_front.Refresh()
     Cube_right.Refresh()
@@ -745,11 +734,11 @@ main_frame.Bind(wx.EVT_KEY_DOWN, on_Key)
 
 def onU_R(event):
     cube_body.upRight()
-    Cube_up.Bind(wx.EVT_PAINT, On_UP_Paint)
-    Cube_front.Bind(wx.EVT_PAINT, On_FRONT_Paint)
-    Cube_right.Bind(wx.EVT_PAINT, On_RIGHT_Paint)
-    Cube_left.Bind(wx.EVT_PAINT, On_LEFT_Paint)
-    Cube_back.Bind(wx.EVT_PAINT, On_BACK_Paint)
+    Cube_up.Bind(wx.EVT_PAINT, On_up_paint)
+    Cube_front.Bind(wx.EVT_PAINT, On_front_paint)
+    Cube_right.Bind(wx.EVT_PAINT, On_right_paint)
+    Cube_left.Bind(wx.EVT_PAINT, On_left_paint)
+    Cube_back.Bind(wx.EVT_PAINT, On_back_paint)
     Cube_up.Refresh()
     Cube_front.Refresh()
     Cube_right.Refresh()
@@ -762,11 +751,11 @@ U_R.Bind(wx.EVT_BUTTON, onU_R)
 
 def onU_L(event):
     cube_body.upLeft()
-    Cube_up.Bind(wx.EVT_PAINT, On_UP_Paint)
-    Cube_front.Bind(wx.EVT_PAINT, On_FRONT_Paint)
-    Cube_right.Bind(wx.EVT_PAINT, On_RIGHT_Paint)
-    Cube_left.Bind(wx.EVT_PAINT, On_LEFT_Paint)
-    Cube_back.Bind(wx.EVT_PAINT, On_BACK_Paint)
+    Cube_up.Bind(wx.EVT_PAINT, On_up_paint)
+    Cube_front.Bind(wx.EVT_PAINT, On_front_paint)
+    Cube_right.Bind(wx.EVT_PAINT, On_right_paint)
+    Cube_left.Bind(wx.EVT_PAINT, On_left_paint)
+    Cube_back.Bind(wx.EVT_PAINT, On_back_paint)
     Cube_up.Refresh()
     Cube_front.Refresh()
     Cube_right.Refresh()
@@ -779,10 +768,10 @@ U_L.Bind(wx.EVT_BUTTON, onU_L)
 
 def onH_R(event):
     cube_body.horizonRight()
-    Cube_front.Bind(wx.EVT_PAINT, On_FRONT_Paint)
-    Cube_right.Bind(wx.EVT_PAINT, On_RIGHT_Paint)
-    Cube_left.Bind(wx.EVT_PAINT, On_LEFT_Paint)
-    Cube_back.Bind(wx.EVT_PAINT, On_BACK_Paint)
+    Cube_front.Bind(wx.EVT_PAINT, On_front_paint)
+    Cube_right.Bind(wx.EVT_PAINT, On_right_paint)
+    Cube_left.Bind(wx.EVT_PAINT, On_left_paint)
+    Cube_back.Bind(wx.EVT_PAINT, On_back_paint)
     Cube_front.Refresh()
     Cube_right.Refresh()
     Cube_left.Refresh()
@@ -794,10 +783,10 @@ H_R.Bind(wx.EVT_BUTTON, onH_R)
 
 def onH_L(event):
     cube_body.horizonLeft()
-    Cube_front.Bind(wx.EVT_PAINT, On_FRONT_Paint)
-    Cube_right.Bind(wx.EVT_PAINT, On_RIGHT_Paint)
-    Cube_left.Bind(wx.EVT_PAINT, On_LEFT_Paint)
-    Cube_back.Bind(wx.EVT_PAINT, On_BACK_Paint)
+    Cube_front.Bind(wx.EVT_PAINT, On_front_paint)
+    Cube_right.Bind(wx.EVT_PAINT, On_right_paint)
+    Cube_left.Bind(wx.EVT_PAINT, On_left_paint)
+    Cube_back.Bind(wx.EVT_PAINT, On_back_paint)
     Cube_front.Refresh()
     Cube_right.Refresh()
     Cube_left.Refresh()
@@ -809,11 +798,11 @@ H_L.Bind(wx.EVT_BUTTON, onH_L)
 
 def onD_R(event):
     cube_body.downRight()
-    Cube_front.Bind(wx.EVT_PAINT, On_FRONT_Paint)
-    Cube_right.Bind(wx.EVT_PAINT, On_RIGHT_Paint)
-    Cube_left.Bind(wx.EVT_PAINT, On_LEFT_Paint)
-    Cube_back.Bind(wx.EVT_PAINT, On_BACK_Paint)
-    Cube_down.Bind(wx.EVT_PAINT, On_DOWN_Paint)
+    Cube_front.Bind(wx.EVT_PAINT, On_front_paint)
+    Cube_right.Bind(wx.EVT_PAINT, On_right_paint)
+    Cube_left.Bind(wx.EVT_PAINT, On_left_paint)
+    Cube_back.Bind(wx.EVT_PAINT, On_back_paint)
+    Cube_down.Bind(wx.EVT_PAINT, On_down_paint)
     Cube_front.Refresh()
     Cube_right.Refresh()
     Cube_left.Refresh()
@@ -826,11 +815,11 @@ D_R.Bind(wx.EVT_BUTTON, onD_R)
 
 def onD_L(event):
     cube_body.downLeft()
-    Cube_front.Bind(wx.EVT_PAINT, On_FRONT_Paint)
-    Cube_right.Bind(wx.EVT_PAINT, On_RIGHT_Paint)
-    Cube_left.Bind(wx.EVT_PAINT, On_LEFT_Paint)
-    Cube_back.Bind(wx.EVT_PAINT, On_BACK_Paint)
-    Cube_down.Bind(wx.EVT_PAINT, On_DOWN_Paint)
+    Cube_front.Bind(wx.EVT_PAINT, On_front_paint)
+    Cube_right.Bind(wx.EVT_PAINT, On_right_paint)
+    Cube_left.Bind(wx.EVT_PAINT, On_left_paint)
+    Cube_back.Bind(wx.EVT_PAINT, On_back_paint)
+    Cube_down.Bind(wx.EVT_PAINT, On_down_paint)
     Cube_front.Refresh()
     Cube_right.Refresh()
     Cube_left.Refresh()
@@ -843,11 +832,11 @@ D_L.Bind(wx.EVT_BUTTON, onD_L)
 
 def onR_R(event):
     cube_body.rightRight()
-    Cube_up.Bind(wx.EVT_PAINT, On_UP_Paint)
-    Cube_front.Bind(wx.EVT_PAINT, On_FRONT_Paint)
-    Cube_right.Bind(wx.EVT_PAINT, On_RIGHT_Paint)
-    Cube_down.Bind(wx.EVT_PAINT, On_DOWN_Paint)
-    Cube_back.Bind(wx.EVT_PAINT, On_BACK_Paint)
+    Cube_up.Bind(wx.EVT_PAINT, On_up_paint)
+    Cube_front.Bind(wx.EVT_PAINT, On_front_paint)
+    Cube_right.Bind(wx.EVT_PAINT, On_right_paint)
+    Cube_down.Bind(wx.EVT_PAINT, On_down_paint)
+    Cube_back.Bind(wx.EVT_PAINT, On_back_paint)
     Cube_up.Refresh()
     Cube_front.Refresh()
     Cube_right.Refresh()
@@ -860,11 +849,11 @@ R_R.Bind(wx.EVT_BUTTON, onR_R)
 
 def onR_L(event):
     cube_body.rightLeft()
-    Cube_up.Bind(wx.EVT_PAINT, On_UP_Paint)
-    Cube_front.Bind(wx.EVT_PAINT, On_FRONT_Paint)
-    Cube_right.Bind(wx.EVT_PAINT, On_RIGHT_Paint)
-    Cube_down.Bind(wx.EVT_PAINT, On_DOWN_Paint)
-    Cube_back.Bind(wx.EVT_PAINT, On_BACK_Paint)
+    Cube_up.Bind(wx.EVT_PAINT, On_up_paint)
+    Cube_front.Bind(wx.EVT_PAINT, On_front_paint)
+    Cube_right.Bind(wx.EVT_PAINT, On_right_paint)
+    Cube_down.Bind(wx.EVT_PAINT, On_down_paint)
+    Cube_back.Bind(wx.EVT_PAINT, On_back_paint)
     Cube_up.Refresh()
     Cube_front.Refresh()
     Cube_right.Refresh()
@@ -877,10 +866,10 @@ R_L.Bind(wx.EVT_BUTTON, onR_L)
 
 def onM_R(event):
     cube_body.middleRight()
-    Cube_up.Bind(wx.EVT_PAINT, On_UP_Paint)
-    Cube_front.Bind(wx.EVT_PAINT, On_FRONT_Paint)
-    Cube_down.Bind(wx.EVT_PAINT, On_DOWN_Paint)
-    Cube_back.Bind(wx.EVT_PAINT, On_BACK_Paint)
+    Cube_up.Bind(wx.EVT_PAINT, On_up_paint)
+    Cube_front.Bind(wx.EVT_PAINT, On_front_paint)
+    Cube_down.Bind(wx.EVT_PAINT, On_down_paint)
+    Cube_back.Bind(wx.EVT_PAINT, On_back_paint)
     Cube_up.Refresh()
     Cube_front.Refresh()
     Cube_back.Refresh()
@@ -892,10 +881,10 @@ M_R.Bind(wx.EVT_BUTTON, onM_R)
 
 def onM_L(event):
     cube_body.middleLeft()
-    Cube_up.Bind(wx.EVT_PAINT, On_UP_Paint)
-    Cube_front.Bind(wx.EVT_PAINT, On_FRONT_Paint)
-    Cube_down.Bind(wx.EVT_PAINT, On_DOWN_Paint)
-    Cube_back.Bind(wx.EVT_PAINT, On_BACK_Paint)
+    Cube_up.Bind(wx.EVT_PAINT, On_up_paint)
+    Cube_front.Bind(wx.EVT_PAINT, On_front_paint)
+    Cube_down.Bind(wx.EVT_PAINT, On_down_paint)
+    Cube_back.Bind(wx.EVT_PAINT, On_back_paint)
     Cube_up.Refresh()
     Cube_front.Refresh()
     Cube_back.Refresh()
@@ -907,11 +896,11 @@ M_L.Bind(wx.EVT_BUTTON, onM_L)
 
 def onL_R(event):
     cube_body.leftRight()
-    Cube_up.Bind(wx.EVT_PAINT, On_UP_Paint)
-    Cube_front.Bind(wx.EVT_PAINT, On_FRONT_Paint)
-    Cube_down.Bind(wx.EVT_PAINT, On_DOWN_Paint)
-    Cube_left.Bind(wx.EVT_PAINT, On_LEFT_Paint)
-    Cube_back.Bind(wx.EVT_PAINT, On_BACK_Paint)
+    Cube_up.Bind(wx.EVT_PAINT, On_up_paint)
+    Cube_front.Bind(wx.EVT_PAINT, On_front_paint)
+    Cube_down.Bind(wx.EVT_PAINT, On_down_paint)
+    Cube_left.Bind(wx.EVT_PAINT, On_left_paint)
+    Cube_back.Bind(wx.EVT_PAINT, On_back_paint)
     Cube_up.Refresh()
     Cube_front.Refresh()
     Cube_left.Refresh()
@@ -924,11 +913,11 @@ L_R.Bind(wx.EVT_BUTTON, onL_R)
 
 def onL_L(event):
     cube_body.leftLeft()
-    Cube_up.Bind(wx.EVT_PAINT, On_UP_Paint)
-    Cube_front.Bind(wx.EVT_PAINT, On_FRONT_Paint)
-    Cube_down.Bind(wx.EVT_PAINT, On_DOWN_Paint)
-    Cube_left.Bind(wx.EVT_PAINT, On_LEFT_Paint)
-    Cube_back.Bind(wx.EVT_PAINT, On_BACK_Paint)
+    Cube_up.Bind(wx.EVT_PAINT, On_up_paint)
+    Cube_front.Bind(wx.EVT_PAINT, On_front_paint)
+    Cube_down.Bind(wx.EVT_PAINT, On_down_paint)
+    Cube_left.Bind(wx.EVT_PAINT, On_left_paint)
+    Cube_back.Bind(wx.EVT_PAINT, On_back_paint)
     Cube_up.Refresh()
     Cube_front.Refresh()
     Cube_left.Refresh()
@@ -941,11 +930,11 @@ L_L.Bind(wx.EVT_BUTTON, onL_L)
 
 def onF_R(event):
     cube_body.frontRight()
-    Cube_up.Bind(wx.EVT_PAINT, On_UP_Paint)
-    Cube_front.Bind(wx.EVT_PAINT, On_FRONT_Paint)
-    Cube_down.Bind(wx.EVT_PAINT, On_DOWN_Paint)
-    Cube_right.Bind(wx.EVT_PAINT, On_RIGHT_Paint)
-    Cube_left.Bind(wx.EVT_PAINT, On_LEFT_Paint)
+    Cube_up.Bind(wx.EVT_PAINT, On_up_paint)
+    Cube_front.Bind(wx.EVT_PAINT, On_front_paint)
+    Cube_down.Bind(wx.EVT_PAINT, On_down_paint)
+    Cube_right.Bind(wx.EVT_PAINT, On_right_paint)
+    Cube_left.Bind(wx.EVT_PAINT, On_left_paint)
     Cube_up.Refresh()
     Cube_front.Refresh()
     Cube_right.Refresh()
@@ -958,11 +947,11 @@ F_R.Bind(wx.EVT_BUTTON, onF_R)
 
 def onF_L(event):
     cube_body.frontLeft()
-    Cube_up.Bind(wx.EVT_PAINT, On_UP_Paint)
-    Cube_front.Bind(wx.EVT_PAINT, On_FRONT_Paint)
-    Cube_down.Bind(wx.EVT_PAINT, On_DOWN_Paint)
-    Cube_right.Bind(wx.EVT_PAINT, On_RIGHT_Paint)
-    Cube_left.Bind(wx.EVT_PAINT, On_LEFT_Paint)
+    Cube_up.Bind(wx.EVT_PAINT, On_up_paint)
+    Cube_front.Bind(wx.EVT_PAINT, On_front_paint)
+    Cube_down.Bind(wx.EVT_PAINT, On_down_paint)
+    Cube_right.Bind(wx.EVT_PAINT, On_right_paint)
+    Cube_left.Bind(wx.EVT_PAINT, On_left_paint)
     Cube_up.Refresh()
     Cube_front.Refresh()
     Cube_right.Refresh()
@@ -975,10 +964,10 @@ F_L.Bind(wx.EVT_BUTTON, onF_L)
 
 def onS_R(event):
     cube_body.sideRight()
-    Cube_up.Bind(wx.EVT_PAINT, On_UP_Paint)
-    Cube_down.Bind(wx.EVT_PAINT, On_DOWN_Paint)
-    Cube_right.Bind(wx.EVT_PAINT, On_RIGHT_Paint)
-    Cube_left.Bind(wx.EVT_PAINT, On_LEFT_Paint)
+    Cube_up.Bind(wx.EVT_PAINT, On_up_paint)
+    Cube_down.Bind(wx.EVT_PAINT, On_down_paint)
+    Cube_right.Bind(wx.EVT_PAINT, On_right_paint)
+    Cube_left.Bind(wx.EVT_PAINT, On_left_paint)
     Cube_up.Refresh()
     Cube_right.Refresh()
     Cube_left.Refresh()
@@ -990,10 +979,10 @@ S_R.Bind(wx.EVT_BUTTON, onS_R)
 
 def onS_L(event):
     cube_body.sideLeft()
-    Cube_up.Bind(wx.EVT_PAINT, On_UP_Paint)
-    Cube_down.Bind(wx.EVT_PAINT, On_DOWN_Paint)
-    Cube_right.Bind(wx.EVT_PAINT, On_RIGHT_Paint)
-    Cube_left.Bind(wx.EVT_PAINT, On_LEFT_Paint)
+    Cube_up.Bind(wx.EVT_PAINT, On_up_paint)
+    Cube_down.Bind(wx.EVT_PAINT, On_down_paint)
+    Cube_right.Bind(wx.EVT_PAINT, On_right_paint)
+    Cube_left.Bind(wx.EVT_PAINT, On_left_paint)
     Cube_up.Refresh()
     Cube_right.Refresh()
     Cube_left.Refresh()
@@ -1005,11 +994,11 @@ S_L.Bind(wx.EVT_BUTTON, onS_L)
 
 def onB_R(event):
     cube_body.backRight()
-    Cube_up.Bind(wx.EVT_PAINT, On_UP_Paint)
-    Cube_down.Bind(wx.EVT_PAINT, On_DOWN_Paint)
-    Cube_right.Bind(wx.EVT_PAINT, On_RIGHT_Paint)
-    Cube_left.Bind(wx.EVT_PAINT, On_LEFT_Paint)
-    Cube_back.Bind(wx.EVT_PAINT, On_BACK_Paint)
+    Cube_up.Bind(wx.EVT_PAINT, On_up_paint)
+    Cube_down.Bind(wx.EVT_PAINT, On_down_paint)
+    Cube_right.Bind(wx.EVT_PAINT, On_right_paint)
+    Cube_left.Bind(wx.EVT_PAINT, On_left_paint)
+    Cube_back.Bind(wx.EVT_PAINT, On_back_paint)
     Cube_up.Refresh()
     Cube_right.Refresh()
     Cube_left.Refresh()
@@ -1022,11 +1011,11 @@ B_R.Bind(wx.EVT_BUTTON, onB_R)
 
 def onB_L(event):
     cube_body.backLeft()
-    Cube_up.Bind(wx.EVT_PAINT, On_UP_Paint)
-    Cube_down.Bind(wx.EVT_PAINT, On_DOWN_Paint)
-    Cube_right.Bind(wx.EVT_PAINT, On_RIGHT_Paint)
-    Cube_left.Bind(wx.EVT_PAINT, On_LEFT_Paint)
-    Cube_back.Bind(wx.EVT_PAINT, On_BACK_Paint)
+    Cube_up.Bind(wx.EVT_PAINT, On_up_paint)
+    Cube_down.Bind(wx.EVT_PAINT, On_down_paint)
+    Cube_right.Bind(wx.EVT_PAINT, On_right_paint)
+    Cube_left.Bind(wx.EVT_PAINT, On_left_paint)
+    Cube_back.Bind(wx.EVT_PAINT, On_back_paint)
     Cube_up.Refresh()
     Cube_down.Refresh()
     Cube_right.Refresh()
@@ -1039,12 +1028,12 @@ B_L.Bind(wx.EVT_BUTTON, onB_L)
 
 def onX_R(event):
     cube_body.xRight()
-    Cube_up.Bind(wx.EVT_PAINT, On_UP_Paint)
-    Cube_front.Bind(wx.EVT_PAINT, On_FRONT_Paint)
-    Cube_down.Bind(wx.EVT_PAINT, On_DOWN_Paint)
-    Cube_right.Bind(wx.EVT_PAINT, On_RIGHT_Paint)
-    Cube_left.Bind(wx.EVT_PAINT, On_LEFT_Paint)
-    Cube_back.Bind(wx.EVT_PAINT, On_BACK_Paint)
+    Cube_up.Bind(wx.EVT_PAINT, On_up_paint)
+    Cube_front.Bind(wx.EVT_PAINT, On_front_paint)
+    Cube_down.Bind(wx.EVT_PAINT, On_down_paint)
+    Cube_right.Bind(wx.EVT_PAINT, On_right_paint)
+    Cube_left.Bind(wx.EVT_PAINT, On_left_paint)
+    Cube_back.Bind(wx.EVT_PAINT, On_back_paint)
     Cube_up.Refresh()
     Cube_front.Refresh()
     Cube_right.Refresh()
@@ -1058,12 +1047,12 @@ X_R.Bind(wx.EVT_BUTTON, onX_R)
 
 def onX_L(event):
     cube_body.xLeft()
-    Cube_up.Bind(wx.EVT_PAINT, On_UP_Paint)
-    Cube_front.Bind(wx.EVT_PAINT, On_FRONT_Paint)
-    Cube_down.Bind(wx.EVT_PAINT, On_DOWN_Paint)
-    Cube_right.Bind(wx.EVT_PAINT, On_RIGHT_Paint)
-    Cube_left.Bind(wx.EVT_PAINT, On_LEFT_Paint)
-    Cube_back.Bind(wx.EVT_PAINT, On_BACK_Paint)
+    Cube_up.Bind(wx.EVT_PAINT, On_up_paint)
+    Cube_front.Bind(wx.EVT_PAINT, On_front_paint)
+    Cube_down.Bind(wx.EVT_PAINT, On_down_paint)
+    Cube_right.Bind(wx.EVT_PAINT, On_right_paint)
+    Cube_left.Bind(wx.EVT_PAINT, On_left_paint)
+    Cube_back.Bind(wx.EVT_PAINT, On_back_paint)
     Cube_up.Refresh()
     Cube_front.Refresh()
     Cube_right.Refresh()
@@ -1077,12 +1066,12 @@ X_L.Bind(wx.EVT_BUTTON, onX_L)
 
 def onY_R(event):
     cube_body.yRight()
-    Cube_up.Bind(wx.EVT_PAINT, On_UP_Paint)
-    Cube_front.Bind(wx.EVT_PAINT, On_FRONT_Paint)
-    Cube_down.Bind(wx.EVT_PAINT, On_DOWN_Paint)
-    Cube_right.Bind(wx.EVT_PAINT, On_RIGHT_Paint)
-    Cube_left.Bind(wx.EVT_PAINT, On_LEFT_Paint)
-    Cube_back.Bind(wx.EVT_PAINT, On_BACK_Paint)
+    Cube_up.Bind(wx.EVT_PAINT, On_up_paint)
+    Cube_front.Bind(wx.EVT_PAINT, On_front_paint)
+    Cube_down.Bind(wx.EVT_PAINT, On_down_paint)
+    Cube_right.Bind(wx.EVT_PAINT, On_right_paint)
+    Cube_left.Bind(wx.EVT_PAINT, On_left_paint)
+    Cube_back.Bind(wx.EVT_PAINT, On_back_paint)
     Cube_up.Refresh()
     Cube_front.Refresh()
     Cube_right.Refresh()
@@ -1096,12 +1085,12 @@ Y_R.Bind(wx.EVT_BUTTON, onY_R)
 
 def onY_L(event):
     cube_body.yLeft()
-    Cube_up.Bind(wx.EVT_PAINT, On_UP_Paint)
-    Cube_front.Bind(wx.EVT_PAINT, On_FRONT_Paint)
-    Cube_down.Bind(wx.EVT_PAINT, On_DOWN_Paint)
-    Cube_right.Bind(wx.EVT_PAINT, On_RIGHT_Paint)
-    Cube_left.Bind(wx.EVT_PAINT, On_LEFT_Paint)
-    Cube_back.Bind(wx.EVT_PAINT, On_BACK_Paint)
+    Cube_up.Bind(wx.EVT_PAINT, On_up_paint)
+    Cube_front.Bind(wx.EVT_PAINT, On_front_paint)
+    Cube_down.Bind(wx.EVT_PAINT, On_down_paint)
+    Cube_right.Bind(wx.EVT_PAINT, On_right_paint)
+    Cube_left.Bind(wx.EVT_PAINT, On_left_paint)
+    Cube_back.Bind(wx.EVT_PAINT, On_back_paint)
     Cube_up.Refresh()
     Cube_front.Refresh()
     Cube_right.Refresh()
@@ -1115,12 +1104,12 @@ Y_L.Bind(wx.EVT_BUTTON, onY_L)
 
 def onZ_R(event):
     cube_body.zRight()
-    Cube_up.Bind(wx.EVT_PAINT, On_UP_Paint)
-    Cube_front.Bind(wx.EVT_PAINT, On_FRONT_Paint)
-    Cube_down.Bind(wx.EVT_PAINT, On_DOWN_Paint)
-    Cube_right.Bind(wx.EVT_PAINT, On_RIGHT_Paint)
-    Cube_left.Bind(wx.EVT_PAINT, On_LEFT_Paint)
-    Cube_back.Bind(wx.EVT_PAINT, On_BACK_Paint)
+    Cube_up.Bind(wx.EVT_PAINT, On_up_paint)
+    Cube_front.Bind(wx.EVT_PAINT, On_front_paint)
+    Cube_down.Bind(wx.EVT_PAINT, On_down_paint)
+    Cube_right.Bind(wx.EVT_PAINT, On_right_paint)
+    Cube_left.Bind(wx.EVT_PAINT, On_left_paint)
+    Cube_back.Bind(wx.EVT_PAINT, On_back_paint)
     Cube_up.Refresh()
     Cube_front.Refresh()
     Cube_right.Refresh()
@@ -1134,12 +1123,12 @@ Z_R.Bind(wx.EVT_BUTTON, onZ_R)
 
 def onZ_L(event):
     cube_body.zLeft()
-    Cube_up.Bind(wx.EVT_PAINT, On_UP_Paint)
-    Cube_front.Bind(wx.EVT_PAINT, On_FRONT_Paint)
-    Cube_down.Bind(wx.EVT_PAINT, On_DOWN_Paint)
-    Cube_right.Bind(wx.EVT_PAINT, On_RIGHT_Paint)
-    Cube_left.Bind(wx.EVT_PAINT, On_LEFT_Paint)
-    Cube_back.Bind(wx.EVT_PAINT, On_BACK_Paint)
+    Cube_up.Bind(wx.EVT_PAINT, On_up_paint)
+    Cube_front.Bind(wx.EVT_PAINT, On_front_paint)
+    Cube_down.Bind(wx.EVT_PAINT, On_down_paint)
+    Cube_right.Bind(wx.EVT_PAINT, On_right_paint)
+    Cube_left.Bind(wx.EVT_PAINT, On_left_paint)
+    Cube_back.Bind(wx.EVT_PAINT, On_back_paint)
     Cube_up.Refresh()
     Cube_front.Refresh()
     Cube_right.Refresh()
@@ -1379,12 +1368,12 @@ def onMix(event):
     for mix_num in range(MIX_NUM):
         cube_body.mixCube()
         time.sleep(TIME)
-        Cube_up.Bind(wx.EVT_PAINT, On_UP_Paint)
-        Cube_front.Bind(wx.EVT_PAINT, On_FRONT_Paint)
-        Cube_down.Bind(wx.EVT_PAINT, On_DOWN_Paint)
-        Cube_right.Bind(wx.EVT_PAINT, On_RIGHT_Paint)
-        Cube_left.Bind(wx.EVT_PAINT, On_LEFT_Paint)
-        Cube_back.Bind(wx.EVT_PAINT, On_BACK_Paint)
+        Cube_up.Bind(wx.EVT_PAINT, On_up_paint)
+        Cube_front.Bind(wx.EVT_PAINT, On_front_paint)
+        Cube_down.Bind(wx.EVT_PAINT, On_down_paint)
+        Cube_right.Bind(wx.EVT_PAINT, On_right_paint)
+        Cube_left.Bind(wx.EVT_PAINT, On_left_paint)
+        Cube_back.Bind(wx.EVT_PAINT, On_back_paint)
         Cube_up.Refresh()
         Cube_front.Refresh()
         Cube_right.Refresh()

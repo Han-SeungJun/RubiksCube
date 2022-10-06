@@ -36,5 +36,10 @@ However, this project description will allow you to understand not only a simple
 
 * 2.2
     * 2021.7.21
-    *  Implemente a keyboard manipulation and hotkey
-    *  using `keyboard.is_pressed()` and `keyboard.add_hotkey()`
+    * Implemente a keyboard manipulation and hotkey
+    * using `keyboard.is_pressed()` and `keyboard.add_hotkey()`
+
+* 2.3
+    * 2022.10.5
+    * Implement to rotate cube from a smartphone remotely
+    * using `telebot.Bot()`

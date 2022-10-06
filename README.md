@@ -17,6 +17,14 @@ The rotation of the cube causes the color data of each piece to be transformed i
 However, this project description will allow you to understand not only a simple implementation, but also what algorithm it is  made of.
 
 
+## Modules requiring installation
+
+```sh
+pip install "module_name"
+```
+
+`keyboard` `wxPython` `numpy` `sqlite3` `telepot` `telebot`
+
 ## Release History
 
 * 1.0
@@ -27,19 +35,23 @@ However, this project description will allow you to understand not only a simple
 
 * 2.0
     * 2019.4.7
-    * Implemente a `mixCube()` (using ``random`` module)
-    * Implemente a Cube GUI (using ``wxPython`` module)
+    * Implemente a `mixCube()` (_using ``random`` module_)
+    * Implemente a Cube GUI (_using ``wxPython`` module_)
 
 * 2.1
     * 2021.7.19
-    * Implemente a `saveCube()` and `loadCube()` (using ``sqlite3`` module)
+    * Implemente a `saveCube()` and `loadCube()` (_using ``sqlite3`` module_)
 
 * 2.2
     * 2021.7.21
     * Implemente a keyboard manipulation and hotkey
-    * using `keyboard.is_pressed()` and `keyboard.add_hotkey()`
+    * _using `keyboard.is_pressed()` and `keyboard.add_hotkey()`_
 
 * 2.3
     * 2022.10.5
     * Implement to rotate cube from a smartphone remotely
     * using `telebot.Bot()`
+
+* 2.4
+    * to be continue..
+    * _Next version will be a cube solving AI program based on the 'DQN' model._

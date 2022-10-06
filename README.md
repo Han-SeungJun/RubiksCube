@@ -1,8 +1,8 @@
 # Cube Emulator 🎲🧊
 
-> a cube Emulator in python
-
 ![cube_ui](https://user-images.githubusercontent.com/105290026/192979037-34962af3-eaf3-4153-a8a5-9fa64b6ec1df.jpg)
+
+> a cube Emulator in python
 
 This project is a program made of a well-known 3×3×3 cube in everyone.
 
@@ -16,7 +16,7 @@ The rotation of the cube causes the color data of each piece to be transformed i
 
 However, this project description will allow you to understand not only a simple implementation, but also what algorithm it is  made of.
 
-
+---
 ## Modules requiring installation
 
 ```sh
@@ -24,6 +24,8 @@ pip install "module_name"
 ```
 
 `keyboard` `wxPython` `numpy` `sqlite3` `telepot` `telebot`
+
+---
 
 ## Release History
 

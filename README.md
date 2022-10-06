@@ -16,6 +16,25 @@ The rotation of the cube causes the color data of each piece to be transformed i
 
 However, this project description will allow you to understand not only a simple implementation, but also what algorithm it is  made of.
 
-Without further ado..
 
-### Let's play cube~
+## Release History
+
+* 1.0
+    * 2019.3
+    * Implemente a Cube operating environment
+    * Fabricate a rotating function
+    * Create a function to determine if cube was solved
+
+* 2.0
+    * 2019.4.7
+    * Implemente a `mixCube()` (using ``random`` module)
+    * Implemente a Cube GUI (using ``wxPython`` module)
+
+* 2.1
+    * 2021.7.19
+    * Implemente a `saveCube()` and `loadCube()` (using ``sqlite3`` module)
+
+* 2.2
+    * 2021.7.21
+    *  Implemente a keyboard manipulation and hotkey
+    *  using `keyboard.is_pressed()` and `keyboard.add_hotkey()`

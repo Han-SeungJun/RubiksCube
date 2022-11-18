@@ -444,20 +444,20 @@ class CubeBody:
                     find1[xy_rotate][x_rotate] = 0
             self.yRight()
 
-        for zxzx_rotate in range(2):
-            self.zRight()
+        self.zRight()
+        for z_rotate in range(2):
             for x_rotate in range(4):
                 self.xRight()
                 if (self.ifClear() == 1):
-                    find2[zxzx_rotate][x_rotate] = 1
+                    find2[z_rotate][x_rotate] = 1
                 else:
-                    find2[zxzx_rotate][x_rotate] = 0
+                    find2[z_rotate][x_rotate] = 0
             self.zRight()
-            self.xRight()
+            self.zRight()
             if (self.ifClear() == 1):
-                find3[zxzx_rotate] = 1
+                find3[z_rotate] = 1
             else:
-                find3[zxzx_rotate] = 0
+                find3[z_rotate] = 0
 
         if (find1[0][0] == 1 or find1[0][1] == 1 or find1[0][2] == 1 or find1[0][3] == 1 or
             find1[1][0] == 1 or find1[1][1] == 1 or find1[1][2] == 1 or find1[1][3] == 1 or
@@ -766,6 +766,3 @@ class CubeBody:
     #    종료
     #
 
-
-if __name__ == "__main__":
-    print()
